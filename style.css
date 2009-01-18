@@ -1,0 +1,289 @@
+body {
+  padding       : 0px;
+  margin        : 0px;
+  font-size     : 12px;
+  color         : #111111;
+  border        : 0px;
+  background    : #e6e7e8;
+}
+
+.hidden {
+  display       : none;
+}
+
+#header {
+  font-family   : Sans Bold;
+  font-size     : 12px; 
+  position      : absolute;
+  top           : 0px;
+  left          : 0px;
+  right         : 0px;
+  height        : 19px;
+  font-weight   : bold;
+  color         : #EEEEEE;
+  background    : url(theme/header.png);
+  padding-top   : 2px;
+  padding-left  : 3px;
+  padding-right : 3px;
+}
+
+#header div {
+  position      : absolute;
+  top           : 0px;
+  right         : 0px;
+  bottom        : 0px;
+  height        : 18px;
+  background    : url(theme/header.png);
+}
+#header .headhoption {
+  position      : relative;
+  float         : left;
+  padding-top   : 2px;
+  padding-left  : 3px;
+  padding-right : 3px;
+}
+#header .headhoption:hover {
+  color         : #FF5555;
+  cursor        : pointer;
+}
+#header .headhseparator {
+  position      : relative;
+  float         : left;
+  background    : #EEEEEE;
+  float         : left;
+  height        : 14px;
+  margin-top    : 2px;
+  border-left   : 1px solid #CCCCCC;
+  margin-left   : 1px;
+  margin-right  : 0px;
+}
+
+#site_list {
+  position      : absolute;
+  top           : 19px;
+  right         : 0px;
+  width         : 150px;
+  z-index       : 100;
+  color         : #000000;
+  background    : url(theme/menubg.png);
+  border-bottom : 1px solid #BBBBBB;
+  border-left   : 1px solid #BBBBBB;
+  padding       : 0px;
+  padding-top   : 1px; 
+  margin        : 0px;
+}
+#site_list .headvoption {
+  text-align    : center;
+  margin-bottom : 1px;
+  margin-left   : 0px;
+  margin-right  : 0px;
+  padding       : 2px;
+}
+#site_list .headvoption:hover {
+  background    : url(theme/menufg.png);
+  color         : #FFFFFF;
+  cursor        : pointer;
+}
+#site_list .headvseparator {
+  background    : #AAAAAA;
+  height        : 0px;
+  margin-top    : 2px;
+  margin-bottom : 2px;
+  border-top    : 1px solid #AAAAAA;
+  margin-left   : 8px;
+  margin-right  : 8px;
+}
+
+
+#footer {
+  position      : absolute;
+  bottom        : 0px;
+  left          : 0px;
+  right         : 0px;
+  height        : 19px;
+  border-top    : 0px solid #DDDDDD;
+  background    : url(theme/footer.png);
+  color         : #DDDDDD;
+  text-align    : center;
+  font-weight   : bold;
+  padding-bottom: 0px;
+  padding-top   : 2px;
+}
+
+#body {
+  position      : absolute;
+  top           : 20px;
+  left          : 0px;
+  right         : 0px;
+  bottom        : 21px;
+}
+
+#left {
+  position      : absolute;
+  top           : 0px;
+  left          : 0px;
+  bottom        : 0px;
+  width         : 250px;
+  background    : url(theme/leftbg.png) right repeat-y;
+  border        : 0px solid #FF0000;
+  text-align    : center;
+  padding-top   : 0px;
+  overflow      : auto;
+}
+
+#right {
+  position      : absolute;
+  display       : none;
+  top           : 0px;
+  right         : 0px;
+  bottom        : 0px;
+  width         : 0px;
+  border        : 0px solid #FF0000;
+  background    : black;
+}
+
+#center {
+  position      : absolute;
+  top           : 0px;
+  bottom        : 0px;
+  left          : 250px;
+  right         : 0px;
+  border        : 0px solid #0000FF;
+  background    : #f5f2ef;
+  padding       : 0px;
+  margin        : 0px;
+  overflow      : auto;
+}
+
+.menu {
+  margin-left  : 10px;
+  margin-right : 10px;
+  margin-top   : 0px;
+  margin-bottom: 5px;
+  border-top   : 1px solid #979a9d;
+  border-left  : 1px solid #979a9d;
+  border-right : 1px solid #979a9d;
+}
+
+.menu_title {
+  border-bottom: 1px solid #979a9d;
+  background   : url(theme/menu.png) center;
+  padding      : 3px;
+  font-weight  : bold;
+}
+
+.menu_open {
+  float         : right;
+  width         : 13px;
+  height        : 13px;
+  margin        : 0px;
+  margin-top    : 2px;
+  background    : url(theme/arrowtb.png);
+}
+.menu_open:hover {
+  background    : url(theme/arrowtbh.png);
+  cursor        : pointer;
+}
+.menu_close {
+  float         : right;
+  width         : 13px;
+  height        : 13px;
+  margin        : 0px;
+  margin-top    : 2px;
+  background    : url(theme/arrowrl.png);
+}
+.menu_close:hover {
+  background    : url(theme/arrowrlh.png);
+  cursor        : pointer;
+}
+.menu_options {
+  border-bottom: 1px solid #979a9d;
+  background   : white;
+}
+.menu_option {
+  padding      : 5px;
+}
+.menu_option:hover {
+  background    : url(theme/select.png);
+  color         : #FFFFFF;
+  cursor        : pointer;
+}
+.green {
+  background    : #EEFFEE;
+}
+.yellow {
+  background    : #FFFFEE;
+}
+.red {
+  background    : #FFEEEE;
+}
+.orange {
+  background    : #FFF4EE;
+}
+
+#frame {
+  height        : 100%;
+  width         : 100%;
+  border        : 0px;
+  padding       : 0px;
+  margin        : 0px;
+  margin-bottom : -3px;
+}
+
+.blocks {
+  position      : absolute;
+  top           : 0px;
+  bottom        : 0px;
+  left          : 0px;
+  right         : 2px;
+  overflow      : hidden;
+  padding       : 0px;
+  margin        : 0px;
+}
+.blocks_close,
+.blocks_open {
+  position      : absolute;
+  top           : 0px;
+  bottom        : 0px;
+  right         : 0px;
+  margin-right  : 0px;
+  z-index       : 101;
+  width         : 8px;
+  background    : url(theme/arrowsrlh.png) right center no-repeat;
+}
+.blocks_open:hover {
+  background    : url(theme/arrowsrl.png) right center no-repeat;
+  cursor        : pointer;
+}
+.blocks_close {
+  background    : url(theme/arrowslrh.png) right center no-repeat #ebeced;
+}
+.blocks_close:hover {
+  background    : url(theme/arrowslr.png) right center no-repeat #ebeced;
+  cursor        : pointer;
+}
+.block_title {
+  position      : absolute;
+  left          : 0px;
+  right         : 1px;
+  background    : url(theme/menu.png) center;
+  font-size     : 14px;
+  font-weight   : bold;
+  border-bottom : 1px solid #979a9d;
+  height        : 20px;
+  line-height   : 22px;
+}
+.block_title:hover {
+  cursor        : pointer;
+}
+
+.block_content {
+  position      : absolute;
+  left          : 0px;
+  right         : 1px;
+  bottom        : 0px;
+  overflow      : auto;
+  border-bottom : 1px solid #979a9d;
+  padding-bottom: 0px;
+  padding-top   : 5px;
+}

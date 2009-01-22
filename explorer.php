@@ -7,8 +7,16 @@
   $tplData = array();
 
   require_once($base.'/include/template.php');
+  require_once($base.'/include/explorer.php');
+
   Template::$base = $base . '/';
 
+  $explorer = new Explorer($root);
+  $explorer->setPath($current);
+  $explorer->prepare();
+  $tplData['__CONTENT__'] = $explorer->generate();
+
+/*
   $directory = opendir($path);
   $dirlist  = array();
   $filelist = array();
@@ -86,6 +94,7 @@
 
     $tplData['__CONTENT__'] .= Template::get('explorer_element',$data);
   }
+*/
 
-  echo Template::get('explorer',$tplData);
+  echo Template::_get('explorer',$tplData);
 ?>

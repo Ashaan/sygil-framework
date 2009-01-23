@@ -117,17 +117,45 @@ function Ajax()
             return false;
         }
 
-        var info = null;
-        var data = null;
+        var target    = null;
+        var content   = null;
+        var method    = null;
+        var exec_data = '';
         for (var i=0;i<xmlDoc.childNodes.length;i++) {
             var child = xmlDoc.childNodes[i];
-            if (child.tagName == 'INFO') {
-                info = child;
+            if (child.tagName == 'target') {
+                target = child.firstChild.nodeValue;
             } else
-            if (child.tagName == 'DATA') {
-                data = child;
+            if (child.tagName == 'content') {
+                content = decode64(child.firstChild.nodeValue);
+            } else
+            if (child.tagName == 'theme') {
+                ajaxLoadCSS(child.firstChild.nodeValue,'');
+            } else
+            if (child.tagName == 'exec') {
+                exec_data += child.firstChild.nodeValue;
+            } else
+            if (child.tagName == 'method') {
+                method = child.firstChild.nodeValue;
             }
         }
+
+        if (content) {
+            if (method=='add') {
+                document.getElementById(target).innerHTML += content;
+            } else {
+                document.getElementById(target).innerHTML  = content;
+            }
+        } else {
+            alert('ya du boulot !');
+        }
+
+        if (exec_data != '') {
+            eval(exec_data);
+        }
+
+        return true;
+
         var command = info.getElementsByTagName("COMMAND");
         if (command.length<=0) {
             return false;
@@ -140,59 +168,45 @@ function Ajax()
     }
 }
 
-Ajax.prototype.autobuild = function(node,object,childarray) {
-    for (var i=0;i<node.childNodes.length;i++) {
-        var element = node.childNodes[i];
-        if(!element.firstChild) {
-            continue;
-        }
-        if(!element.firstChild.nodeValue) {
-            for (var j=0;j<element.childNodes.length;j++) {
-                var child = element.childNodes[j];
-                var myvar = element.tagName.toLowerCase()+'_'+child.tagName.toLowerCase();
-                if (eval('object.'+myvar)) {
-                    if (eval('typeof(object.'+myvar+') != "object"')) {
-                        eval('var tmp = object.'+myvar+';object.'+myvar+' = new Array();object.'+myvar+'[0] = tmp;');
-                    }
-                    var id = eval('object.'+myvar+'.length');
-                    myvar += '['+id+']';
-                }
-                if (child.firstChild) {
-                    eval('object.'+myvar+' = child.firstChild.nodeValue;');
-                }
-            }
-        } else {
-            var myvar = element.tagName.toLowerCase();
-            eval('object.'+myvar+' = element.firstChild.nodeValue;');
+function ajaxLoadCSS(filename,name) {
+    var find = false;
+    for (var i=0;i<document.getElementsByTagName("link").length;i++) { 
+        if (document.getElementsByTagName("link")[i].getAttribute('href') == filename) {
+            find = true;
         }
     }
 
-    return object;
-}
-
-function ajaxLoadCSS(filename,name) {
-    var fileref=document.createElement("link")
-    fileref.setAttribute("rel", "stylesheet")
-    fileref.setAttribute("type", "text/css")
-    fileref.setAttribute("href", filename)
-    fileref.setAttribute("name", name)
+    if (!find) {
+        var fileref=document.createElement("link");
+        fileref.setAttribute("rel", "stylesheet");
+        fileref.setAttribute("type", "text/css");
+        fileref.setAttribute("href", filename);
+        if (name) {
+            fileref.setAttribute("name", name);
+        }
+        document.getElementsByTagName("head")[0].appendChild(fileref);
+    }
 }
 
 function ajaxLoadScript(filename){
     var fileref=document.createElement('script')
     fileref.setAttribute("type","text/javascript")
     fileref.setAttribute("src", filename)
+    document.getElementsByTagName("head")[0].appendChild(fileref)
 }
 
 function ajaxOpen(name) {
     var ajax = new Ajax();
-    ajax.send(name,[['cible','center']]);
+    ajax.send(name,[['target','center'],['method','replace']]);
 
     url_frame = '';
     url_ajax  = name;
     urlBuild();
 }
-
+function ajaxLoad(name,target,method) {
+    var ajax = new Ajax();
+    ajax.send(name,[['target',target],['method',method]]);
+}
 function urlReadAjax() {
     if (url_ajax != '') {
         ajaxOpen(url_ajax);

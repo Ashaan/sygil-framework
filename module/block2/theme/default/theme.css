@@ -1,0 +1,34 @@
+.block2_left{
+  position      : absolute;
+  top           : 0px;
+  bottom        : 0px;
+  left          : 0px;
+  right         : 0px;
+  border-right  : 0px red solid;
+  margin        : 5px;
+  padding       : 3px;
+  margin-right  : 15px;
+  -moz-border-radius: 10px;
+  background    : #f0edea;
+}
+
+.block2_left:hover {
+  background    : #e5e2df;
+}
+
+.block2_right{
+  position      : absolute;
+  top           : 0px;
+  bottom        : 0px;
+  right         : 0px;
+  width         : 0px;
+  margin        : 5px;
+  padding       : 3px;
+  -moz-border-radius: 10px;
+  background    : #f0edea;
+  text-align    : center;
+}
+
+.block2_right:hover {
+  background: #e5e2df;
+}

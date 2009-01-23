@@ -27,17 +27,4 @@
     </object>
   </td>
 </tr>
-<tr class="lfmFoot">
-  <td style="background:url(http://cdn.last.fm/widgets/images/footer_bg/blue.png) repeat-x 0 0;text-align:right;">
-    <table cellspacing="0" cellpadding="0" border="0" style="width:184px;">
-    <tr>
-      <td class="lfmConfig">
-        <a href="http://www.lastfm.fr/widgets/?url=user%2FAshaan%2Fpersonal&amp;colour=blue&amp;size=regular&amp;autostart=0&amp;from=code&amp;widget=radio" title="Créez votre propre widget" target="_blank" style="display:block;overflow:hidden;width:85px;height:20px;float:right;background:url(http://cdn.last.fm/widgets/images/fr/footer/blue.png) no-repeat 0px -20px;text-decoration:none;border:0;"></a>
-      </td>
-      <td class="lfmView" style="width:74px;">
-        <a href="http://www.lastfm.fr/user/Ashaan" title="Voir le profil de Ashaan" target="_blank" style="display:block;overflow:hidden;width:74px;height:20px;background:url(http://cdn.last.fm/widgets/images/fr/footer/blue.png) no-repeat -85px -20px;text-decoration:none;border:0;"></a>
-      </td>
-    </table>
-  </td>
-</tr>
 </table>

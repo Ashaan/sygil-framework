@@ -7,6 +7,7 @@ class Core {
     private $script   = array();
     private $theme    = array();
     private $data     = array();
+    private $exec     = array();
     private $jsUrlInit  = '';
     private $jsUrlRead  = '';
     private $jsUrlWrite = '';
@@ -40,6 +41,9 @@ class Core {
     }
     public function addInclude($include) {
         require_once($include);
+    }
+    public function addExec($exec) {
+        $this->exec[] = $exec;
     }
     public function addScriptUrlInit($script) {
         if ($this->jsUrlInit!='') $this->jsUrlInit .= "\n";
@@ -89,6 +93,13 @@ class Core {
         return Template::getInstance()->get($this->template,$this->data);
     }
     public function generateAjax() {
+        $this->data['__COMMAND__'] = $_GET['command'];
+        $this->data['__TARGET__']  = $_GET['target'];
+        $this->data['__METHOD__']  = $_GET['method'];
+        $this->data['__EXEC__'] = '';
+        foreach($this->exec as $exec) {
+            $this->data['__EXEC__']  .= Template::getInstance()->get('ajax_exec' ,array('__EXEC__'=> $exec)); 
+        }
         $this->data['__THEME__'] = '';
         foreach($this->theme as $theme) {
             $this->data['__THEME__']  .= Template::getInstance()->get('ajax_theme' ,array('__URL__'=> $theme)); 
@@ -101,11 +112,15 @@ class Core {
         foreach($this->jsTemplate as $name => $template) {
             $data = array(
                 '__NAME'   => $name,
-                '__DATA__' => $script // a encoder base64, max 255 caractere
+                '__DATA__' => base64_encode($script) // a encoder base64, max 255 caractere
             );
             $this->data['__TEMPLATE__'] .= Template::getInstance()->get('ajax_template',$data); 
         }
-
+        if (isset($this->data['__CONTENT__'])) {
+            $this->data['__CONTENT__'] = '<content>'.base64_encode($this->data['__CONTENT__']).'</content>';
+        } else {
+            $this->data['__CONTENT__'] = '<content/>';
+        }
         return Template::getInstance()->get($this->template,$this->data);
     }
 

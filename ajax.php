@@ -9,8 +9,10 @@ $core->setTemplate('ajax');
 
 $core->load('config');
 
-$core->load('ajax'.ufirst($_GET['command']));
+$core->load('ajax/'.$_GET['command']);
 
+ob_start('ob_gzhandler');
+header('Content-Type: text/xml');
 echo $core->generate();
 
 ?>

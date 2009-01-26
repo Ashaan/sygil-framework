@@ -88,7 +88,7 @@ class Core {
         $this->data['__URL_INIT__']  = $this->jsUrlInit; 
         $this->data['__URL_READ__']  = $this->jsUrlRead; 
         $this->data['__URL_WRITE__'] = $this->jsUrlWrite; 
-        $this->data['__ONLOAD__']    = 'urlInitScript();urlLoad();';
+        $this->data['__ONLOAD__']    = 'url.load();';
 
         return Template::getInstance()->get($this->template,$this->data);
     }

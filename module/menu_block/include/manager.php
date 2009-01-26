@@ -34,6 +34,9 @@ class MenuBlockManager {
       '__ID__'    => $this->default,
     );
 
+//    Core::getInstance()->addScriptUrlInit ('menu_block = new MenuBlock();');
+    Core::getInstance()->addScriptUrlInit ('menu_block.list    = ['.$ids.'];');
+    Core::getInstance()->addScriptUrlInit ('menu_block.current = '.$this->default.';');
     return Template::getInstance()->get('manager',$data,'menu_block');
   }
 }

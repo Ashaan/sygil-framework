@@ -1,7 +1,4 @@
-ajax = new Ajax();
-
-function Ajax()
-{
+function Ajax() {
     this.queue = [];
     this.data  = [];
     this.mode  = 'GET';
@@ -24,14 +21,17 @@ function Ajax()
             }
   	    }
  			
-        if(!engine && typeof XMLHttpRequest != "undefined") engine = new XMLHttpRequest();
+        if (typeof XMLHttpRequest != "undefined") {
+            engine = new XMLHttpRequest();
+        }
 //        if (!IE) {
-            engine.startTime = getSecTime();
+//            engine.startTime = getSecTime();
 //        } else {
 //          this.startTime = getSecTime();
 //        }
-        this.stat_count++;
+//        this.stat_count++;
 
+        engine.ajaxref = this;
         return engine;
     }
 
@@ -51,13 +51,13 @@ function Ajax()
                 if (engine.status != 200) {
                     return false;
                 }
-                ajax.receive(engine.responseXML,engine.responseText);
+                engine.ajaxref.receive(engine.responseXML,engine.responseText);
 //                if (!IE) {
-                    ajax.stat_time += getSecTime() - engine.startTime;
+//                    ajax.stat_time += getSecTime() - engine.startTime;
 //                } else {
 //                    ajax.stat_time += getSecTime() - ajax.startTime;
 //                }
-                ajax.updateStat();
+//                ajax.updateStat();
                 delete engine;
             }
     
@@ -105,6 +105,46 @@ function Ajax()
         }
     }
 
+    this.loadScript = function(filename){
+        var find = false;
+        for (var i=0;i<document.getElementsByTagName("script").length;i++) { 
+            if (document.getElementsByTagName("script")[i].getAttribute('src') == filename) {
+                find = true;
+            }
+        }
+
+        if (!find) {
+            var fileref=document.createElement('script');
+            fileref.setAttribute("type","text/javascript");
+            fileref.setAttribute("src", filename);
+            document.getElementsByTagName("head")[0].appendChild(fileref);
+        }
+    }
+
+    this.loadCSS = function(filename,name,alt) {
+        var find = false;
+        for (var i=0;i<document.getElementsByTagName("link").length;i++) { 
+            if (document.getElementsByTagName("link")[i].getAttribute('href') == filename) {
+                find = true;
+            }
+        }
+
+        if (!find) {
+            var fileref=document.createElement("link");
+            if (alt) {
+                fileref.setAttribute("rel", "stylesheet");
+            } else {
+                fileref.setAttribute("rel", "stylesheet");
+            }
+            fileref.setAttribute("type", "text/css");
+            fileref.setAttribute("href", filename);
+            if (name) {
+                fileref.setAttribute("name", name);
+            }
+            document.getElementsByTagName("head")[0].appendChild(fileref);
+        }
+    }
+
     this.receive = function(XML, TEXT) {
         this.stat_download += TEXT.length;
         if (!XML) {
@@ -120,6 +160,7 @@ function Ajax()
         var target    = null;
         var content   = null;
         var method    = null;
+        var key       = null;
         var exec_data = '';
         for (var i=0;i<xmlDoc.childNodes.length;i++) {
             var child = xmlDoc.childNodes[i];
@@ -130,17 +171,27 @@ function Ajax()
                 content = decode64(child.firstChild.nodeValue);
             } else
             if (child.tagName == 'theme') {
-                ajaxLoadCSS(child.firstChild.nodeValue,'');
+                this.loadCSS(child.firstChild.nodeValue,'');
             } else
             if (child.tagName == 'exec') {
                 exec_data += child.firstChild.nodeValue;
             } else
             if (child.tagName == 'method') {
                 method = child.firstChild.nodeValue;
+            } else
+            if (child.tagName == 'name') {
+                key = child.firstChild.nodeValue;
             }
         }
 
         if (content) {
+            if (target=='center') {
+                content = shortcut.reference(content);
+                if (key) {
+                    document.getElementById(target).key = key;
+                }
+            }
+
             if (method=='add') {
                 document.getElementById(target).innerHTML += content;
             } else {
@@ -166,58 +217,39 @@ function Ajax()
         eval('this.com'+command+'(info,data);');
         return true;
     }
-}
 
-function ajaxLoadCSS(filename,name) {
-    var find = false;
-    for (var i=0;i<document.getElementsByTagName("link").length;i++) { 
-        if (document.getElementsByTagName("link")[i].getAttribute('href') == filename) {
-            find = true;
-        }
-    }
+    this.open = function(name) {
+        var temp = new Ajax();
+        data = [['target','center'],['method','replace']];
+        temp.send(name,data);
 
-    if (!find) {
-        var fileref=document.createElement("link");
-        fileref.setAttribute("rel", "stylesheet");
-        fileref.setAttribute("type", "text/css");
-        fileref.setAttribute("href", filename);
-        if (name) {
-            fileref.setAttribute("name", name);
-        }
-        document.getElementsByTagName("head")[0].appendChild(fileref);
+        url.frame = '';
+        url.ajax  = name;
+        url.save();
     }
 }
 
-function ajaxLoadScript(filename){
-    var fileref=document.createElement('script')
-    fileref.setAttribute("type","text/javascript")
-    fileref.setAttribute("src", filename)
-    document.getElementsByTagName("head")[0].appendChild(fileref)
-}
+ajax = new Ajax();
 
-function ajaxOpen(name) {
+function ajaxLoad(name,target,method,param) {
     var ajax = new Ajax();
-    ajax.send(name,[['target','center'],['method','replace']]);
+    param[param.length] = ['target',target];
+    param[param.length] = ['method',method];
+    ajax.send(name,param);
+}
 
-    url_frame = '';
-    url_ajax  = name;
-    urlBuild();
-}
-function ajaxLoad(name,target,method) {
-    var ajax = new Ajax();
-    ajax.send(name,[['target',target],['method',method]]);
-}
-function urlReadAjax() {
-    if (url_ajax != '') {
-        ajaxOpen(url_ajax);
-        url_frame = '';
+Url.prototype.ajax = null;
+Url.prototype.loadAjax = function() {
+    if (this.ajax) {
+        ajax.open(this.ajax);
+        this.frame = null;
     }
 }
-
-function urlWriteAjax() {
-    if (url_ajax) {
-        return '&Ajax='+url_ajax;
+Url.prototype.saveAjax = function() {
+    if (this.ajax) {
+        return '&Ajax='+this.ajax;
     }
     return '';
 }
-
+url.addLoadScript('this.loadAjax'); 
+url.addSaveScript('this.saveAjax');

@@ -14,9 +14,9 @@ if (isset($_GET['MenuBoxClose'])) {
         $data .= '['.$list.',0]';
     }
 }
-$core->addScriptUrlInit ('url_menu_box_status = ['.$data.'];');
-$core->addScriptUrlRead ('urlReadMenuBox();');
-$core->addScriptUrlWrite('data += urlWriteMenuBox();');
+$core->addScriptUrlInit ('url.menu_box_status = ['.$data.'];');
+//$core->addScriptUrlRead ('urlReadMenuBox();');
+//$core->addScriptUrlWrite('data += urlWriteMenuBox();');
 
 $core->addInclude('module/menu_box/include/box.php');
 $core->addInclude('module/menu_box/include/option.php');

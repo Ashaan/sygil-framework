@@ -1,29 +1,63 @@
+function Url() {
+    this.saveScript = [];
+    this.loadScript = [];
 
-function urlBuild() {
-  temp = '';
+    this.save = function() {
+        temp = '';
 
-  window.location.href = '#'+urlWriteScript();
-}
+        for (var i=0;i<this.saveScript.length;i++) {
+            var func = 'temp += ' + this.saveScript[i] + '();';
+            eval(func);
+        }
 
-//  for (i=0;i<url_menubox_status.length;i++) {
-//  	temp += '&m'+url_menubox_status[i][0]+'='+url_menubox_status[i][1];
-//  }
+        window.location.href = '#'+temp;
+    }
 
+    this.load = function() {
+        pos = window.location.href.indexOf('#');
+        len = window.location.href.length;
+	    if (pos > 0) {
+	        if (pos==len) {
+	        	window.location.href = '?';
+	        } else {
+	        	window.location.href = '?'+window.location.href.substr(pos+2);
+	        }
+        } else {
+            for (var i=0;i<this.loadScript.length;i++) {
+                var func = this.loadScript[i] + '();';
+                eval(func);
+            }
+        }
+    }
 
-function urlLoad() {
-    pos = window.location.href.indexOf('#');
-    len = window.location.href.length;
-	if (pos > 0) {
-	    if (pos==len) {
-	    	window.location.href = '?';
-	    } else {
-	    	window.location.href = '?'+window.location.href.substr(pos+2);
-	    }
-    } else {
-        urlReadScript();
+    this.addSaveScript = function(script) {
+        this.saveScript[this.saveScript.length] = script;
+    }
+
+    this.addLoadScript = function(script) {
+        this.loadScript[this.loadScript.length] = script;
     }
 }
 
-//      prepare();
+url = new Url();
 
+//function urlBuild() {
+//  temp = '';
+//
+//  window.location.href = '#'+urlWriteScript();
+//}
+
+//function urlLoad() {
+//    pos = window.location.href.indexOf('#');
+//    len = window.location.href.length;
+//	if (pos > 0) {
+//	    if (pos==len) {
+//	    	window.location.href = '?';
+//	    } else {
+//	    	window.location.href = '?'+window.location.href.substr(pos+2);
+//	    }
+//    } else {
+//        urlReadScript();
+//    }
+//}
 

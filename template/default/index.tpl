@@ -11,19 +11,7 @@
 __THEME__
 __SCRIPT__
   <script type="text/javascript">
-    function urlInitScript() {
 __URL_INIT__
-    }
-    function urlReadScript() {
-__URL_READ__
-    }
-    function urlWriteScript() {
-      data = '';
-
-__URL_WRITE__
-
-      return data;
-    }
   </script>
 </head>
 <body onload="__ONLOAD__">
@@ -43,6 +31,9 @@ __URL_WRITE__
   </div>
 
   <div id="footer">Mathieu Chocat © Copyright 2006-2009 [Ashaan / Sygil.org]</div>
+  <div id="shortcut" style="">
+    <img class="add" src="theme/default/add.png" onclick="shortcut.add();"/>
+  </div>
 
   <div id="site_list" class="hidden" onmouseover="show('site_list')" onmouseout="hide('site_list')">
     <div class="headvoption" onclick="window.location='?goto=home'">     Sygil Network  </div>

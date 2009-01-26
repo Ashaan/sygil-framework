@@ -3,6 +3,7 @@
   <command>__COMMAND__</command>
   <target>__TARGET__</target>
   <method>__METHOD__</method>
+  <name>__NAME__</name>
   __THEME__
   __TEMPLATE__
   __CONTENT__

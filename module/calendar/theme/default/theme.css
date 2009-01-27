@@ -1,0 +1,65 @@
+.calendar {
+  width         : 100%;
+  border        : 1px solid #b1a594;
+}
+
+.calendar_switch {
+  margin        : 1px;
+  border        : 1px solid #b1a594;
+  background    : #ede9e3;
+}
+
+.calendar_month {
+  float         : left;
+  margin        : 3px;
+}
+
+.calendar_year {
+  text-align    : right;
+  margin        : 3px;
+}
+
+.calendar_list {
+  background    : #ffffff;
+}
+
+.calendar_list table {
+  border-spacing: 0px;
+  border        : 1px solid transparent;
+}
+
+.calendar_day_list {
+ border         : 0px solid #b1a594;
+}
+
+.calender_day_label {
+  background    : #4489ca;
+  color         : #ffffff;
+  text-align    : center;
+  width         : 30px;
+}
+
+.calendar_day_current,
+.calendar_day_event,
+.calender_day_empty,
+.calendar_day {
+  width         : 30px;
+  height        : 25px;
+  border        : 0px solid white;
+  -moz-border-radius: 6px;
+  text-align    : center;
+  vertical-align: middle;
+}
+
+
+.calendar_day_current {
+  background    : #4489ca;
+  color         : #ffffff;
+}
+
+.calendar_day_event {
+  background    : #ca0000;
+  color         : #ffffff;
+  cursor        : pointer;
+}
+ 

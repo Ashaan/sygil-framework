@@ -223,11 +223,11 @@ body {
 #shortcut .element {
   padding       : 5px;
   margin        : 0px;
-  margin-top    : 7px;
+  margin-top    : 6px;
   margin-left   : -1px;
   padding-right : 5px;
   padding-left  : 5px;
-  padding-top   : 4px;
+  padding-top   : 3px;
   bottom        : 0px;
   color         : #000000;
   font-weight   : normal;

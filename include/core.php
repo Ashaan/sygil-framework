@@ -8,10 +8,8 @@ class Core {
     private $theme    = array();
     private $data     = array();
     private $exec     = array();
-    private $jsUrlInit  = '';
-    private $jsUrlRead  = '';
-    private $jsUrlWrite = '';
-    private $jsTemplate = array();
+    private $scriptInit     = '';
+    private $scriptTemplate = array();
 
     static public function getInstance() {
         if (Core::$instance == null) {
@@ -34,9 +32,9 @@ class Core {
             $this->theme[] = $theme;
         }
     }
-    public function addJsTemplate($template) {
-        if (!in_array($template, $this->jsTemplate)) {
-            $this->jsTemplate[] = $template;
+    public function addScriptTemplate($template) {
+        if (!in_array($template, $this->scriptTemplate)) {
+            $this->scriptTemplate[] = $template;
         }
     }
     public function addInclude($include) {
@@ -45,17 +43,9 @@ class Core {
     public function addExec($exec) {
         $this->exec[] = $exec;
     }
-    public function addScriptUrlInit($script) {
-        if ($this->jsUrlInit!='') $this->jsUrlInit .= "\n";
-        $this->jsUrlInit .= '      '.$script;
-    }
-    public function addScriptUrlRead($script) {
-        if ($this->jsUrlRead!='') $this->jsUrlRead .= "\n";
-        $this->jsUrlRead .= '      '.$script;
-    }
-    public function addScriptUrlWrite($script) {
-        if ($this->jsUrlWrite!='') $this->jsUrlWrite .= "\n";
-        $this->jsUrlWrite .= '      '.$script;
+    public function addScriptInit($script) {
+        if ($this->scriptInit!='') $this->scriptInit .= "\n";
+        $this->scriptInit .= '      '.$script;
     }
     public function load($config) {
         $path = 'config/'.$config.'.php';
@@ -85,9 +75,8 @@ class Core {
         foreach($this->script as $script) {
             $this->data['__SCRIPT__'] .= Template::getInstance()->get('index_script',array('__URL__'=> $script)); 
         }
-        $this->data['__URL_INIT__']  = $this->jsUrlInit; 
-        $this->data['__URL_READ__']  = $this->jsUrlRead; 
-        $this->data['__URL_WRITE__'] = $this->jsUrlWrite; 
+        $this->data['__SCRIPT_INIT__']  = $this->scriptInit; 
+
         $this->data['__ONLOAD__']    = 'url.load();';
 
         return Template::getInstance()->get($this->template,$this->data);
@@ -109,7 +98,7 @@ class Core {
             $this->data['__SCRIPT__'] .= Template::getInstance()->get('ajax_script',array('__URL__'=> $script)); 
         }
         $this->data['__TEMPLATE__'] = '';
-        foreach($this->jsTemplate as $name => $template) {
+        foreach($this->scriptTemplate as $name => $template) {
             $data = array(
                 '__NAME'   => $name,
                 '__DATA__' => base64_encode($script) // a encoder base64, max 255 caractere

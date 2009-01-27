@@ -22,12 +22,8 @@ $core->addScript('script/base64.js');
 $core->addScript('script/ajax.js');
 $core->addScript('script/shortcut.js');
 
-$core->addScriptUrlInit ('url.frame = \''.(isset($_GET['Frame'])?$_GET['Frame']:'').'\';');
-$core->addScriptUrlInit ('url.ajax  = \''.(isset($_GET['Ajax']) ?$_GET['Ajax'] :'').'\';');
-//$core->addScriptUrlRead ('urlReadFrame();');
-//$core->addScriptUrlRead ('urlReadAjax();');
-//$core->addScriptUrlWrite('data += urlWriteFrame();');
-//$core->addScriptUrlWrite('data += urlWriteAjax();');
+$core->addScriptInit ('url.frame = \''.(isset($_GET['Frame'])?$_GET['Frame']:'').'\';');
+$core->addScriptInit ('url.ajax  = \''.(isset($_GET['Ajax']) ?$_GET['Ajax'] :'').'\';');
 
 $core->load('config');
 $core->load('left');

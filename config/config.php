@@ -8,6 +8,14 @@ $core->config = array(
     'template'      => 'default',
     'theme'         => 'default',
     'lang'          => 'french',
+
+    'base'          => array(
+        'type'      => 'mysqli',
+        'host'      => 'localhost',
+        'user'      => 'sygil.org',
+        'pass'      => 'Y6YHXJdMMfxAvpzz',
+        'name'      => 'sygil_base',
+    ),
     'templateList'  => array(
         'default'   => 'Template par Default',
     ),

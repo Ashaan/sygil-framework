@@ -5,7 +5,11 @@ $core = Core::getInstance();
 $core->loadModule('calendar');
 
 $calendar = new Calendar();
-$calendar->setDate(time());
+if ($_GET['date']) {
+    $calendar->setDate($_GET['date']);
+} else {
+    $calendar->setDate(time());
+}
 $calendar->setZone($_GET['zone']);
 $calendar->setPanel('panel_left');
 

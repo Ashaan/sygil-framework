@@ -7,8 +7,13 @@ $core->loadModule('menu_block');
 $blocks = new MenuBlockManager();
 
 $block = new MenuBlockBlock('Accueil');
-$menu = new MenuBoxBox('Général');
-$menu->addOption(new MenuBoxOption('Blog'                , 'ajax.open(\'blog\')'));
+$menu = new MenuBoxBox('Accueil');
+$menu->addOption(
+    new MenuBoxOption(
+        'Accueil',
+        'ajax.open(\'blog\')'
+    )
+);
 $block->addElement($menu);
 
 
@@ -32,6 +37,7 @@ $blocks->addBlock($block);
 
 $block = new MenuBlockBlock('Projets');
 $menu = new MenuBoxBox('Actif');
+$menu->addOption(new MenuBoxOption('Portail Sygil'       , 'frame.open(\'http://projects.sygil.org/p/portal/\', this)'));
 $menu->addOption(new MenuBoxOption('Sygil Overlay'       , 'frame.open(\'http://projects.sygil.org/p/layman/\', this)'));
 $menu->addOption(new MenuBoxOption('Iptable Config'      , 'frame.open(\'http://projects.sygil.org/p/iptables/\', this)'));
 $block->addElement($menu);

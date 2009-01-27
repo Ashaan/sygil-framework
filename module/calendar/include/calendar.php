@@ -22,7 +22,6 @@ class Calendar {
     );
 
     public function __construct() {
-
     }
  
     public function setDate($date) {
@@ -59,10 +58,18 @@ class Calendar {
     private function addDayEvent($day, $event) {
         $data = array(
             '__DAY__'   =>  date('j',$day),
-            '__ACTION__'=>  'ajaxLoad(\'news\',\'panel_left\',\'replace\',[[\'zone\',0],[\'date\',\''.$event['date'].'\']]);',
+            '__ACTION__'=>  'ajaxLoad(\'news\',\'panel_left\',\'replace\',[[\'zone\',0],[\'date\','.$event['date'].']]);',
         );
 
         return Template::getInstance()->get('day_event',$data,'calendar');
+    }
+    private function addDayActive($day, $event) {
+        $data = array(
+            '__DAY__'   =>  date('j',$day),
+            '__ACTION__'=>  'ajaxLoad(\'news\',\'panel_left\',\'replace\',[[\'zone\',0],[\'date\','.$event['date'].']]);',
+        );
+
+        return Template::getInstance()->get('day_active',$data,'calendar');
     }
     private function nextDay($day) {
        return mktime(0,0,0,date('n',$day),date('j',$day)+1,date('Y',$day));
@@ -129,7 +136,11 @@ class Calendar {
         $current = $first;$last = $first;
         while($this->checkMonth($this->date,$current)) {
             if ($this->checkDay($this->date,$current)) {
-                $line .= $this->addDayCurrent($current);
+                if ($this->event[date('d',$current)]) {
+                    $line .= $this->addDayActive($current,$this->event[date('d',$current)]);
+                } else {
+                    $line .= $this->addDayCurrent($current);
+                }
             } else
             if ($this->event[date('d',$current)]) {
                 $line .= $this->addDayEvent($current,$this->event[date('d',$current)]);
@@ -145,12 +156,15 @@ class Calendar {
         }
         $data .= $this->addDayLine($line,$last);
 
-
         $data = array(
-            '__MONTH__'    => $this->monthList[date('n',$this->date)],
-            '__YEAR__'     => date('Y',$this->date),
-            '__DAY__'      => $data, 
-            '__ADDON__'    => '',
+            '__MONTH__'     => $this->monthList[date('n',$this->date)],
+            '__YEAR__'      => date('Y',$this->date),
+            '__DAY__'       => $data, 
+            '__ADDON__'     => '',
+            '__PREV_MONTH__'=> 'ajaxLoad(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date)-1,date('d',$this->date),date('Y',$this->date)).']]);',
+            '__NEXT_MONTH__'=> 'ajaxLoad(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date)+1,date('d',$this->date),date('Y',$this->date)).']]);',
+            '__PREV_YEAR__'=> 'ajaxLoad(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date),date('d',$this->date),date('Y',$this->date)-1).']]);',
+            '__NEXT_YEAR__'=> 'ajaxLoad(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date),date('d',$this->date),date('Y',$this->date)+1).']]);',
         );
 
 //echo Template::getInstance()->get('calendar',$data,'calendar');

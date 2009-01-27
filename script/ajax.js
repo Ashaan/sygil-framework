@@ -158,7 +158,7 @@ function Ajax() {
         }
 
         var target    = null;
-        var content   = null;
+        var content   = '';
         var method    = null;
         var key       = null;
         var exec_data = '';
@@ -168,7 +168,7 @@ function Ajax() {
                 target = child.firstChild.nodeValue;
             } else
             if (child.tagName == 'content') {
-                content = decode64(child.firstChild.nodeValue);
+                content += decode64(child.firstChild.nodeValue);
             } else
             if (child.tagName == 'theme') {
                 this.loadCSS(child.firstChild.nodeValue,'');
@@ -191,7 +191,6 @@ function Ajax() {
                     document.getElementById(target).key = key;
                 }
             }
-
             if (method=='add') {
                 document.getElementById(target).innerHTML += content;
             } else {

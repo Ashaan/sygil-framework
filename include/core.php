@@ -106,7 +106,17 @@ class Core {
             $this->data['__TEMPLATE__'] .= Template::getInstance()->get('ajax_template',$data); 
         }
         if (isset($this->data['__CONTENT__'])) {
-            $this->data['__CONTENT__'] = '<content>'.base64_encode($this->data['__CONTENT__']).'</content>';
+            $content = $this->data['__CONTENT__'];
+            $this->data['__CONTENT__'] = '';
+            $len     = strlen($content);
+            for ($i=0;$i<$len/512;$i++) {
+                $send    = substr($content,0,512);
+                $content = substr($content,512);
+                $this->data['__CONTENT__'] .= 
+                    '<content part="'.$i.'">'.
+                        base64_encode(utf8_decode($send)).
+                    '</content>';
+            }
         } else {
             $this->data['__CONTENT__'] = '<content/>';
         }

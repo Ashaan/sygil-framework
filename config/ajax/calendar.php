@@ -4,7 +4,7 @@ $core = Core::getInstance();
 
 $core->loadModule('calendar');
 
-$calendar = new Calendar();
+$calendar = new Calendar('panel_right_row1');
 if ($_GET['date']) {
     $calendar->setDate($_GET['date']);
 } else {

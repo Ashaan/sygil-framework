@@ -1,7 +1,7 @@
 function Ajax() {
     this.queue = [];
     this.data  = [];
-    this.mode  = 'GET';
+    this.mode  = 'POST';
     this.stat_upload   = 0;
     this.stat_download = 0;
     this.stat_count    = 0;
@@ -173,6 +173,9 @@ function Ajax() {
             if (child.tagName == 'theme') {
                 this.loadCSS(child.firstChild.nodeValue,'');
             } else
+            if (child.tagName == 'script') {
+                this.loadScript(child.firstChild.nodeValue,'');
+            } else
             if (child.tagName == 'exec') {
                 exec_data += child.firstChild.nodeValue;
             } else
@@ -185,16 +188,20 @@ function Ajax() {
         }
 
         if (content) {
-            if (target=='center') {
-                content = shortcut.reference(content);
-                if (key) {
-                    document.getElementById(target).key = key;
-                }
-            }
-            if (method=='add') {
-                document.getElementById(target).innerHTML += content;
+            if(!document.getElementById(target)) {
+                document.getElementById('tempdiv').innerHTML = content;
             } else {
-                document.getElementById(target).innerHTML  = content;
+                if (target=='center') {
+                    content = shortcut.reference(content);
+                    if (key) {
+                        document.getElementById(target).key = key;
+                    }
+                }
+                if (method=='add') {
+                    document.getElementById(target).innerHTML += content;
+                } else {
+                    document.getElementById(target).innerHTML  = content;
+                }
             }
         } else {
             alert('ya du boulot !');
@@ -202,6 +209,10 @@ function Ajax() {
 
         if (exec_data != '') {
             eval(exec_data);
+        }
+
+        if (this != ajax) {
+            delete this;
         }
 
         return true;
@@ -226,16 +237,17 @@ function Ajax() {
         url.ajax  = name;
         url.save();
     }
+
+    this.load = function (name,target,method,param) {
+        var temp = new Ajax();
+        param[param.length] = ['target',target];
+        param[param.length] = ['method',method];
+        temp.send(name,param);
+    }
 }
 
 ajax = new Ajax();
 
-function ajaxLoad(name,target,method,param) {
-    var ajax = new Ajax();
-    param[param.length] = ['target',target];
-    param[param.length] = ['method',method];
-    ajax.send(name,param);
-}
 
 Url.prototype.ajax = null;
 Url.prototype.loadAjax = function() {

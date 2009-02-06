@@ -30,6 +30,17 @@ function Url() {
         }
     }
 
+    this.reload = function() {
+        temp = '';
+
+        for (var i=0;i<this.saveScript.length;i++) {
+            var func = 'temp += ' + this.saveScript[i] + '();';
+            eval(func);
+        }
+
+        window.location.href = '?'+temp;
+    }
+
     this.addSaveScript = function(script) {
         this.saveScript[this.saveScript.length] = script;
     }

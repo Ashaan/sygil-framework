@@ -4,10 +4,13 @@ $core = Core::getInstance();
 
 $core->loadModule('news');
 
-$news = new News();
-$news->setDate($_GET['date']);
-$news->setZone($_GET['zone']);
+$event = new NewsEvents($_GET['zone']);
+$event->setDate($_GET['date']);
+$event->load();
 
-$core->setData('__CONTENT__',$news->generate());
+$day = new NewsDaily($event);
+
+$core->setData('__CONTENT__',$day->generate());
+
 
 ?>

@@ -22,6 +22,9 @@
     if (document.layers) {
       alert('Ce site ne fonctionne pas avec Netscape 6-\n\n'+warning);
     }
+
+    _editor_url = "script/htmlarea/";
+    _editor_lang = "fr";
   </script>
 __THEME__
 __SCRIPT__
@@ -31,11 +34,9 @@ __SCRIPT_INIT__
 </head>
 <body onload="__ONLOAD__">
   <div id="header">
-    Bienvenue sur sygil.org
+    <span>Bienvenue sur sygil.org</span>
     <div>
-      <div class="headhoption" onclick="window.location='?goto=home';">Accueil</div>
-      <div class="headhseparator"></div> 
-      <div class="headhoption" onmouseover="setDisplay('site_list','block')" onmouseout="setDisplay('site_list','none')">Site</div>
+      <div class="headhoption" onmouseover="setDisplay('site_list','block')" onmouseout="setDisplay('site_list','none')">Option</div>
     </div>  
   </div>
 
@@ -50,12 +51,12 @@ __SCRIPT_INIT__
     <img class="add" src="theme/default/add-28x28.png" onclick="shortcut.add();"/>
   </div>
 
+  
   <div id="site_list" class="hidden" onmouseover="setDisplay('site_list','block')" onmouseout="setDisplay('site_list','none')">
-    <div class="headvoption" onclick="window.location='?goto=home'">     Sygil Network  </div>
+    <div class="headvoption" onclick="">Inscription</div>
     <div class="headvseparator"></div>
-    <div class="headvoption" onclick="window.location='?goto=intranet'"> Intranet       </div>
-    <div class="headvseparator"></div>
-    <div class="headvoption" onclick="window.location='?goto=dubois'">   Racine Dubois  </div>
-    <div class="headvoption" onclick="window.location='?goto=chocat'">   Famille Chocat </div>
+    <div class="headvoption" onclick="ajax.load('connect',null,'replace',[])">Connection</div>
+  </div>
+  <div id="tempdiv">
   </div>
 </body>

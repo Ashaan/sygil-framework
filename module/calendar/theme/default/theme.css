@@ -1,6 +1,7 @@
 .calendar {
   width         : 100%;
   border        : 1px solid #b1a594;
+  -moz-border-radius: 10px;
 }
 
 
@@ -19,6 +20,8 @@
   margin        : 1px;
   border        : 1px solid #b1a594;
   background    : #ede9e3;
+  -moz-border-radius-topleft : 8px;
+  -moz-border-radius-topright: 8px;
 }
 
 .calendar_month {
@@ -33,55 +36,63 @@
 
 .calendar_list {
   background    : #ffffff;
+  -moz-border-radius-bottomleft : 10px;
+  -moz-border-radius-bottomright: 10px;
 }
 
-.calendar_list table {
-  border-spacing: 0px;
-  border        : 1px solid transparent;
+table.calendar_label {
   width         : 100%;
-}
-
-.calendar_label {
-  background    : #4489ca;
+  border-spacing: 0;
+  background    : #6798ca;
   color         : #ffffff;
   text-align    : center;
+  border-bottom : 2px solid #6798ca;
+}
+.calendar_label td {
   width         : 30px;
 }
 
-.calendar_day_empty
-.calendar_day_event,
-.calendar_day_current,
-.calendar_day_active,
-.calendar_day {
+table.calendar_day {
+  width         : 100%;
+  border-spacing: 0;
+  border        : 2px solid transparent;
+}
+.calendar_day td {
+  border        : 2px solid transparent;
   width         : 30px;
   height        : 20px;
-  border        : 0px solid white;
   -moz-border-radius: 8px;
   text-align    : center;
   vertical-align: middle;
+  margin        : 0px;
+  padding       : 0px;
 }
 
-.calendar_day:hover {
-  background    : #e5e2df;
+.calendar_day td:hover {
+  border        : 2px solid red;
 }
 
-.calendar_day_current {
-  background    : #4489ca;
-  color         : #ffffff;
+.calendar_day .current {
+  border        : 2px solid #4489ca;
+  font-weight   : bold;
 }
 
-.calendar_day_event {
+.calendar_day .event {
+  background    : #fdff79;
   cursor        : pointer;
   font-weight   : bold;
 }
-.calendar_day_event:hover {
+
+.calendar_day .active {
+  border        : 2px solid #4489ca;
+  background    : #fdff79;
+  cursor        : pointer;
+  font-weight   : bold;
+}
+
+.calendar_day .active:hover,
+.calendar_day .event:hover {
   background    : #FF5555;
   color         : #ffffff;
 }
 
-.calendar_day_active {
-  background    : #4489ca;
-  color         : #ffffff;
-  cursor        : pointer;
-  font-weight   : bold;
-}

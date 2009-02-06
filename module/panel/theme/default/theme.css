@@ -2,14 +2,13 @@
   position      : absolute;
   border-right  : 0px red solid;
   margin        : 5px;
-  padding       : 5px;
-  margin-right  : 5px;
+  padding       : 0px;
   -moz-border-radius: 10px;
-  background    : #f0edea;
+  background    : transparent;
 }
 
 .panel:hover {
-  background    : #e5e2df;
+  background    : #f0edea;
 }
 
 .panel_line {
@@ -20,11 +19,11 @@
   margin-bottom : 5px;
   padding       : 0px;
   -moz-border-radius: 10px;
-  background    : #e5e2df;
+  background    : #f0edea;
   text-align    : center;
 }
 
 .panel_line:hover {
-  background    : #f0edea;
+  background    : #e5e2df;
 }
 

@@ -90,26 +90,29 @@ $menu->addOption(new MenuBoxOption('Galerie Experimental', 'frame.open(\'http://
 $block->addElement($menu);
 $blocks->addBlock($block);
 
-$cacti = 'http://cacti.sygil.local/graph_view.php';
-$block = new MenuBlockBlock('Monitoring');
-$menu = new MenuBoxBox('Statistique System');
-$menu->addOption(new MenuBoxOption('Aegis [sygil]'       , 'frame.open(\''.$cacti.'?action=tree&tree_id=2\', this)'));
-$menu->addOption(new MenuBoxOption('Enae [sygil]'        , 'frame.open(\''.$cacti.'?action=tree&tree_id=3\', this)'));
-$menu->addOption(new MenuBoxOption('Ashaan [sygil]'      , 'frame.open(\''.$cacti.'?action=tree&tree_id=4\', this)'));
-$menu->addOption(new MenuBoxOption('Elorah [sygil]'      , null));
-$menu->addOption(new MenuBoxOption('Jean-Mi [chocat]'    , 'frame.open(\''.$cacti.'?action=tree&tree_id=5\', this)'));
-$menu->addOption(new MenuBoxOption('Féfé [chocat]'       , null));
-$menu->addOption(new MenuBoxOption('Antonin [chocat]'    , null));
-$block->addElement($menu);
-$menu = new MenuBoxBox('Statistique Reseau');
-$menu->addOption(new MenuBoxOption('nTop'                , 'frame.open(\'http://sygil.local:3000\', this)'));
-$menu->addOption(new MenuBoxOption('Webalizer'           , 'frame.open(\'http://sygil.local/webalizer\', this)'));
-$block->addElement($menu);
-$menu = new MenuBoxBox('Administration');
-$menu->addOption(new MenuBoxOption('phpMyAdmin'          , 'frame.open(\'http://phpmyadmin.sygil.local\', this)'));
-$menu->addOption(new MenuBoxOption('WebMin'              , 'frame.open(\'https://sygil.local:10000/\', this)'));
-$block->addElement($menu);
-$blocks->addBlock($block);
+$session = Session::getInstance();
+if ($session->isLogged()) {
+    $cacti = 'http://cacti.sygil.local/graph_view.php';
+    $block = new MenuBlockBlock('Monitoring');
+    $menu = new MenuBoxBox('Statistique System');
+    $menu->addOption(new MenuBoxOption('Aegis [sygil]'       , 'frame.open(\''.$cacti.'?action=tree&tree_id=2\', this)'));
+    $menu->addOption(new MenuBoxOption('Enae [sygil]'        , 'frame.open(\''.$cacti.'?action=tree&tree_id=3\', this)'));
+    $menu->addOption(new MenuBoxOption('Ashaan [sygil]'      , 'frame.open(\''.$cacti.'?action=tree&tree_id=4\', this)'));
+    $menu->addOption(new MenuBoxOption('Elorah [sygil]'      , null));
+    $menu->addOption(new MenuBoxOption('Jean-Mi [chocat]'    , 'frame.open(\''.$cacti.'?action=tree&tree_id=5\', this)'));
+    $menu->addOption(new MenuBoxOption('Féfé [chocat]'       , null));
+    $menu->addOption(new MenuBoxOption('Antonin [chocat]'    , null));
+    $block->addElement($menu);
+    $menu = new MenuBoxBox('Statistique Reseau');
+    $menu->addOption(new MenuBoxOption('nTop'                , 'frame.open(\'http://sygil.local:3000\', this)'));
+    $menu->addOption(new MenuBoxOption('Webalizer'           , 'frame.open(\'http://sygil.local/webalizer\', this)'));
+    $block->addElement($menu);
+    $menu = new MenuBoxBox('Administration');
+    $menu->addOption(new MenuBoxOption('phpMyAdmin'          , 'frame.open(\'http://phpmyadmin.sygil.local\', this)'));
+    $menu->addOption(new MenuBoxOption('WebMin'              , 'frame.open(\'https://sygil.local:10000/\', this)'));
+    $block->addElement($menu);
+    $blocks->addBlock($block);
+}
 
 $core->setData('__LEFT__', $blocks->generate());
 ?>

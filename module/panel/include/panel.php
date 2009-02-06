@@ -3,13 +3,14 @@
 class Panel {
     private static $Count = 1;
     private $id;
-    private $left    = null;
-    private $right   = null;
-    private $bottom  = null;
-    private $top     = null;
-    private $width   = null;
-    private $height  = null;
-    private $content = array();
+    private $left     = null;
+    private $right    = null;
+    private $bottom   = null;
+    private $top      = null;
+    private $width    = null;
+    private $height   = null;
+    private $overflow = null;
+    private $content  = array();
 
     public function __construct($id='') {
         $this->id    = $id;
@@ -33,6 +34,9 @@ class Panel {
     public function setHeight($height) {
         $this->height = $height;
     }
+    public function setOverflow($overflow) {
+        $this->overflow = $overflow;
+    }
 
     public function addLine($id) {  
         if (is_array($this->content)) {
@@ -55,12 +59,13 @@ class Panel {
         }
 
         $style = '';
-        if ($this->left) $style   .= 'left:'.$this->left.';';
-        if ($this->right) $style  .= 'right:'.$this->right.';';
-        if ($this->bottom) $style .= 'bottom:'.$this->bottom.';';
-        if ($this->top) $style    .= 'top:'.$this->top.';';
-        if ($this->width) $style  .= 'width:'.$this->width.';';
-        if ($this->height) $style .= 'height:'.$this->height.';';
+        if ($this->left  )   $style .= 'left:'.$this->left.';';
+        if ($this->right)    $style .= 'right:'.$this->right.';';
+        if ($this->bottom)   $style .= 'bottom:'.$this->bottom.';';
+        if ($this->top)      $style .= 'top:'.$this->top.';';
+        if ($this->width)    $style .= 'width:'.$this->width.';';
+        if ($this->height)   $style .= 'height:'.$this->height.';';
+        if ($this->overflow) $style .= 'overflow:'.$this->overflow.';';
                 
 
         $data = array(

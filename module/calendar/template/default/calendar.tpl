@@ -12,17 +12,19 @@
             </div>               
           </div>  
           <div class="calendar_list">
-            <table>
+            <table class="calendar_label">
             <tr>
-              <!--td class="calender_day_label" style="width:20px;"></td-->
-              <td class="calender_label">lun</td>
-              <td class="calender_label">mar</td>
-              <td class="calender_label">mer</td>
-              <td class="calender_label">jeu</td>
-              <td class="calender_label">ven</td>
-              <td class="calender_label">sam</td>
-              <td class="calender_label">dim</td>
+              <td>lun</td>
+              <td>mar</td>
+              <td>mer</td>
+              <td>jeu</td>
+              <td>ven</td>
+              <td>sam</td>
+              <td>dim</td>
             </tr>
+            </table>
+            <table class="calendar_day">
+            <tr>
              __DAY__
             </table>
           </div>

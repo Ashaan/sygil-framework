@@ -58,7 +58,7 @@ class Calendar {
     private function addDayEvent($day, $event) {
         $data = array(
             '__DAY__'   =>  date('j',$day),
-            '__ACTION__'=>  'ajaxLoad(\'news\',\'panel_left\',\'replace\',[[\'zone\',0],[\'date\','.$event['date'].']]);',
+            '__ACTION__'=>  'ajax.load(\'news\',\'panel_left\',\'replace\',[[\'zone\',0],[\'date\','.$event['date'].']]);',
         );
 
         return Template::getInstance()->get('day_event',$data,'calendar');
@@ -66,7 +66,7 @@ class Calendar {
     private function addDayActive($day, $event) {
         $data = array(
             '__DAY__'   =>  date('j',$day),
-            '__ACTION__'=>  'ajaxLoad(\'news\',\'panel_left\',\'replace\',[[\'zone\',0],[\'date\','.$event['date'].']]);',
+            '__ACTION__'=>  'ajax.load(\'news\',\'panel_left\',\'replace\',[[\'zone\',0],[\'date\','.$event['date'].']]);',
         );
 
         return Template::getInstance()->get('day_active',$data,'calendar');
@@ -88,9 +88,15 @@ class Calendar {
             return false;
         }
     }
+    private function checkFullDay($ref,$day) {
+        if (date('j n Y',$ref)==date('j n Y',$day)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     private function getEvent() {
-        $config = Core::getInstance()->config['base'];
-        $bdd = new mysqli($config['host'],$config['user'],$config['pass'],$config['name']);
+        $db = db::getInstance();
         $query  = '
             SELECT firstdate, title 
             FROM news 
@@ -98,9 +104,11 @@ class Calendar {
               AND firstdate >= "'.date('Y-m-01 00:00:00',$this->date).'"
               AND firstdate <= "'.date('Y-m-31 23:59:59',$this->date).'"
         ';
-        if ($result = $bdd->query($query)) {
-            while($obj = $result->fetch_object()){
-                $date  = $obj->firstdate;
+       
+        $result = $db->select($query);
+        if ($result) 
+        foreach($result as $obj){
+                $date  = $obj['firstdate'];
                 $date  = explode(' ',$date);
                 $date  = $date[0];
                 $day   = substr($date, strrpos($date,'-')+1);
@@ -113,15 +121,14 @@ class Calendar {
                 if (!$this->event[$day]) {
                     $this->event[$day] = array(
                         'date'      => mktime(0,0,0,$month,$day,$year),
-                        'title'     => array($obj->title),
+                        'title'     => array($obj['title']),
                         'count'     => 1,
                     );
                 } else {
-                    $this->event[$day]['title'][] = $obj->title; 
+                    $this->event[$day]['title'][] = $obj['title']; 
                     $this->event[$day]['count']++;
                 }
-            }
-        }
+         }
     }
     public function generate() {
         $first = mktime(12,0,0,date('n',$this->date),1,date('Y',$this->date));
@@ -135,7 +142,7 @@ class Calendar {
         $this->getEvent();
         $current = $first;$last = $first;
         while($this->checkMonth($this->date,$current)) {
-            if ($this->checkDay($this->date,$current)) {
+            if ($this->checkFullDay(time(),$current)) {
                 if ($this->event[date('d',$current)]) {
                     $line .= $this->addDayActive($current,$this->event[date('d',$current)]);
                 } else {
@@ -161,10 +168,10 @@ class Calendar {
             '__YEAR__'      => date('Y',$this->date),
             '__DAY__'       => $data, 
             '__ADDON__'     => '',
-            '__PREV_MONTH__'=> 'ajaxLoad(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date)-1,date('d',$this->date),date('Y',$this->date)).']]);',
-            '__NEXT_MONTH__'=> 'ajaxLoad(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date)+1,date('d',$this->date),date('Y',$this->date)).']]);',
-            '__PREV_YEAR__'=> 'ajaxLoad(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date),date('d',$this->date),date('Y',$this->date)-1).']]);',
-            '__NEXT_YEAR__'=> 'ajaxLoad(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date),date('d',$this->date),date('Y',$this->date)+1).']]);',
+            '__PREV_MONTH__'=> 'ajax.load(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date)-1,date('d',$this->date),date('Y',$this->date)).']]);',
+            '__NEXT_MONTH__'=> 'ajax.load(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date)+1,date('d',$this->date),date('Y',$this->date)).']]);',
+            '__PREV_YEAR__'=> 'ajax.load(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date),date('d',$this->date),date('Y',$this->date)-1).']]);',
+            '__NEXT_YEAR__'=> 'ajax.load(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date),date('d',$this->date),date('Y',$this->date)+1).']]);',
         );
 
 //echo Template::getInstance()->get('calendar',$data,'calendar');

@@ -40,7 +40,7 @@ class News {
         }
     }
 
-    public function generate() {
+    public function generateDaily() {
         $content = '';
 
         $this->getEvent();

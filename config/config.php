@@ -9,13 +9,6 @@ $core->config = array(
     'theme'         => 'default',
     'lang'          => 'french',
 
-    'base'          => array(
-        'type'      => 'mysqli',
-        'host'      => 'localhost',
-        'user'      => 'sygil.org',
-        'pass'      => 'Y6YHXJdMMfxAvpzz',
-        'name'      => 'sygil_base',
-    ),
     'templateList'  => array(
         'default'   => 'Template par Default',
     ),
@@ -27,5 +20,12 @@ $core->config = array(
         'english'   => 'Anglais',
     )
 );
+
+define('DATABASE_HOST','localhost');
+define('DATABASE_NAME','sygil_base');
+define('DATABASE_USER','sygil.org');
+define('DATABASE_PASS','Y6YHXJdMMfxAvpzz');
+define('DATABASE_PRE' ,'');
+define('DATABASE_TYPE','mysqli');
 
 ?>

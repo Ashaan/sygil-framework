@@ -77,7 +77,7 @@ class Core {
         }
         $this->data['__SCRIPT_INIT__']  = $this->scriptInit; 
 
-        $this->data['__ONLOAD__']    = 'url.load();';
+        $this->data['__ONLOAD__']    = 'url.load();session.update();';
 
         return Template::getInstance()->get($this->template,$this->data);
     }

@@ -1,1 +1,1 @@
-<td class="calendar_day">__DAY__</td>
+<td>__DAY__</td>

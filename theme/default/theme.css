@@ -245,3 +245,38 @@ body {
   cursor        : pointer;
 }
 
+form {
+  padding: 0px;
+  margin : 0px;
+}
+form .param {
+  text-align        : right;
+  padding-right     : 3px;
+  font-size         : 12px;
+  font-weight       : bold;
+}
+form .input input {
+  background        : white;
+  border            : 1px solid #9e9281;
+  width             : 125px;
+  -moz-border-radius: 4px;
+  padding           : 3px;
+  font-size         : 12px;
+}
+form .input input:focus {
+  border            : 1px solid #5598d7;
+}
+form .button {
+  text-align        : right;
+  margin-top        : 7px;
+  padding-right     : 3px;
+}
+input.button,
+form .button input {
+  -moz-border-radius: 4px;
+  padding           : 3px;
+  padding-left      : 5px;
+  padding-right     : 5px;
+  font-size         : 12px;
+}
+

@@ -1,12 +1,9 @@
-<div id="window__ID__" class="window">
+<div id="__ID__" class="window">
   <div class="title">
-    <div class="title_left"></div>
-    <div class="title_center">
-      __TITLE__
-    </div>
-    <div class="title_right"></div>
+    <div class="left"></div>
+    <div class="center">__TITLE__</div>
+    <div class="right"></div>
   </div>
-  <div class="content">
-    __CONTENT__
-  </div>
+  <div class="content">__CONTENT__</div>
 </div>
+

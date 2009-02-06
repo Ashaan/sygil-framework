@@ -1,0 +1,564 @@
+2005-02-22  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AppWikImage/ui.js, plugins/AppWikImage/ui.html, plugins/AppWikImage/app-wik-image.js:
+	support apply/cancel in both edit mode and insert mode
+
+2005-02-17  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/auto-replace.js:
+	unlink an AutoReplace thing on enter if the case
+
+	* plugins/AutoReplace/auto-replace-dom.js: catch an exception
+
+	* plugins/AppWikImage/app-wik-image.js:
+	make sure the focus is in the editor before we open the popup
+
+2005-02-15  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/test.html: check for font
+
+	* htmlarea.js: don't duplicate font unless font tag is present
+
+2005-02-10  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/test.html: updated example for Mike
+
+	* plugins/AutoReplace/test.html: test for passBack
+
+	* plugins/AppWikImage/test-images.html, plugins/AppWikImage/ui.css:
+	minor stuff
+
+	* plugins/AppWikImage/ui.html, plugins/AppWikImage/ui.js, plugins/AppWikImage/app-wik-image.js:
+	support for more styles (float, border);
+	using CSS for width, height, vert. align
+	other fixes
+
+	* plugins/AppWikImage/app-wik-image.js, plugins/AppWikImage/test-images.html, plugins/AppWikImage/ui.css, plugins/AppWikImage/ui.html, plugins/AppWikImage/ui.js:
+	functionality complete, lots of nice features
+
+	* plugins/ContextMenu/context-menu.js: enabling AppWikImage if found
+
+2005-02-09  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AppWikImage/hide-controls.css, plugins/AppWikImage/preview.gif, plugins/AppWikImage/preview.png, plugins/AppWikImage/test-images.html, plugins/AppWikImage/ui.css, plugins/AppWikImage/ui.html, plugins/AppWikImage/ui.js:
+	better looking?
+
+	* htmlarea.js:
+	fixed bug (don't auto-justify if no justification is defined)
+
+2005-02-07  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AppWikImage/lang/makefile.js, plugins/AppWikImage/lang/makefile.xml:
+	wtf?!
+
+	* plugins/makefile.xml, plugins/AppWikImage/app-wik-image.js, plugins/AppWikImage/lang/en.js, plugins/AppWikImage/lang/makefile.js, plugins/AppWikImage/makefile.xml, plugins/AppWikImage/preview.gif, plugins/AppWikImage/preview.png, plugins/AppWikImage/test-images.html, plugins/AppWikImage/ui.css, plugins/AppWikImage/ui.html, plugins/AppWikImage/ui.js, plugins/AutoReplace/test.html:
+	added AppWikImage plugin
+
+	* htmlarea.js: added centeredWindowOpen function
+
+2005-02-05  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/auto-replace-dom.js, plugins/AutoReplace/auto-replace-ie.js, plugins/AutoReplace/auto-replace.js:
+	support for remembering the list of words that were manually unlinked
+
+	* htmlarea.js:
+	new, much simpler algorithm for inserting paragraph upon ENTER in Gecko
+
+2005-02-03  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js:
+	don't call _wordClean for getInnerHTML (that function needs to be as fast as
+	possible, don't clean anything)
+
+2005-01-31  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js: some fixes for "ENTER near IMG behavior"
+
+2005-01-28  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/auto-replace.js: autoreplace upon paste
+
+	* plugins/ContextMenu/menu.css: some small fixes
+
+	* htmlarea.js: fixed the word cleaner call upon load
+
+2005-01-27  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* popups/insert_image.html:
+	preview relative URL-s correctly (in relation to the page, not to the HTMLArea popup window)
+
+	* plugins/AutoReplace/auto-replace-dom.js, plugins/AutoReplace/auto-replace-ie.js, plugins/AutoReplace/auto-replace.js:
+	ignore leading/trailing whitespace by default upon _link()
+
+2005-01-21  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js: fixed the FONT on enter problem
+
+	* htmlarea.css: added some styles for jot.com
+
+	* dialog.js, htmlarea.js, popupwin.js: detect popup blockers
+	fixed the table background problem
+
+2005-01-20  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js: call _wordClean upon load
+
+	* plugins/AutoReplace/test.html: email address for pasting
+
+	* plugins/AutoReplace/auto-replace-ie.js:
+	fixes a bug? (I wonder what other bug will this fix introduce...)
+
+2005-01-19  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js:
+	fixed grave bug (don't refresh screen in IE, it causes the editor to loose
+	focus making it practically impossible to use)
+
+2005-01-13  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/test.html:
+	commented out the HTMLArea replacement--not a very bright idea.
+
+	* htmlarea.js: fixed the backspace bug in firefox, AGAIN! :-(
+
+	* htmlarea.js: fix for fix
+
+	* htmlarea.js:
+	fixed the backspace bug in firefox (move the range before the <br /> tag, if
+	present and the last)
+
+2005-01-12  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* make-release.pl:
+	no need for this make-release.pl anymore (old and outdated)
+
+	* htmlarea.js:
+	Added function that "normalizes" the range in Gecko.  It doesn't work, but
+	does the job. ;-)
+
+2005-01-11  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js: "fixed" "normal" formatting inside LI-s
+
+2005-01-04  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/auto-replace-dom.js: updated comment
+	check context before making substitution
+
+	* plugins/AutoReplace/auto-replace.js: updated comment
+	added function that checks if the substitution is allowed in context
+
+	* plugins/AutoReplace/auto-replace-ie.js: updated comment
+
+2005-01-03  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js:
+	bugfix (ENTER will break any blocklevel nodes inside a LI and will continue
+	the list; not sure this is right.)
+
+	* plugins/AutoReplace/test.html: compute correct path to Wiki icon
+
+2004-12-28  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/test.html: fixed regexps for email autolink
+
+	* plugins/TableOperations/table-operations.js:
+	fixed grave bug (insert column after when the caret is in the last column
+	generated a JS error)
+
+2004-12-23  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/ContextMenu/context-menu.js:
+	fixed bug (don't show the link options if the link button is disabled)
+
+	* plugins/AutoReplace/auto-replace.js:
+	fixed bug (don't enable buttons when they are already disabled)
+
+	* plugins/AutoReplace/auto-replace.js, plugins/AutoReplace/test.html:
+	added facility to optionally disable editor toolbar buttons
+
+	* htmlarea.js: fixed some ENTER bugs
+
+	* plugins/AutoReplace/test.html: new test
+
+	* plugins/AutoReplace/auto-replace.js:
+	check nodeType before investigating the tagName
+
+	* plugins/ContextMenu/context-menu.js:
+	fixed "insert paragraph" operations to avoid inserting directly into <ul>,
+	<ol> or <table> elements; insert above instead
+
+2004-12-22  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js: fixed potential bug
+
+	* htmlarea.js: convert semantic tags at each "getAllAncestors" call
+
+2004-12-17  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* makefile.xml: [commented-out] jscrunch code
+
+	* htmlarea.js: isolated initialization in an anonymous function
+	[firefox] fixed bugs related to ENTER inside LI/UL/OL
+
+	* htmlarea.js:
+	added a try/catch block (fixes some exceptions that get thrown randomly in Mozilla)
+
+	* plugins/AutoReplace/test.html:
+	fixed order in initialization (automatic URL-s should come first)
+
+	* plugins/makefile.xml:
+	BreakQuote is only enabled for Dynarch.com builds
+
+	* htmlarea.js:
+	[firefox] fixed bug: hitting ENTER right after a link won't perpetuate <u>
+
+2004-12-15  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/ContextMenu/context-menu.js:
+	oops, fixed (dropping the "anchor-" prefix if already present)
+
+	* plugins/ContextMenu/context-menu.js:
+	add "anchor-" as prefix for anchor ID-s
+
+2004-12-14  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/ContextMenu/context-menu.js, plugins/ContextMenu/lang/en.js:
+	support for anchors
+
+2004-11-27  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/post.html, plugins/AutoReplace/test.html:
+	test code
+
+2004-10-24  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js: fixed convertSemanticTags (root might be null)
+
+2004-10-23  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/test.html: test for the semantic tags code
+
+	* htmlarea.js:
+	added code to convert semantic tags to <b> and <i> at load, and convert back
+	at getHTML().  Should workaround Mozilla bugs.
+
+2004-10-05  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/test.html, popupwin.js:
+	fixed bug in popupwin.js (always focus the editor after cancel)
+
+2004-10-04  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/ContextMenu/lang/de.js: updated
+
+	* plugins/AutoReplace/test2.html: test case
+
+	* plugins/ContextMenu/context-menu.js:
+	use resetStatusBar from HTMLArea instead of setting it manually
+
+	* htmlarea.js:
+	innerHTML seems to be buggy for the statusBar in certain conditions--avoid it
+
+2004-10-03  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js: check document fragment in moz
+
+	* plugins/AutoReplace/test.html: foo
+
+	* htmlarea.js: better approach to detect flatRange
+
+2004-10-02  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/makefile.xml: added wikicon
+
+	* htmlarea.js: FIXME comment
+
+2004-10-01  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js:
+	avoid dom_checkInsertP on some elements such as TD, TR, TABLE, etc. or even
+	DIV :-(
+	fixed bug in isBlockElement (return true for BLOCKQUOTE)
+
+2004-09-30  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/makefile.xml: oops, BreakQuote back
+
+	* plugins/makefile.xml:
+	removed a lot of references to static variables that actually should be
+	dynamic :-(  fucking bug.
+
+	* plugins/TableOperations/table-operations.js:
+	hmm, removed "Frames and Rules"
+
+	* plugins/TableOperations/lang/en.js:
+	changed apply border to all cells to apply style to all cells
+
+	* plugins/TableOperations/table-operations.js:
+	focus new fields for insert before/after
+	changed apply border to all cells to apply style to all cells
+
+	* plugins/TableOperations/lang/en.js: Updated to match reality ;-)
+
+	* plugins/TableOperations/table-operations.js:
+	new feature: apply border to all cells
+	removed a confusing option ("Borders" in "Frame and rules")
+
+	* htmlarea.js:
+	by default, use collapsed borders and apply them to all cells
+
+2004-09-28  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js:
+	restore <b>, <i>, <u> or <strike> if needed at ENTER in Mozilla
+
+	* htmlarea.js: fixes some focus bugs in IE
+
+2004-09-23  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/ContextMenu/context-menu.js:
+	automagically insert toolbar buttons that are selected for context menus
+
+	* plugins/AutoReplace/wikicon.gif: better icon
+
+	* plugins/AutoReplace/test.html: keyboard shortcuts :-)
+
+	* plugins/AutoReplace/auto-replace.js:
+	support for keyboard shortcuts for the AR buttons
+
+	* plugins/AutoReplace/auto-replace-ie.js:
+	fixed bug (return correct caret position)
+
+	* htmlarea.js: fixed bug in flatRange/IE
+
+	* plugins/AutoReplace/auto-replace.js:
+	insert into ContextMenu if available
+
+	* htmlarea.js:
+	registerButton will return the newly registered button array description
+	from btnList
+
+	* htmlarea.js: fixed bug (using about:blank in moz)
+
+	* plugins/AutoReplace/auto-replace-dom.js:
+	fixed bug (sometimes the selection gets more ranges)
+
+	* plugins/AutoReplace/auto-replace-dom.js, plugins/AutoReplace/auto-replace-ie.js, plugins/AutoReplace/auto-replace.js, plugins/AutoReplace/test.html:
+	added button feature (allows one to toggle some pattern)
+
+	* plugins/AutoReplace/wikicon.gif: added Wiki Icon
+
+	* htmlarea.js: added some utility functions
+	using a "javascript:false;" src for the iframe; doesn't make a server
+	request for blank.html
+
+2004-09-22  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/test.html: removed image
+
+	* plugins/AutoReplace/auto-replace-dom.js:
+	fixed bug (typing at the start of a tag that matches and breaking the match
+	now doesn't delete the unmatched text)
+
+	* plugins/TableOperations/table-operations.js:
+	added default options for frames and borders
+
+	* htmlarea.js:
+	fixed other problems in Word cleaner (zapping crappy code, fuckie, fuckie)
+
+	* htmlarea.js: fixed Word cleaner bug
+
+2004-09-21  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/test.html: added test image
+
+	* plugins/AutoReplace/auto-replace-ie.js:
+	don't do the wizardry if the range is a "Control" range
+
+	* htmlarea.js: handle "Control" range differently in ie_checkBackspace
+
+2004-09-18  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/TableOperations/table-operations.js:
+	removed some huge comments
+
+	* plugins/ContextMenu/lang/en.js: add "Delete Cell" item
+
+	* plugins/ContextMenu/context-menu.js: add "Delete Cell" item
+	add "Remove Table" item if we're inside a table
+
+	* plugins/AutoReplace/test.html: also load TableOperations
+
+	* htmlarea.js:
+	new implementation of dom_checkInsertP; find a bug in this new one and I'll
+	give you a prise.  :-p
+
+2004-09-17  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/test.html: removed some confusing rules
+
+	* popups/insert_table.html:
+	support for fixed width cells in insert_table
+
+	* htmlarea.js: support for fixed width cells in insert_table
+	added ie_checkBackspace (correctly remove last char in a link)
+
+2004-09-15  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* images/ed_gsave.gif, images/ed_gsaveas.gif: switched icons ;-)
+
+	* images/ed_grevert.gif, images/ed_gsave.gif, images/ed_gsaveas.gif:
+	some new icons
+
+2004-09-13  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js: fixed weird bug with isBlockElement or needsClosingTag
+
+	* plugins/AutoReplace/test.html: fixed RegExp for "Capitalize"
+
+	* plugins/AutoReplace/auto-replace.js:
+	don't test for keyEvent anymore (it's properly done in htmlarea.js)
+
+	* plugins/AutoReplace/auto-replace-ie.js: fixed a bazillion bugs
+
+	* htmlarea.js: proper detection of true keyboard events in IE
+
+2004-09-12  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/test.html: class is necessary in this case
+
+	* plugins/AutoReplace/auto-replace.js: test for keyEvent (for IE)
+
+	* plugins/AutoReplace/auto-replace-ie.js:
+	included IE code for AutoReplace
+
+	* plugins/AutoReplace/auto-replace-dom.js: minor changes
+
+2004-09-04  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* .cvsignore: ignoring ChangeLog
+
+	* htmlarea.js: don't display word cleaner stats
+
+2004-09-03  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/AutoReplace/test.html:
+	added sample case for replacing '--' to mdash
+
+	* plugins/AutoReplace/auto-replace-dom.js:
+	fixed bug (sometimes the replacement text seems to be longer than it
+	actually is, i.e. &mdash; is substituted to a single Unicode character)
+
+	* plugins/AutoReplace/test.html: using loadPlugin to load the plugin
+	added rule to capitalize first letter of sentences.
+
+	* plugins/AutoReplace/auto-replace-dom.js, plugins/AutoReplace/auto-replace.js:
+	much of the code for Gecko has been moved in a separate file, since it's no
+	use in IE anyway; code for IE will also be separate.  The common code will
+	remain in auto-replace.js
+
+	* popups/fullscreen.html: function _loadScript renamed to loadScript
+
+	* htmlarea.js:
+	function _loadScript renamed to loadScript; added optional "plugin" parameter
+
+	* htmlarea.js:
+	<a> included in the list of empty tags for msword cleaner
+
+	* plugins/AutoReplace/lang/makefile.xml, plugins/AutoReplace/makefile.xml, plugins/makefile.xml:
+	AutoReplace added to build
+
+	* plugins/AutoReplace/auto-replace.js, plugins/AutoReplace/lang/en.js, plugins/AutoReplace/test.html:
+	first version of AutoReplace  (Mozilla only)
+
+2004-09-01  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* popups/popup.js: fixed bug (IE truncates dialog buttons)
+
+	* plugins/ContextMenu/context-menu.js: "fixed" for IE
+
+	* plugins/BreakQuote/break-quote.js, plugins/BreakQuote/test.html:
+	better support in IE
+
+	* htmlarea.js: more fixes to Word cleaner
+
+2004-08-31  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js, plugins/BreakQuote/break-quote.js, plugins/BreakQuote/test.html:
+	fixed bugs in BreakQuote and getHTML (latter: removed useless &nbsp; in
+	block-level nodes)
+
+	* htmlarea.js, plugins/BreakQuote/break-quote.js, plugins/BreakQuote/lang/en.js, plugins/BreakQuote/lang/makefile.xml, plugins/BreakQuote/makefile.xml, plugins/BreakQuote/test.html, plugins/makefile.xml:
+	added plugin: BreakQuote
+
+	* plugins/ContextMenu/context-menu.js, plugins/ContextMenu/lang/en.js:
+	added new menu items: insert paragraph before, after
+
+	* ChangeLog: no changelogs in CVS
+
+	* htmlarea.js: fixed the "Path:" problem
+	avoid unnecessary <br />-s in output
+
+	* htmlarea.js: temporary fix for the mozilla's BACKSPACE problem
+
+	* images/ed_killword.gif, make-patch, plugins/ContextMenu/lang/fr.js, plugins/DynamicCSS/lang/fr.js, plugins/FullPage/lang/fr.js, plugins/TableOperations/lang/fr.js, examples/full-page.html, htmlarea.js, lang/en.js, lang/vn.js, plugins/FullPage/full-page.js, plugins/FullPage/popups/docprop.html, popups/insert_table.html, popups/popup.js:
+	merged from main CVS
+
+2004-07-19  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/FullPage/lang/de.js, plugins/ListType/lang/de.js, htmlarea.js, lang/de.js, plugins/DynamicCSS/dynamiccss.js:
+	merged from main trunk
+
+2004-07-15  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* images/ed_print.gif: added print icon
+
+	* htmlarea.js: added print
+
+	* examples/fully-loaded.html, plugins/CharacterMap/popups/select_character.html, popups/fullscreen.html:
+	merged
+
+2004-07-14  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* images/ed_rmformat.gif, plugins/CharacterMap/img/ed_charmap.gif, plugins/DynamicCSS/dynamiccss.js, popupwin.js, examples/fully-loaded.html, htmlarea.js:
+	merged
+
+	* plugins/ObjectInspector/test.html: updated (HTMLArea init different)
+
+	* popups/fullscreen.html: propagate _editor_css from parent frame
+
+	* htmlarea.js: allow one to include a custom stylesheet
+
+	* examples/fully-loaded.html, htmlarea.css, htmlarea.js, index.html, popups/fullscreen.html, popups/link.html:
+	fixed zillion bugs (merged from main trunk)
+
+	* examples/empty.html: empty sample
+
+2004-07-13  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/ContextMenu/context-menu.js:
+	don't allow one to remove the HTML or BODY elements
+
+	* htmlarea.js, plugins/ContextMenu/context-menu.js, plugins/HtmlTidy/html-tidy.js, plugins/ObjectInspector/object-inspector.js, plugins/SpellChecker/spell-check-ui.js, plugins/SpellChecker/spell-checker.js, plugins/TableOperations/table-operations.js, popupdiv.js, popups/popup.js, popupwin.js:
+	fixed zillion bugs:
+	NEVER USE "for (var i in array)"!!!
+
+	* examples/character_map.html, examples/dynamic.css, examples/dynamic_css.html, examples/fully-loaded.html, examples/index.html, htmlarea.js, index.html, plugins/CharacterMap/character-map.js, plugins/CharacterMap/img/makefile.xml, plugins/CharacterMap/lang/de.js, plugins/CharacterMap/lang/en.js, plugins/CharacterMap/lang/makefile.xml, plugins/CharacterMap/makefile.xml, plugins/CharacterMap/popups/makefile.xml, plugins/CharacterMap/popups/select_character.html, plugins/DynamicCSS/dynamiccss.js, plugins/DynamicCSS/lang/de.js, plugins/DynamicCSS/lang/en.js, plugins/DynamicCSS/lang/makefile.xml, plugins/DynamicCSS/makefile.xml, plugins/SpellChecker/lang/nl.js, plugins/TableOperations/lang/no.js, plugins/makefile.xml:
+	merged from main trunk at sourceforge.net
+
+2004-05-28  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* htmlarea.js, popups/link.html: merged from sf.net
+
+2004-04-30  Mihai Bazon  <mihai_bazon@yahoo.com>
+
+	* plugins/ObjectInspector/lang/en.js, plugins/ObjectInspector/object-inspector.css, plugins/ObjectInspector/object-inspector.js, plugins/ObjectInspector/oi-horizontal.html, plugins/ObjectInspector/test.html:
+	ObjectInspector added to Dynarch.com CVS
+
+	* ChangeLog, autohandler, dialog.js, examples/2-areas.cgi, examples/2-areas.html, examples/context-menu.html, examples/core.html, examples/css.html, examples/custom.css, examples/full-page.html, examples/fully-loaded.html, examples/index.html, examples/list-type.html, examples/makefile.xml, examples/pieng.png, examples/remove-font-tags.html, examples/spell-checker.html, examples/table-operations.html, examples/test.cgi, htmlarea.css, htmlarea.js, images/ed_about.gif, images/ed_align_center.gif, images/ed_align_justify.gif, images/ed_align_left.gif, images/ed_align_right.gif, images/ed_blank.gif, images/ed_charmap.gif, images/ed_color_bg.gif, images/ed_color_fg.gif, images/ed_copy.gif, images/ed_custom.gif, images/ed_cut.gif, images/ed_delete.gif, images/ed_format_bold.gif, images/ed_format_italic.gif, images/ed_format_strike.gif, images/ed_format_sub.gif, images/ed_format_sup.gif, images/ed_format_underline.gif, images/ed_help.gif, images/ed_hr.gif, images/ed_html.gif, images/ed_image.gif, images/ed_indent_less.gif, images/ed_indent_more.gif, images/ed_left_to_right.gif, images/ed_link.gif, images/ed_list_bullet.gif, images/ed_list_num.gif, images/ed_paste.gif, images/ed_redo.gif, images/ed_right_to_left.gif, images/ed_save.gif, images/ed_save.png, images/ed_show_border.gif, images/ed_splitcel.gif, images/ed_undo.gif, images/fullscreen_maximize.gif, images/fullscreen_minimize.gif, images/insert_table.gif, images/makefile.xml, index.html, lang/b5.js, lang/ch.js, lang/cz.js, lang/da.js, lang/de.js, lang/ee.js, lang/el.js, lang/en.js, lang/es.js, lang/fi.js, lang/fr.js, lang/gb.js, lang/he.js, lang/hu.js, lang/it.js, lang/ja-euc.js, lang/ja-jis.js, lang/ja-sjis.js, lang/ja-utf8.js, lang/lt.js, lang/lv.js, lang/makefile.xml, lang/nb.js, lang/nl.js, lang/no.js, lang/pl.js, lang/pt_br.js, lang/ro.js, lang/ru.js, lang/se.js, lang/si.js, lang/vn.js, license.txt, make-release.pl, makefile.xml, plugins/CSS/css.js, plugins/CSS/lang/en.js, plugins/CSS/lang/makefile.xml, plugins/CSS/makefile.xml, plugins/ContextMenu/1.pl, plugins/ContextMenu/context-menu.js, plugins/ContextMenu/lang/de.js, plugins/ContextMenu/lang/el.js, plugins/ContextMenu/lang/en.js, plugins/ContextMenu/lang/he.js, plugins/ContextMenu/lang/makefile.xml, plugins/ContextMenu/lang/nl.js, plugins/ContextMenu/makefile.xml, plugins/ContextMenu/menu.css, plugins/EnterParagraphs/enter-paragraphs.js, plugins/FullPage/full-page.js, plugins/FullPage/img/docprop.gif, plugins/FullPage/img/makefile.xml, plugins/FullPage/lang/en.js, plugins/FullPage/lang/he.js, plugins/FullPage/lang/makefile.xml, plugins/FullPage/lang/ro.js, plugins/FullPage/makefile.xml, plugins/FullPage/popups/docprop.html, plugins/FullPage/popups/makefile.xml, plugins/FullPage/test.html, plugins/HtmlTidy/README, plugins/HtmlTidy/html-tidy-config.cfg, plugins/HtmlTidy/html-tidy-logic.php, plugins/HtmlTidy/html-tidy.js, plugins/HtmlTidy/img/html-tidy.gif, plugins/HtmlTidy/img/makefile.xml, plugins/HtmlTidy/lang/en.js, plugins/HtmlTidy/lang/makefile.xml, plugins/HtmlTidy/makefile.xml, plugins/ListType/lang/en.js, plugins/ListType/lang/makefile.xml, plugins/ListType/list-type.js, plugins/ListType/makefile.xml, plugins/SpellChecker/img/he-spell-check.gif, plugins/SpellChecker/img/makefile.xml, plugins/SpellChecker/img/spell-check.gif, plugins/SpellChecker/lang/cz.js, plugins/SpellChecker/lang/da.js, plugins/SpellChecker/lang/de.js, plugins/SpellChecker/lang/en.js, plugins/SpellChecker/lang/he.js, plugins/SpellChecker/lang/hu.js, plugins/SpellChecker/lang/it.js, plugins/SpellChecker/lang/makefile.xml, plugins/SpellChecker/lang/ro.js, plugins/SpellChecker/makefile.xml, plugins/SpellChecker/readme-tech.html, plugins/SpellChecker/spell-check-logic.cgi, plugins/SpellChecker/spell-check-style.css, plugins/SpellChecker/spell-check-ui.html, plugins/SpellChecker/spell-check-ui.js, plugins/SpellChecker/spell-checker.js, plugins/TableOperations/img/cell-delete.gif, plugins/TableOperations/img/cell-insert-after.gif, plugins/TableOperations/img/cell-insert-before.gif, plugins/TableOperations/img/cell-merge.gif, plugins/TableOperations/img/cell-prop.gif, plugins/TableOperations/img/cell-split.gif, plugins/TableOperations/img/col-delete.gif, plugins/TableOperations/img/col-insert-after.gif, plugins/TableOperations/img/col-insert-before.gif, plugins/TableOperations/img/col-split.gif, plugins/TableOperations/img/makefile.xml, plugins/TableOperations/img/row-delete.gif, plugins/TableOperations/img/row-insert-above.gif, plugins/TableOperations/img/row-insert-under.gif, plugins/TableOperations/img/row-prop.gif, plugins/TableOperations/img/row-split.gif, plugins/TableOperations/img/table-prop.gif, plugins/TableOperations/lang/cz.js, plugins/TableOperations/lang/da.js, plugins/TableOperations/lang/de.js, plugins/TableOperations/lang/el.js, plugins/TableOperations/lang/en.js, plugins/TableOperations/lang/fi.js, plugins/TableOperations/lang/he.js, plugins/TableOperations/lang/hu.js, plugins/TableOperations/lang/it.js, plugins/TableOperations/lang/makefile.xml, plugins/TableOperations/lang/nl.js, plugins/TableOperations/lang/no.js, plugins/TableOperations/lang/ro.js, plugins/TableOperations/makefile.xml, plugins/TableOperations/table-operations.js, plugins/makefile.xml, popupdiv.js, popups/about.html, popups/blank.html, popups/custom2.html, popups/editor_help.html, popups/fullscreen.html, popups/insert_image.html, popups/insert_table.html, popups/link.html, popups/makefile.xml, popups/old-fullscreen.html, popups/old_insert_image.html, popups/popup.js, popups/select_color.html, popupwin.js, project-config.xml, reference.html, release-notes.html, tests/display-none.html, tests/style-script.html:
+	New file.
+
+	* ChangeLog, autohandler, dialog.js, examples/2-areas.cgi, examples/2-areas.html, examples/context-menu.html, examples/core.html, examples/css.html, examples/custom.css, examples/full-page.html, examples/fully-loaded.html, examples/index.html, examples/list-type.html, examples/makefile.xml, examples/pieng.png, examples/remove-font-tags.html, examples/spell-checker.html, examples/table-operations.html, examples/test.cgi, htmlarea.css, htmlarea.js, images/ed_about.gif, images/ed_align_center.gif, images/ed_align_justify.gif, images/ed_align_left.gif, images/ed_align_right.gif, images/ed_blank.gif, images/ed_charmap.gif, images/ed_color_bg.gif, images/ed_color_fg.gif, images/ed_copy.gif, images/ed_custom.gif, images/ed_cut.gif, images/ed_delete.gif, images/ed_format_bold.gif, images/ed_format_italic.gif, images/ed_format_strike.gif, images/ed_format_sub.gif, images/ed_format_sup.gif, images/ed_format_underline.gif, images/ed_help.gif, images/ed_hr.gif, images/ed_html.gif, images/ed_image.gif, images/ed_indent_less.gif, images/ed_indent_more.gif, images/ed_left_to_right.gif, images/ed_link.gif, images/ed_list_bullet.gif, images/ed_list_num.gif, images/ed_paste.gif, images/ed_redo.gif, images/ed_right_to_left.gif, images/ed_save.gif, images/ed_save.png, images/ed_show_border.gif, images/ed_splitcel.gif, images/ed_undo.gif, images/fullscreen_maximize.gif, images/fullscreen_minimize.gif, images/insert_table.gif, images/makefile.xml, index.html, lang/b5.js, lang/ch.js, lang/cz.js, lang/da.js, lang/de.js, lang/ee.js, lang/el.js, lang/en.js, lang/es.js, lang/fi.js, lang/fr.js, lang/gb.js, lang/he.js, lang/hu.js, lang/it.js, lang/ja-euc.js, lang/ja-jis.js, lang/ja-sjis.js, lang/ja-utf8.js, lang/lt.js, lang/lv.js, lang/makefile.xml, lang/nb.js, lang/nl.js, lang/no.js, lang/pl.js, lang/pt_br.js, lang/ro.js, lang/ru.js, lang/se.js, lang/si.js, lang/vn.js, license.txt, make-release.pl, makefile.xml, plugins/CSS/css.js, plugins/CSS/lang/en.js, plugins/CSS/lang/makefile.xml, plugins/CSS/makefile.xml, plugins/ContextMenu/1.pl, plugins/ContextMenu/context-menu.js, plugins/ContextMenu/lang/de.js, plugins/ContextMenu/lang/el.js, plugins/ContextMenu/lang/en.js, plugins/ContextMenu/lang/he.js, plugins/ContextMenu/lang/makefile.xml, plugins/ContextMenu/lang/nl.js, plugins/ContextMenu/makefile.xml, plugins/ContextMenu/menu.css, plugins/EnterParagraphs/enter-paragraphs.js, plugins/FullPage/full-page.js, plugins/FullPage/img/docprop.gif, plugins/FullPage/img/makefile.xml, plugins/FullPage/lang/en.js, plugins/FullPage/lang/he.js, plugins/FullPage/lang/makefile.xml, plugins/FullPage/lang/ro.js, plugins/FullPage/makefile.xml, plugins/FullPage/popups/docprop.html, plugins/FullPage/popups/makefile.xml, plugins/FullPage/test.html, plugins/HtmlTidy/README, plugins/HtmlTidy/html-tidy-config.cfg, plugins/HtmlTidy/html-tidy-logic.php, plugins/HtmlTidy/html-tidy.js, plugins/HtmlTidy/img/html-tidy.gif, plugins/HtmlTidy/img/makefile.xml, plugins/HtmlTidy/lang/en.js, plugins/HtmlTidy/lang/makefile.xml, plugins/HtmlTidy/makefile.xml, plugins/ListType/lang/en.js, plugins/ListType/lang/makefile.xml, plugins/ListType/list-type.js, plugins/ListType/makefile.xml, plugins/SpellChecker/img/he-spell-check.gif, plugins/SpellChecker/img/makefile.xml, plugins/SpellChecker/img/spell-check.gif, plugins/SpellChecker/lang/cz.js, plugins/SpellChecker/lang/da.js, plugins/SpellChecker/lang/de.js, plugins/SpellChecker/lang/en.js, plugins/SpellChecker/lang/he.js, plugins/SpellChecker/lang/hu.js, plugins/SpellChecker/lang/it.js, plugins/SpellChecker/lang/makefile.xml, plugins/SpellChecker/lang/ro.js, plugins/SpellChecker/makefile.xml, plugins/SpellChecker/readme-tech.html, plugins/SpellChecker/spell-check-logic.cgi, plugins/SpellChecker/spell-check-style.css, plugins/SpellChecker/spell-check-ui.html, plugins/SpellChecker/spell-check-ui.js, plugins/SpellChecker/spell-checker.js, plugins/TableOperations/img/cell-delete.gif, plugins/TableOperations/img/cell-insert-after.gif, plugins/TableOperations/img/cell-insert-before.gif, plugins/TableOperations/img/cell-merge.gif, plugins/TableOperations/img/cell-prop.gif, plugins/TableOperations/img/cell-split.gif, plugins/TableOperations/img/col-delete.gif, plugins/TableOperations/img/col-insert-after.gif, plugins/TableOperations/img/col-insert-before.gif, plugins/TableOperations/img/col-split.gif, plugins/TableOperations/img/makefile.xml, plugins/TableOperations/img/row-delete.gif, plugins/TableOperations/img/row-insert-above.gif, plugins/TableOperations/img/row-insert-under.gif, plugins/TableOperations/img/row-prop.gif, plugins/TableOperations/img/row-split.gif, plugins/TableOperations/img/table-prop.gif, plugins/TableOperations/lang/cz.js, plugins/TableOperations/lang/da.js, plugins/TableOperations/lang/de.js, plugins/TableOperations/lang/el.js, plugins/TableOperations/lang/en.js, plugins/TableOperations/lang/fi.js, plugins/TableOperations/lang/he.js, plugins/TableOperations/lang/hu.js, plugins/TableOperations/lang/it.js, plugins/TableOperations/lang/makefile.xml, plugins/TableOperations/lang/nl.js, plugins/TableOperations/lang/no.js, plugins/TableOperations/lang/ro.js, plugins/TableOperations/makefile.xml, plugins/TableOperations/table-operations.js, plugins/makefile.xml, popupdiv.js, popups/about.html, popups/blank.html, popups/custom2.html, popups/editor_help.html, popups/fullscreen.html, popups/insert_image.html, popups/insert_table.html, popups/link.html, popups/makefile.xml, popups/old-fullscreen.html, popups/old_insert_image.html, popups/popup.js, popups/select_color.html, popupwin.js, project-config.xml, reference.html, release-notes.html, tests/display-none.html, tests/style-script.html:
+	This is release "3.0 RC2 PRE", imported to Dynarch.com repository from SF.NET
+

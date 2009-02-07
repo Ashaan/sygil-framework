@@ -30,7 +30,7 @@ __SCRIPT_INIT__
   <div id="header">
     <span>##Welcome_on## ##site_short_name##</span>
     <div>
-      <div class="headhoption" onmouseover="setDisplay('site_list','block')" onmouseout="setDisplay('site_list','none')">Option</div>
+      <div class="headhoption" onmouseover="setDisplay('site_list','block')" onmouseout="setDisplay('site_list','none')">##Option##</div>
     </div>  
   </div>
 

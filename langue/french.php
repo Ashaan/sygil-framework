@@ -25,6 +25,8 @@ $lang['menu_Project']		= 'Projet';
 
 $lang['Welcome_on']		= 'Bienvenue sur';
 $lang['Hello']			= 'Bonjour';
+
+$lang['Option']      		= 'Option';
 $lang['Register']      		= 'Inscription';
 $lang['Connect']    		= 'Connection';
 $lang['Disconnect'] 		= 'Déconnection';

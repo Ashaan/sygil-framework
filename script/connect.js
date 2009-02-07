@@ -31,12 +31,12 @@ function Session() {
         header = document.getElementById('header').getElementsByTagName('span')[0];
         menu.innerHTML = '';
 	    if (session.isConnect) {
-	         menu.innerHTML   += '<div class="headvoption" onclick="session.disconnect()">Déconnection</div>';  
+	         menu.innerHTML   += '<div class="headvoption" onclick="session.disconnect()">' + lang_disconnect + '</div>';  
    	        header.innerHTML  = 'Bonjour, ' + this.lastname + ' ' + this.firstname; 
 	    } else {
-	        menu.innerHTML += '<div class="headvoption" onclick="">Inscription</div>';
+	        menu.innerHTML += '<div class="headvoption" onclick="">' + lang_register +'</div>';
 	        menu.innerHTML += '<div class="headvseparator"></div>';
-	        menu.innerHTML += '<div class="headvoption" onclick="ajax.load(\'connect\',null,\'replace\',[])">Connection</div>';
+	        menu.innerHTML += '<div class="headvoption" onclick="ajax.load(\'connect\',null,\'replace\',[])">' + lang_connect + '</div>';
    	        header.innerHTML  = 'Bienvenue sur Sygil.org !'; 
 	    }
 

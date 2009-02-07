@@ -3,28 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" dir="ltr">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="keywords" content="php apache mysql mathieu chocat ashaan gallery galerie galeries image images video videos vidéo vidéos photo photos album albums" />
+  <meta name="keywords" content="php apache mysql mathieu chocat ashaan ##site_keywords##" />
   <meta name="author" content="Mathieu Chocat"/>
   <meta name="version" content="$Id: index.tpl 54 2007-02-07 10:08:48Z mathieu $"/>
   <meta name="copyright" content="(c) 2006-2009 Sygil.org"/>
-  <title>Sygil.org - Accueil</title>
+  <title>##site_short_name## - ##site_long_name##</title>
 
   <script type="text/javascript">
-    var warning  = 'installer un navigateur fiable :\n';
-        warning += '  - Mozilla Firefox (pour un rendu optimal)\n';
-        warning += '  - Google Chrome\n';
-        warning += '  - Opera\n';
-        warning += '  - Safari\n';
-
     if (document.all && document.body && document.body.style && !document.body.style.maxHeight) {
-      alert('Ce site ne fonctionne pas avec Internet Explorer 6-\n\nMettez a jour Windows ou '+warning);
+      alert('##msg_ie6##');
     } else
     if (document.layers) {
-      alert('Ce site ne fonctionne pas avec Netscape 6-\n\n'+warning);
+      alert('##msg_ns6##');
     }
-
-    _editor_url = "script/htmlarea/";
-    _editor_lang = "fr";
+    lang_disconnect = '##Disconnect##';
+    lang_connect    = '##Connect##';
+    lang_register   = '##Register##';
   </script>
 __THEME__
 __SCRIPT__
@@ -34,7 +28,7 @@ __SCRIPT_INIT__
 </head>
 <body onload="__ONLOAD__">
   <div id="header">
-    <span>Bienvenue sur sygil.org</span>
+    <span>##Welcome_on## ##site_short_name##</span>
     <div>
       <div class="headhoption" onmouseover="setDisplay('site_list','block')" onmouseout="setDisplay('site_list','none')">Option</div>
     </div>  
@@ -53,9 +47,9 @@ __SCRIPT_INIT__
 
   
   <div id="site_list" class="hidden" onmouseover="setDisplay('site_list','block')" onmouseout="setDisplay('site_list','none')">
-    <div class="headvoption" onclick="">Inscription</div>
+    <div class="headvoption" onclick="">##Register##</div>
     <div class="headvseparator"></div>
-    <div class="headvoption" onclick="ajax.load('connect',null,'replace',[])">Connection</div>
+    <div class="headvoption" onclick="ajax.load('connect',null,'replace',[])">##Connect##</div>
   </div>
   <div id="tempdiv">
   </div>

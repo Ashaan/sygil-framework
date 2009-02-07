@@ -3,6 +3,8 @@
 class Template {
     static private $instance = null;
     private $file  = array();
+    private $lang  = array();
+
     static public function getInstance() {
         if (Template::$instance == null) {
             Template::$instance = new Template();
@@ -10,6 +12,11 @@ class Template {
         return Template::$instance;
     } 
 
+    function __construct() {
+	$lang = array();
+	include(CORE_PATH.'/langue/'.DEFAULT_LANGUE.'.php');
+	$this->lang = $lang;
+    }
     private function load($name, $module = null) {
         $key  = $module.'/'.$name;
         if (!isset($this->file[$key])) {
@@ -29,15 +36,11 @@ class Template {
        foreach($data as $key => $value) {
           $tpl = str_replace($key,$value,$tpl);
        }
+       foreach($this->lang as $key => $value) {
+          $tpl = str_replace('##'.$key.'##',$value,$tpl);
+       }
 
        return $tpl;
-    }
-
-    static public function _get($name,$data) {
-        echo '<!-- Deprecated Template Get : '.$name.' -->';
-        $template = Template::getInstance();
-
-        return $template->get($name,$data);
     }
 }
 

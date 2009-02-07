@@ -42,7 +42,7 @@ __SCRIPT_INIT__
 
   <div id="footer">Mathieu Chocat © Copyright 2006-2009 [Ashaan / Sygil.org]</div>
   <div id="shortcut" style="">
-    <img class="add" src="theme/default/add-28x28.png" onclick="shortcut.add();"/>
+    <img class="add" src="icon/default/add-28x28.png" onclick="shortcut.add();"/>
   </div>
 
   

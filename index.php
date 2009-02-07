@@ -1,11 +1,12 @@
 <?php
 
 // [BEGIN] Site Config
-if (!isset($_GET['Frame']) && !isset($_GET['Ajax'])) {
-    $_GET['Ajax'] = 'blog';
-}
+//if (!isset($_GET['Frame']) && !isset($_GET['Ajax'])) {
+//    $_GET['Ajax'] = 'blog';
+//}
 // [END] Site Config
 
+require_once('config.php');
 require_once('include/core.php');
 require_once('include/db.php');
 require_once('include/session.php');
@@ -29,12 +30,14 @@ $core->addScript('script/ckeditor/ckeditor.js');
 $core->addScriptInit ('url.frame = \''.(isset($_GET['Frame'])?$_GET['Frame']:'').'\';');
 $core->addScriptInit ('url.ajax  = \''.(isset($_GET['Ajax']) ?$_GET['Ajax'] :'').'\';');
 
-$core->load('config');
-$core->load('left');
+$session = Session::getInstance();
+
+$core->load(DEFAULT_LEFT);
+$core->load(DEFAULT_CENTER);
+$core->load(DEFAULT_RIGHT);
 
 $core->loadModule('window');
 
-$session = Session::getInstance();
 if ($session->isLogged()) {
     $core->addScriptInit ('session.isConnect = true;');
     $core->addScriptInit ('session.lastname = \''.$session->getUser('lastname').'\';');

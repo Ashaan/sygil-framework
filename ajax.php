@@ -1,5 +1,6 @@
 <?php
 
+require_once('config.php');
 require_once('include/core.php');
 require_once('include/db.php');
 require_once('include/session.php');
@@ -12,8 +13,6 @@ foreach($_POST as $name => $value) {
 $core = Core::getInstance();
 
 $core->setTemplate('ajax');
-
-$core->load('config');
 
 $core->load('ajax/'.$_GET['command']);
 

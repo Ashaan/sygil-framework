@@ -48,15 +48,15 @@ class Core {
         $this->scriptInit .= '      '.$script;
     }
     public function load($config) {
-        $path = 'config/'.$config.'.php';
-        if ($this->config) $path = $this->config['path'].'/'.$path;
-
-        include($path);
+	if ($config) {
+	    $path = CORE_CONFIG.'/'.$config.'.php';
+	    include($path);
+	}
     }
 
     public function loadModule($module) {
         $path = 'module/'.$module.'/index.php';
-        if ($this->config) $path = $this->config['path'].'/'.$path;
+        if ($this->config) $path = CORE_PATH.'/'.$path;
 
         include($path);
     }

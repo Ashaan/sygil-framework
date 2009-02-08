@@ -1,12 +1,11 @@
-/****************************************************************************
-**         At the first time copy config.sample.php to config.php          **
-**                 and change the define configuration                     **
-*****************************************************************************
-** Dans un premier temps copier le fichier config.sample.php en config.php **
-**           puis effectuer les modification propre a votre site           **
-****************************************************************************/
-
 <?php
+/*****************************************************************************
+ **         At the first time copy config.sample.php to config.php          **
+ **                 and change the define configuration                     **
+ *****************************************************************************
+ ** Dans un premier temps copier le fichier config.sample.php en config.php **
+ **           puis effectuer les modification propre a votre site           **
+ *****************************************************************************/
 
 foreach($_POST as $name => $value) {
     $_GET[$name] = $value;

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Dim 08 Février 2009 à 12:10
+-- Généré le : Dim 08 Février 2009 à 12:56
 -- Version du serveur: 5.1.15
 -- Version de PHP: 5.2.8-pl2-gentoo
 
@@ -46,10 +46,9 @@ INSERT INTO `group` (`id`, `name`, `desc`) VALUES
 
 DROP TABLE IF EXISTS `group2module`;
 CREATE TABLE IF NOT EXISTS `group2module` (
-  `group` varchar(32) NOT NULL,
+  `group` varchar(32) NOT NULL DEFAULT '',
   `module` varchar(32) NOT NULL,
-  `read` tinyint(1) NOT NULL,
-  `write` tinyint(1) NOT NULL,
+  `perm` set('READ','WRITE') DEFAULT 'READ',
   PRIMARY KEY (`group`,`module`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -57,6 +56,9 @@ CREATE TABLE IF NOT EXISTS `group2module` (
 -- Contenu de la table `group2module`
 --
 
+INSERT INTO `group2module` (`group`, `module`, `perm`) VALUES
+('', '14a6a157d8e861359729faeb72f5ca17', 'READ'),
+('16e3ba46dab6fad19bc349dc277c3ffa', '14a6a157d8e861359729faeb72f5ca17', 'READ,WRITE');
 
 -- --------------------------------------------------------
 
@@ -68,6 +70,7 @@ DROP TABLE IF EXISTS `group2user`;
 CREATE TABLE IF NOT EXISTS `group2user` (
   `group` varchar(32) NOT NULL,
   `user` varchar(32) NOT NULL,
+  `perm` set('READ','WRITE') NOT NULL DEFAULT 'READ',
   PRIMARY KEY (`group`,`user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -75,6 +78,9 @@ CREATE TABLE IF NOT EXISTS `group2user` (
 -- Contenu de la table `group2user`
 --
 
+INSERT INTO `group2user` (`group`, `user`, `perm`) VALUES
+('16e3ba46dab6fad19bc349dc277c3ffa', 'b2c8a48822eb16e0558c189113517a44', 'READ'),
+('16e3ba46dab6fad19bc349dc277c3ffa', 'c10188dc849e3e91aa57e1572b84a4fd', 'READ,WRITE');
 
 -- --------------------------------------------------------
 
@@ -110,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `category` smallint(5) unsigned NOT NULL,
   `title` varchar(255) NOT NULL,
   `text` mediumtext NOT NULL,
-  `firstdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `firstdate` datetime NOT NULL,
   `firstauthor` varchar(32) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `zone` (`category`)
@@ -163,13 +169,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   `login` varchar(32) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(32) NOT NULL DEFAULT 'pam',
-  `user` varchar(16) NOT NULL DEFAULT 'virtual',
-  `group` varchar(16) NOT NULL DEFAULT 'virtual',
-  `firstname` varchar(64) NOT NULL,
-  `lastname` varchar(64) NOT NULL,
+  `sys_user` varchar(16) DEFAULT NULL,
+  `sys_group` varchar(16) DEFAULT NULL,
+  `firstname` varchar(64) DEFAULT NULL,
+  `lastname` varchar(64) DEFAULT NULL,
+  `template` varchar(16) DEFAULT NULL,
+  `theme` varchar(16) DEFAULT NULL,
+  `iconset` varchar(16) DEFAULT NULL,
   `firstdate` datetime NOT NULL,
   `lastdate` datetime NOT NULL,
-  `birthdate` datetime NOT NULL,
+  `birthdate` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`,`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -178,7 +187,48 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Contenu de la table `user`
 --
 
-INSERT INTO `user` (`id`, `login`, `email`, `password`, `user`, `group`, `firstname`, `lastname`, `firstdate`, `lastdate`, `birthdate`) VALUES
-('b2c8a48822eb16e0558c189113517a44', 'Maheulbeuk', '', 'pam', 'nico', 'nico', '', 'Nico', '2009-01-25 15:19:59', '2009-01-25 15:19:59', '1978-07-29 00:00:00'),
-('c10188dc849e3e91aa57e1572b84a4fd', 'Ashaan', 'ashaan@sygil.org', 'pam', 'mathieu', 'mathieu', 'Chocat', 'Mathieu', '2009-01-25 15:19:59', '2009-01-25 15:19:59', '1978-07-29 00:00:00');
+INSERT INTO `user` (`id`, `login`, `email`, `password`, `sys_user`, `sys_group`, `firstname`, `lastname`, `template`, `theme`, `iconset`, `firstdate`, `lastdate`, `birthdate`) VALUES
+('b2c8a48822eb16e0558c189113517a44', 'Maheulbeuk', 'maheulbeuk@sygil.org', 'pam', 'nico', 'nico', NULL, 'Nico', NULL, NULL, NULL, '2009-01-25 15:19:59', '2009-01-25 15:19:59', NULL),
+('c10188dc849e3e91aa57e1572b84a4fd', 'Ashaan', 'ashaan@sygil.org', 'pam', 'mathieu', 'mathieu', 'Chocat', 'Mathieu', NULL, NULL, NULL, '2009-01-25 15:19:59', '2009-01-25 15:19:59', '1978-07-29 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Doublure de structure pour la vue `view_group2module`
+--
+DROP VIEW IF EXISTS `view_group2module`;
+CREATE TABLE IF NOT EXISTS `view_group2module` (
+`group` varchar(32)
+,`module` varchar(16)
+,`perm` set('READ','WRITE')
+);
+-- --------------------------------------------------------
+
+--
+-- Doublure de structure pour la vue `view_group2user`
+--
+DROP VIEW IF EXISTS `view_group2user`;
+CREATE TABLE IF NOT EXISTS `view_group2user` (
+`group` varchar(32)
+,`username` varchar(32)
+,`email` varchar(255)
+,`perm` set('READ','WRITE')
+);
+-- --------------------------------------------------------
+
+--
+-- Structure de la vue `view_group2module`
+--
+DROP TABLE IF EXISTS `view_group2module`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`10.10.3.3` SQL SECURITY DEFINER VIEW `sygil_base`.`view_group2module` AS select `G`.`name` AS `group`,`M`.`name` AS `module`,`G2M`.`perm` AS `perm` from ((`sygil_base`.`module` `M` left join `sygil_base`.`group2module` `G2M` on((`G2M`.`module` = `M`.`id`))) left join `sygil_base`.`group` `G` on((`G`.`id` = `G2M`.`group`)));
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la vue `view_group2user`
+--
+DROP TABLE IF EXISTS `view_group2user`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`10.10.3.3` SQL SECURITY DEFINER VIEW `sygil_base`.`view_group2user` AS select `G`.`name` AS `group`,`U`.`login` AS `username`,`U`.`email` AS `email`,`G2U`.`perm` AS `perm` from ((`sygil_base`.`user` `U` left join `sygil_base`.`group2user` `G2U` on((`G2U`.`user` = `U`.`id`))) left join `sygil_base`.`group` `G` on((`G`.`id` = `G2U`.`group`)));
 

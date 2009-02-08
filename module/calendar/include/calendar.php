@@ -2,8 +2,8 @@
 
 class Calendar {
     private static $Count = 1;
-    private $date  = 0;
-    private $zone  = 0;
+    private $date   = 0;
+    private $module = null;
     private $panel = null;
     private $event = array();
     private $monthList = array(
@@ -27,8 +27,8 @@ class Calendar {
     public function setDate($date) {
         $this->date = $date;
     }
-    public function setZone($zone) {
-        $this->zone = $zone;
+    public function setModule($module) {
+        $this->module = $module;
     }
     public function setPanel($panel) {
         $this->panel = $panel;
@@ -58,7 +58,7 @@ class Calendar {
     private function addDayEvent($day, $event) {
         $data = array(
             '__DAY__'   =>  date('j',$day),
-            '__ACTION__'=>  'ajax.load(\'news\',\'panel_left\',\'replace\',[[\'zone\',0],[\'date\','.$event['date'].']]);',
+            '__ACTION__'=>  'ajax.load(\'news\',\'panel_left\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.$event['date'].']]);',
         );
 
         return Template::getInstance()->get('day_event',$data,'calendar');
@@ -66,7 +66,7 @@ class Calendar {
     private function addDayActive($day, $event) {
         $data = array(
             '__DAY__'   =>  date('j',$day),
-            '__ACTION__'=>  'ajax.load(\'news\',\'panel_left\',\'replace\',[[\'zone\',0],[\'date\','.$event['date'].']]);',
+            '__ACTION__'=>  'ajax.load(\'news\',\'panel_left\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.$event['date'].']]);',
         );
 
         return Template::getInstance()->get('day_active',$data,'calendar');
@@ -100,11 +100,11 @@ class Calendar {
         $query  = '
             SELECT firstdate, title 
             FROM news 
-            WHERE zone='.$this->zone.'
+            WHERE module_id="'.$this->module.'"
               AND firstdate >= "'.date('Y-m-01 00:00:00',$this->date).'"
               AND firstdate <= "'.date('Y-m-31 23:59:59',$this->date).'"
         ';
-       
+   
         $result = $db->select($query);
         if ($result) 
         foreach($result as $obj){

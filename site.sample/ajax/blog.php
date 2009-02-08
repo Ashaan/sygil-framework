@@ -23,8 +23,8 @@ $line->setBackground('#6798ca');
 $line = $right->addLine('panel_right_row3');
 $line->setBackground('#6798ca');
 
-$core->addExec('ajax.load(\'news_latest\',\'panel_left\',\'replace\',[[\'zone\',0]]);');
-$core->addExec('ajax.load(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0]]);');
+$core->addExec('ajax.load(\'news_latest\',\'panel_left\',\'replace\',[[\'module\',\'14a6a157d8e861359729faeb72f5ca17\']]);');
+$core->addExec('ajax.load(\'calendar\',\'panel_right_row1\',\'replace\',[[\'module\',\'14a6a157d8e861359729faeb72f5ca17\']]);');
 $core->addExec('ajax.load(\'lastfm_player\',\'panel_right_row2\',\'replace\',[]);');
 $core->addExec('ajax.load(\'lastfm_latest\',\'panel_right_row3\',\'replace\',[]);');
 

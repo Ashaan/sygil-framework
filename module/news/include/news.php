@@ -2,7 +2,7 @@
 
 class News {
     private static $Count = 1;
-    private $zone  = 0;
+    private $module= null;
     private $panel = null;
     private $date  = null;
     private $event = array();
@@ -15,8 +15,8 @@ class News {
     public function setDate($date) {
         $this->date = $date;
     }
-    public function setZone($zone) {
-        $this->zone = $zone;
+    public function setModule($module) {
+        $this->module = $module;
     }
     public function setPanel($panel) {
         $this->panel = $panel;
@@ -29,7 +29,7 @@ class News {
             SELECT N.title, N.text, U.login, N.firstdate
             FROM news N 
               LEFT JOIN user U ON U.id = N.firstauthor 
-            WHERE N.zone='.$this->zone.'
+            WHERE N.module_id='.$this->module.'
               AND N.firstdate >= "'.date('Y-m-d 00:00:00',$this->date).'"
               AND N.firstdate <= "'.date('Y-m-d 23:59:59',$this->date).'"
         ';

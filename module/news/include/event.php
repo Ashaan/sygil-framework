@@ -11,14 +11,14 @@ function convert_datetime($str) {
 }
 
 class NewsEvents {
-    private $zone  = 0;
-    private $date  = null;
-    private $event = array();
-    private $day   = array();
-    private $last  = true;
+    private $module = null;
+    private $date   = null;
+    private $event  = array();
+    private $day    = array();
+    private $last   = true;
 
-    public function __constructor($zone) {
-        $this->zone = $zone;
+    public function __construct($module) {
+        $this->module = $module;
     }
  
     public function setDate($date) {
@@ -55,7 +55,7 @@ class NewsEvents {
             SELECT N.title, N.text, U.login, N.firstdate, U.id as userId
             FROM news N 
               LEFT JOIN user U ON U.id = N.firstauthor 
-            WHERE N.zone='.$this->zone.'
+            WHERE N.module_id="'.$this->module.'"
         '.$addsql;
 
         $result = $db->select($query);

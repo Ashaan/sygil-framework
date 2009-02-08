@@ -4,7 +4,7 @@ $core = Core::getInstance();
 
 $core->loadModule('news');
 
-$event = new NewsEvents($_GET['zone']);
+$event = new NewsEvents($_GET['module']);
 $event->setDate($_GET['date']);
 $event->load();
 

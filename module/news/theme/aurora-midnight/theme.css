@@ -6,11 +6,11 @@
   background    : url(background_title.png);
   height        : 22px;
   border-bottom : 0px solid #b1a594;
-
-  text-align:center;
+  text-align    :center;
   font-size     : 14px;
   font-weight   : bold;
   line-height   : 22px;
+  color         : #111111;
 }
 .news_day_content {
   padding        : 0px;

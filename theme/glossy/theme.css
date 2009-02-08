@@ -61,33 +61,31 @@ body {
   margin-right  : 0px;
 }
 
-#site_list {
-  position      : absolute;
-  top           : 19px;
-  right         : 0px;
-  width         : 150px;
-  z-index       : 100;
+.menu_list {
+  display       : none;
   color         : #000000;
   background    : url(menu_background.png);
   border-bottom : 1px solid #BBBBBB;
   border-left   : 1px solid #BBBBBB;
+  border-right  : 1px solid #BBBBBB;
   padding       : 0px;
   padding-top   : 1px; 
   margin        : 0px;
+  z-index:100;
 }
-#site_list .headvoption {
+.menu_list .option {
   text-align    : center;
   margin-bottom : 1px;
   margin-left   : 0px;
   margin-right  : 0px;
   padding       : 2px;
 }
-#site_list .headvoption:hover {
+.menu_list .option:hover {
   background    : url(menu_foreground.png);
   color         : #FFFFFF;
   cursor        : pointer;
 }
-#site_list .headvseparator {
+.menu_list .separator {
   background    : #AAAAAA;
   height        : 0px;
   margin-top    : 2px;

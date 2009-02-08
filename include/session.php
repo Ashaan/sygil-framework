@@ -127,7 +127,7 @@ class Session {
             if ($result['password'] == 'pam') {
                 $err = error_reporting(0);
 
-                $mbox = imap_open("{localhost:143/notls}INBOX", $result['user'],$_POST['password']);
+                $mbox = imap_open("{localhost:143/notls}INBOX", $result['sys_user'],$_POST['password']);
                 if ($mbox) {
                     imap_close($mbox);
                     $logged = true;

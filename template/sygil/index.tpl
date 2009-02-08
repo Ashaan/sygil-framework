@@ -28,9 +28,13 @@ __SCRIPT_INIT__
 </head>
 <body onload="__ONLOAD__">
   <div id="header">
-    <span>##Welcome_on## ##site_short_name##</span>
+    <span></span>
     <div>
-      <div class="headhoption" onmouseover="setDisplay('site_list','block')" onmouseout="setDisplay('site_list','none')">##Option##</div>
+      <div class="headhoption" onmouseover="setDisplay('lang_list','block')" onmouseout="setDisplay('lang_list','none')">Langue</div>
+      <div class="headhoption"> | </div>
+      <div class="headhoption" onmouseover="setDisplay('theme_list','block')" onmouseout="setDisplay('theme_list','none')">Theme</div>
+      <div class="headhoption"> | </div>
+      <div class="headhoption" onmouseover="setDisplay('site_list','block')"  onmouseout="setDisplay('site_list','none')">##Option##</div>
     </div>  
   </div>
 
@@ -46,11 +50,18 @@ __SCRIPT_INIT__
   </div>
 
   
-  <div id="site_list" class="hidden" onmouseover="setDisplay('site_list','block')" onmouseout="setDisplay('site_list','none')">
-    <div class="headvoption" onclick="">##Register##</div>
-    <div class="headvseparator"></div>
-    <div class="headvoption" onclick="ajax.load('connect',null,'replace',[])">##Connect##</div>
+  <div id="site_list"  class="menu_list" onmouseover="setDisplay('site_list','block')" onmouseout="setDisplay('site_list','none')"
+		       style="position:absolute;top:19px;right:0px;width:150px;"></div>
+  <div id="theme_list" class="menu_list" onmouseover="setDisplay('theme_list','block')" onmouseout="setDisplay('theme_list','none')"
+		       style="position:absolute;top:19px;right:15px;width:150px;">
+    <div class="option" onclick="switchStyle('glossy')">Glossy</div>
+    <div class="option" onclick="switchStyle('aurora-midnight')">Aurora Midnight</div>
   </div>
-  <div id="tempdiv">
+  <div id="lang_list" class="menu_list" onmouseover="setDisplay('lang_list','block')" onmouseout="setDisplay('lang_list','none')"
+		       style="position:absolute;top:19px;right:80px;width:150px;">
+    <div class="option" onclick="switchLang('french')">Francais</div>
+    <div class="option" onclick="switchLang('english')">Anglais</div>
   </div>
+
+  <div id="tempdiv"></div>
 </body>

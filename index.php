@@ -1,11 +1,5 @@
 <?php
 
-// [BEGIN] Site Config
-//if (!isset($_GET['Frame']) && !isset($_GET['Ajax'])) {
-//    $_GET['Ajax'] = 'blog';
-//}
-// [END] Site Config
-
 require_once('config.php');
 require_once('include/core.php');
 require_once('include/db.php');
@@ -16,6 +10,22 @@ $core = Core::getInstance();
 
 $core->setTemplate('index');
 
+// Override Official Theme List 
+//$core->setThemeList(
+//    array(
+//	'glossy' 		=> 'Gnome Glossy Theme',
+//	'aurora-midnight'	=> 'Gnome Aurora Midnight Theme'
+//    )
+//);
+
+// Override Official Langue List
+//$core->setLangList(
+//    array(
+//	'french' 		=> '##french##',
+//	'english'		=> '##english##'
+//    )
+//);
+
 $core->addTheme('theme/NAME/theme.css');
 
 $core->addScript('script/function.js');
@@ -24,7 +34,7 @@ $core->addScript('script/frame.js');
 $core->addScript('script/base64.js');
 $core->addScript('script/ajax.js');
 $core->addScript('script/shortcut.js');
-$core->addScript('script/connect.js');
+$core->addScript('script/session.js');
 $core->addScript('script/ckeditor/ckeditor.js');
 
 $core->addScriptInit ('url.frame = \''.(isset($_GET['Frame'])?$_GET['Frame']:'').'\';');

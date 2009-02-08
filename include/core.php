@@ -10,7 +10,8 @@ class Core {
     private $exec     = array();
     private $scriptInit     = '';
     private $scriptTemplate = array();
-    private $themeList = array('glossy');
+    private $themeList = array();
+    private $langList = array();
 
     static public function getInstance() {
         if (Core::$instance == null) {
@@ -19,8 +20,30 @@ class Core {
         return Core::$instance;
     } 
 
+    public function __construct() {
+	$this->setThemeList(
+	    array(
+		'glossy' 		=> 'Gnome Glossy Theme',
+		'aurora-midnight'	=> 'Gnome Aurora Midnight Theme'
+	    )
+	);
+	$this->setLangList(
+	    array(
+		'french' 		=> '##french##',
+		'english'		=> '##english##'
+	    )
+	);
+    }
+
     public function setTemplate($template) {
         $this->template = $template;
+    }
+
+    public function setThemeList($list) {
+        $this->themeList = $list;
+    }
+    public function setLangList($list) {
+        $this->langList = $list;
     }
     
     public function addScript($script) {
@@ -29,15 +52,15 @@ class Core {
         }
     }
     public function addTheme($path) {
-        foreach ($this->themeList as $name) {
+        foreach ($this->themeList as $name => $desc) {
             $tmp = str_replace('NAME',$name,$path);
 	    $key = md5($name.'|'.$path);
 	    if (file_exists(CORE_PATH.'/'.$tmp)) {
                 $this->theme[$key] = array($name,$tmp);
 	    } else {
 	        $tmp = str_replace('NAME','default',$path);
-	        $key = md5('|'.$path);
-	        $this->theme[$key] = array(null,$tmp);
+	        $key = md5($name.'|'.$path);
+	        $this->theme[$key] = array($name,$tmp);
 	    }
         }
     }
@@ -78,7 +101,7 @@ class Core {
     public function generateIndex() {
         $this->data['__THEME__'] = '';
         foreach($this->theme as $theme) {
-	    $style = ($theme[0]==DEFAULT_THEME || $theme[0]==null)?'stylesheet':'alternate-stylesheet';	
+	    $style = ($theme[0]==DEFAULT_THEME || $theme[0]==null)?'stylesheet':'alternate stylesheet';	
             $this->data['__THEME__']  .= Template::getInstance()->get('index_theme' ,
 		array(
 		    '__NAME__'  => $theme[0]?' title="'.$theme[0].'"':'',

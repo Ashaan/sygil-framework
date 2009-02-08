@@ -38,6 +38,22 @@ function setVisibility(element,mode)
   return true;
 }
 
+function switchStyle(s)
+{
+  if (!document.getElementsByTagName) {
+    return;
+  }
+  var el = document.getElementsByTagName("link");
+  for (var i = 0; i < el.length; i++ ) {
+    if (el[i].getAttribute("rel").indexOf("style") != -1 && el[i].getAttribute("title")) {
+      el[i].disabled = true;
+      if (el[i].getAttribute("title") == s) {
+          el[i].disabled = false;
+      }
+    }
+  }
+}
+
 function switchClass(element,class1,class2)
 {
   if (!element.style) {

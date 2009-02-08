@@ -1,3 +1,5 @@
+<?php
+
 /****************************************************************************
 **         At the first time copy config.sample.php to config.php          **
 **                 and change the define configuration                     **
@@ -6,7 +8,6 @@
 **           puis effectuer les modification propre a votre site           **
 ****************************************************************************/
 
-<?php
 
 foreach($_POST as $name => $value) {
     $_GET[$name] = $value;
@@ -14,9 +15,13 @@ foreach($_POST as $name => $value) {
 if (!isset($_GET['Frame']) && !isset($_GET['Ajax'])) {
     $_GET['Ajax'] = 'blog';
 }
-define('CORE_PATH'  ,'/your/site/directory');  //directory
-define('CORE_URL'   ,'http://yoursite.url');   //url
-define('CORE_CONFIG','/your/site/directory/site');  //directory for configurati$
+
+//directory
+define('CORE_PATH'  ,'/your/site/directory');
+//url
+define('CORE_URL'   ,'http://yoursite.url'):
+//directory for configuration
+define('CORE_CONFIG','/your/site/directory/site');
 
 define('DEFAULT_LANGUE'  , 'french');
 define('DEFAULT_THEME'   , 'glossy');
@@ -26,17 +31,26 @@ define('DEFAULT_LEFT'    , 'left');
 define('DEFAULT_CENTER'  , null);
 define('DEFAULT_RIGHT'   , null);
 
-define('SITE_SHORT_NAME'  	, 'sygil.org'); //Name of your site
-define('SITE_LONG_NAME'   	, 'Sygil Experimental Portal and CMS'); // short description of your site in english language
-define('SITE_LONG_NAME_FR'	, 'Portail Experimental Sygil.org');  //short description of your site in french language
+//Name of your site
+define('SITE_SHORT_NAME'  	, 'sygil.org');
+//short description of your site in english language
+define('SITE_LONG_NAME'   	, 'Sygil Experimental Portal and CMS');
+//short description of your site in french language
+define('SITE_LONG_NAME_FR'	, 'Portail Experimental Sygil.org');
 define('SITE_DESCRIPTION'	, ''); 
-define('SITE_SEARCH_KEYWORDS' 	, ''); // Meta keyword for referencement
+// Meta keyword for referencement
+define('SITE_SEARCH_KEYWORDS' 	, '');
+
 
 define('DATABASE_HOST','localhost');
-define('DATABASE_NAME','sygil_base'); // Your data base name
-define('DATABASE_USER','sygil.org'); // The login to log on DB
-define('DATABASE_PASS','Y6YHXJdMMfxAvpzz'); // The password to log on DB
-define('DATABASE_PRE' ,'');  // prefixe table
+// Your data base name
+define('DATABASE_NAME','sygil_base');
+// The login to log on DB
+define('DATABASE_USER','sygil.org');
+// The password to log on DB
+define('DATABASE_PASS','Y6YHXJdMMfxAvpzz');
+// prefixe table
+define('DATABASE_PRE' ,'');
 define('DATABASE_TYPE','mysqli');
 
 // Override Official Theme List dans Config 

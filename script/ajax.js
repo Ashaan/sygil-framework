@@ -131,15 +131,15 @@ function Ajax() {
 
         if (!find) {
             var fileref=document.createElement("link");
-            if (alt) {
-                fileref.setAttribute("rel", "stylesheet");
+            if (alt=='1') {
+                fileref.setAttribute("rel", "alternate stylesheet");
             } else {
                 fileref.setAttribute("rel", "stylesheet");
             }
             fileref.setAttribute("type", "text/css");
             fileref.setAttribute("href", filename);
             if (name) {
-                fileref.setAttribute("name", name);
+                fileref.setAttribute("title", name);
             }
             document.getElementsByTagName("head")[0].appendChild(fileref);
         }
@@ -171,7 +171,7 @@ function Ajax() {
                 content += decode64(child.firstChild.nodeValue);
             } else
             if (child.tagName == 'theme') {
-                this.loadCSS(child.firstChild.nodeValue,'');
+                this.loadCSS(child.firstChild.nodeValue,child.getAttribute('name'),child.getAttribute('alt'));
             } else
             if (child.tagName == 'script') {
                 this.loadScript(child.firstChild.nodeValue,'');

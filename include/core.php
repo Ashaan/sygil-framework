@@ -130,12 +130,12 @@ class Core {
         }
         $this->data['__THEME__'] = '';
         foreach($this->theme as $theme) {
-	    $style = ($theme[0] == DEFAULT_THEME)?'stylesheet':'alternate-stylesheet';	
+	    $style = ($theme[0] == DEFAULT_THEME)?0:1;	
             $this->data['__THEME__']  .= Template::getInstance()->get('ajax_theme' ,
 		array(
 		    '__NAME__'  => $theme[0],
 		    '__URL__'   => $theme[1],
-		    '__STYLE__' => $style
+		    '__ALT__'   => $style
 		)
 	    ); 
         }

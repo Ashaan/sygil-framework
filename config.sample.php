@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD:config.sample.php
 
 /****************************************************************************
 **         At the first time copy config.sample.php to config.php          **
@@ -8,6 +9,15 @@
 **           puis effectuer les modification propre a votre site           **
 ****************************************************************************/
 
+=======
+/*****************************************************************************
+ **         At the first time copy config.sample.php to config.php          **
+ **                 and change the define configuration                     **
+ *****************************************************************************
+ ** Dans un premier temps copier le fichier config.sample.php en config.php **
+ **           puis effectuer les modification propre a votre site           **
+ *****************************************************************************/
+>>>>>>> cd0fa43e5748905bd9358563fb294b68a11dae5a:config.sample.php
 
 foreach($_POST as $name => $value) {
     $_GET[$name] = $value;

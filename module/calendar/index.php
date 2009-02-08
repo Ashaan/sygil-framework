@@ -3,7 +3,7 @@
 $core = Core::getInstance();
 
 // Donnée
-$core->addTheme('module/calendar/theme/default/theme.css');
+$core->addTheme('default','module/calendar/theme/default/theme.css');
 //$core->addScript('module/calendar/script/script.js');
 
 if (isset($_GET['CalendarZone'])) {

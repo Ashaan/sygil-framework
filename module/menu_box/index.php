@@ -3,7 +3,7 @@
 $core = Core::getInstance();
 
 // Donnée
-$core->addTheme('module/menu_box/theme/default/theme.css');
+$core->addTheme('default','module/menu_box/theme/default/theme.css');
 $core->addScript('module/menu_box/script/script.js');
 
 $data = '';

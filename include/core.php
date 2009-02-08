@@ -27,9 +27,11 @@ class Core {
             $this->script[] = $script;
         }
     }
-    public function addTheme($theme) {
-        if (!in_array($theme, $this->theme)) {
-            $this->theme[] = $theme;
+    public function addTheme($name, $path) {
+	$key = md5($name.'|'.$path);
+//DEFAULT_THEME
+        if (!array_key_exists($key, $this->theme)) {
+            $this->theme[$key] = array($name,$path);
         }
     }
     public function addScriptTemplate($template) {
@@ -69,7 +71,14 @@ class Core {
     public function generateIndex() {
         $this->data['__THEME__'] = '';
         foreach($this->theme as $theme) {
-            $this->data['__THEME__']  .= Template::getInstance()->get('index_theme' ,array('__URL__'=> $theme)); 
+	    $style = ($theme[0] == DEFAULT_THEME)?'stylesheet':'alternate-stylesheet';	
+            $this->data['__THEME__']  .= Template::getInstance()->get('index_theme' ,
+		array(
+		    '__NAME__'  => $theme[0],
+		    '__URL__'   => $theme[1],
+		    '__STYLE__' => $style
+		)
+	    ); 
         }
         $this->data['__SCRIPT__'] = '';
         foreach($this->script as $script) {
@@ -91,7 +100,14 @@ class Core {
         }
         $this->data['__THEME__'] = '';
         foreach($this->theme as $theme) {
-            $this->data['__THEME__']  .= Template::getInstance()->get('ajax_theme' ,array('__URL__'=> $theme)); 
+	    $style = ($theme[0] == DEFAULT_THEME)?'stylesheet':'alternate-stylesheet';	
+            $this->data['__THEME__']  .= Template::getInstance()->get('ajax_theme' ,
+		array(
+		    '__NAME__'  => $theme[0],
+		    '__URL__'   => $theme[1],
+		    '__STYLE__' => $style
+		)
+	    ); 
         }
         $this->data['__SCRIPT__'] = '';
         foreach($this->script as $script) {

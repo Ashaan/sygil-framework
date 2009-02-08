@@ -1,5 +1,9 @@
 *~
+site
+site/*
 config.php
 backup
 backup/*
+cache/*
+data/*
 

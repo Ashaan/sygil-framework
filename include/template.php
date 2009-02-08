@@ -21,7 +21,7 @@ class Template {
         $key  = $module.'/'.$name;
         if (!isset($this->file[$key])) {
             $module = ($module)?'/module/'.$module:'';
-            $path = CORE_PATH.$module.'/template/'.CURRENT_TEMPLATE.'/'.$name.'.tpl';
+            $path = CORE_PATH.$module.'/template/'.DEFAULT_TEMPLATE.'/'.$name.'.tpl';
             $f    = fopen($path,'r');
             $this->file[$key] = fread($f,filesize($path));
             fclose($f);

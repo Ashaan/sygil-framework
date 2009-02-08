@@ -6,11 +6,11 @@
   background    : url(background_title.png);
   height        : 22px;
   border-bottom : 0px solid #b1a594;
-  text-align    :center;
+  text-align    : center;
   font-size     : 14px;
   font-weight   : bold;
   line-height   : 22px;
-  color         : #111111;
+  color         : #e8e8e8;
 }
 .news_day_content {
   padding        : 0px;
@@ -18,10 +18,12 @@
 }
 
 .news_day .alt0 {
-  background    : #dee9ed;
+  background    : #ffee99;
+  color         : #111111;
 }
 .news_day .alt1 {
-  background    : #e3eef2;
+  background    : #f2eea3;
+  color         : #111111;
 }
 .news {
   border        : 0px solid #dee9ed;
@@ -29,7 +31,7 @@
   margin        : 0px;
   margin-bottom : 0px;
   background    : #474747;
-  color         : black;
+  color         : #e8e8e8;
 }
 
 .news .left {
@@ -58,14 +60,15 @@
 
 .news .date {
   padding       : 0px;
-  padding-bottom: .px;
+  padding-bottom: 0px;
   padding-right : 3px;
   text-align    : right;
   font-size     : 10px;
 }
 
 .news .content {
-  background    : #FFFFFF;
+  background    : #474747;
+  color         : #e8e8e8;
   padding       : 0px;
 }
 

@@ -221,7 +221,11 @@ CREATE TABLE IF NOT EXISTS `view_group2user` (
 --
 DROP TABLE IF EXISTS `view_group2module`;
 
-CREATE VIEW `sygil_base`.`view_group2module` AS select `G`.`name` AS `group`,`M`.`name` AS `module`,`G2M`.`perm` AS `perm` from ((`sygil_base`.`module` `M` left join `sygil_base`.`group2module` `G2M` on((`G2M`.`module` = `M`.`id`))) left join `sygil_base`.`group` `G` on((`G`.`id` = `G2M`.`group`)));
+CREATE VIEW `view_group2module` AS 
+select `G`.`name` AS `group`,`M`.`name` AS `module`,`G2M`.`perm` AS `perm` 
+from `module` `M` 
+  left join `group2module` `G2M` on `G2M`.`module` = `M`.`id`
+  left join `group` `G` on `G`.`id` = `G2M`.`group`;
 
 -- --------------------------------------------------------
 
@@ -230,5 +234,9 @@ CREATE VIEW `sygil_base`.`view_group2module` AS select `G`.`name` AS `group`,`M`
 --
 DROP TABLE IF EXISTS `view_group2user`;
 
-CREATE VIEW `sygil_base`.`view_group2user` AS select `G`.`name` AS `group`,`U`.`login` AS `username`,`U`.`email` AS `email`,`G2U`.`perm` AS `perm` from ((`sygil_base`.`user` `U` left join `sygil_base`.`group2user` `G2U` on((`G2U`.`user` = `U`.`id`))) left join `sygil_base`.`group` `G` on((`G`.`id` = `G2U`.`group`)));
+CREATE VIEW `view_group2user` AS 
+select `G`.`name` AS `group`,`U`.`login` AS `username`,`U`.`email` AS `email`,`G2U`.`perm` AS `perm` 
+from `user` `U` 
+  left join `group2user` `G2U` on `G2U`.`user` = `U`.`id`
+  left join `group` `G` on `G`.`id` = `G2U`.`group`;
 

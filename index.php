@@ -16,7 +16,7 @@ $core = Core::getInstance();
 
 $core->setTemplate('index');
 
-$core->addTheme('default','theme/default/theme.css');
+$core->addTheme('theme/NAME/theme.css');
 
 $core->addScript('script/function.js');
 $core->addScript('script/url.js');

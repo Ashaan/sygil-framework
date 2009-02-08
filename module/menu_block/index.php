@@ -3,7 +3,7 @@
 $core = Core::getInstance();
 
 // Donnée
-$core->addTheme('default','module/menu_block/theme/default/theme.css');
+$core->addTheme('module/menu_block/theme/NAME/theme.css');
 $core->addScript('module/menu_block/script/script.js');
 
 $core->addScriptInit ('url.menu_block_id   = '.(isset($_GET['MenuBlockId'])?$_GET['MenuBlockId']:1).';');

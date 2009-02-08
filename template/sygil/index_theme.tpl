@@ -1,1 +1,1 @@
-  <link href="__URL__" rel="__STYLE__" type="text/css" title="__NAME__"/>
+  <link href="__URL__" rel="__STYLE__" type="text/css"__NAME__/>

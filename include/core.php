@@ -10,6 +10,7 @@ class Core {
     private $exec     = array();
     private $scriptInit     = '';
     private $scriptTemplate = array();
+    private $themeList = array('glossy');
 
     static public function getInstance() {
         if (Core::$instance == null) {
@@ -27,11 +28,17 @@ class Core {
             $this->script[] = $script;
         }
     }
-    public function addTheme($name, $path) {
-	$key = md5($name.'|'.$path);
-//DEFAULT_THEME
-        if (!array_key_exists($key, $this->theme)) {
-            $this->theme[$key] = array($name,$path);
+    public function addTheme($path) {
+        foreach ($this->themeList as $name) {
+            $tmp = str_replace('NAME',$name,$path);
+	    $key = md5($name.'|'.$path);
+	    if (file_exists(CORE_PATH.'/'.$tmp)) {
+                $this->theme[$key] = array($name,$tmp);
+	    } else {
+	        $tmp = str_replace('NAME','default',$path);
+	        $key = md5('|'.$path);
+	        $this->theme[$key] = array(null,$tmp);
+	    }
         }
     }
     public function addScriptTemplate($template) {
@@ -71,10 +78,10 @@ class Core {
     public function generateIndex() {
         $this->data['__THEME__'] = '';
         foreach($this->theme as $theme) {
-	    $style = ($theme[0] == DEFAULT_THEME)?'stylesheet':'alternate-stylesheet';	
+	    $style = ($theme[0]==DEFAULT_THEME || $theme[0]==null)?'stylesheet':'alternate-stylesheet';	
             $this->data['__THEME__']  .= Template::getInstance()->get('index_theme' ,
 		array(
-		    '__NAME__'  => $theme[0],
+		    '__NAME__'  => $theme[0]?' title="'.$theme[0].'"':'',
 		    '__URL__'   => $theme[1],
 		    '__STYLE__' => $style
 		)

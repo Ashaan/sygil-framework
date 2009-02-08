@@ -10,13 +10,17 @@ $core = Core::getInstance();
 
 $core->setTemplate('index');
 
-// Override Official Theme List 
-//$core->setThemeList(
-//    array(
-//	'glossy' 		=> 'Gnome Glossy Theme',
-//	'aurora-midnight'	=> 'Gnome Aurora Midnight Theme'
-//    )
-//);
+// Override Official Theme List dans Config 
+/**
+ * $configThemeList = array(
+ *	'glossy' 		=> 'Gnome Glossy Theme',
+ *	'aurora-midnight'	=> 'Gnome Aurora Midnight Theme'
+ *   )
+ * );
+ */
+if (isset($configThemeList)) {
+    $core->setThemeList($configThemeList);
+}
 
 // Override Official Langue List
 //$core->setLangList(

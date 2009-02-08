@@ -45,7 +45,7 @@ body {
   padding-top   : 4px;
   padding-left  : 3px;
   padding-right : 3px;
-  color         ; #cfcfcf
+  color         : #cfcfcf;
 }
 #header .headhoption:hover {
   color         : #FFFFFF;
@@ -175,8 +175,8 @@ body {
   bottom        : 0px;
   right         : 0px;
   height        : 33px;
-  border-top    : 2px solid #cac1b3;
-  border-left   : 2px solid #cac1b3;
+  border-top    : 2px solid #8a8a8a;
+  border-left   : 2px solid #8a8a8a;
   color         : #DDDDDD;
   text-align    : center;
   font-weight   : bold;
@@ -231,18 +231,19 @@ body {
   padding-left  : 5px;
   padding-top   : 3px;
   bottom        : 0px;
-  color         : #000000;
+  color         : #cccccc;
   font-weight   : normal;
   -moz-border-radius: 5px;
-  border-top    : 1px solid #cac1b3;
-  border-left   : 2px solid #cac1b3;
-  border-right  : 1px solid #cac1b3;
+  border-top    : 1px solid #111111;
+  border-left   : 2px solid #111111;
+  border-right  : 1px solid #111111;
   height        : 27px;
   background    : url(onglet_background.png) top center repeat-x;
   float         :left;
 }
 
 #shortcut .element:hover {
+  color         : #ffffff;
   background    : url(onglet_background_hover.png) top center repeat-x;
   cursor        : pointer;
 }

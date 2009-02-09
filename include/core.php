@@ -24,7 +24,8 @@ class Core {
 	$this->setThemeList(
 	    array(
 		'glossy' 		=> 'Gnome Glossy Theme',
-		'aurora-midnight'	=> 'Gnome Aurora Midnight Theme'
+		'aurora-midnight'	=> 'Gnome Aurora Midnight Theme',
+		'green-glossy'		=> 'Gnome Green Glossy Theme'
 	    )
 	);
 	$this->setLangList(

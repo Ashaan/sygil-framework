@@ -124,7 +124,8 @@ function Ajax() {
     this.loadCSS = function(filename,name,alt) {
         var find = false;
         for (var i=0;i<document.getElementsByTagName("link").length;i++) { 
-            if (document.getElementsByTagName("link")[i].getAttribute('href') == filename) {
+            if (document.getElementsByTagName("link")[i].getAttribute('href') == filename &&
+		document.getElementsByTagName("link")[i].getAttribute('title') == name) {
                 find = true;
             }
         }

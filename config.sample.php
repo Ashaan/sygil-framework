@@ -23,7 +23,7 @@ define('CONFIGURE',true);
 define('INSTALL',true);
 
 // Definit les repertoire d'installation du CORE
-define('PATH_CORE'              , './core');
+define('PATH_CORE'              , 'core');
 define('PATH_TEMPLATE'          , PATH_CORE.'/template'); 
 define('PATH_THEME'             , PATH_CORE.'/theme'); 
 define('PATH_ICON'              , PATH_CORE.'/icon'); 
@@ -55,8 +55,8 @@ define('URL_ICON'               , URL_CORE.'/icon');
 
 // URL de votre site
 define('URL_ZONE'               , 'http://www.sygil.org');
-define('URL_CACHE'              , URL_ZONE.'/cache');
-define('URL_DATA'               , URL_ZONE.'/data');
+define('URL_CACHE'              , 'cache');
+define('URL_DATA'               , 'data');
 
 // Paramatre par defaut
 define('DEFAULT_LANGUE'  , 'french');

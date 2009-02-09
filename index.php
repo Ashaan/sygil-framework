@@ -1,10 +1,10 @@
 <?php
 
-require_once('config.php');
-require_once('include/core.php');
-require_once('include/db.php');
-require_once('include/session.php');
-require_once('include/template.php');
+if (!defined('CONFIGURE')) require_once('config.php');
+require_once(PATH_CORE.'/include/core.php');
+require_once(PATH_CORE.'/include/db.php');
+require_once(PATH_CORE.'/include/session.php');
+require_once(PATH_CORE.'/include/template.php');
 
 $core = Core::getInstance();
 
@@ -19,16 +19,16 @@ if (isset($configLangList)) {
 }
 
 
-$core->addTheme('theme/NAME/theme.css');
+$core->addTheme('theme.css');
 
-$core->addScript('script/function.js');
-$core->addScript('script/url.js');
-$core->addScript('script/frame.js');
-$core->addScript('script/base64.js');
-$core->addScript('script/ajax.js');
-$core->addScript('script/shortcut.js');
-$core->addScript('script/session.js');
-$core->addScript('script/ckeditor/ckeditor.js');
+$core->addScript('function.js');
+$core->addScript('url.js');
+$core->addScript('frame.js');
+$core->addScript('base64.js');
+$core->addScript('ajax.js');
+$core->addScript('shortcut.js');
+$core->addScript('session.js');
+$core->addScript('ckeditor/ckeditor.js');
 
 $core->addScriptInit ('url.frame = \''.(isset($_GET['Frame'])?$_GET['Frame']:'').'\';');
 $core->addScriptInit ('url.ajax  = \''.(isset($_GET['Ajax']) ?$_GET['Ajax'] :'').'\';');

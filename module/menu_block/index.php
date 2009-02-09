@@ -3,8 +3,8 @@
 $core = Core::getInstance();
 
 // Donnée
-$core->addTheme('module/menu_block/theme/NAME/theme.css');
-$core->addScript('module/menu_block/script/script.js');
+$core->addTheme ('theme.css', 'menu_block');
+$core->addScript('script.js', 'menu_block');
 
 $core->addScriptInit ('url.menu_block_id   = '.(isset($_GET['MenuBlockId'])?$_GET['MenuBlockId']:1).';');
 $core->addScriptInit ('url.menu_block_open = '.(isset($_GET['MenuBlockClose'])?0:1).';');

@@ -21,19 +21,19 @@ class Core {
     } 
 
     public function __construct() {
-	$this->setThemeList(
-	    array(
-		'glossy' 		=> 'Gnome Glossy Theme',
-		'aurora-midnight'	=> 'Gnome Aurora Midnight Theme',
-		'green-glossy'		=> 'Gnome Green Glossy Theme'
-	    )
-	);
-	$this->setLangList(
-	    array(
-		'french' 		=> '##french##',
-		'english'		=> '##english##'
-	    )
-	);
+	    $this->setThemeList(
+	        array(
+		        'glossy' 		    => 'Gnome Glossy Theme',
+		        'aurora-midnight'	=> 'Gnome Aurora Midnight Theme',
+		        'green-glossy'		=> 'Gnome Green Glossy Theme'
+	        )
+	    );
+	    $this->setLangList(
+	        array(
+		        'french' 		=> '##french##',
+		        'english'		=> '##english##'
+	        )
+	    );
     }
 
     public function setTemplate($template) {
@@ -47,22 +47,33 @@ class Core {
         $this->langList = $list;
     }
     
-    public function addScript($script) {
-        if (!in_array($script, $this->script)) {
-            $this->script[] = $script;
+    public function addScript($name, $module = null) {
+        $path = '';
+        if ($module) {
+            $path = str_replace('MODULE',$module,URL_MODULE_SCRIPT).'/'.$name;
+        } else {
+            $path = URL_SCRIPT.'/'.$name;
+        }
+
+        if (!in_array($path, $this->script)) {
+            $this->script[] = $path;
         }
     }
-    public function addTheme($path) {
-        foreach ($this->themeList as $name => $desc) {
-            $tmp = str_replace('NAME',$name,$path);
-	    $key = md5($name.'|'.$path);
-	    if (file_exists(CORE_PATH.'/'.$tmp)) {
-                $this->theme[$key] = array($name,$tmp);
-	    } else {
-	        $tmp = str_replace('NAME','default',$path);
-	        $key = md5($name.'|'.$path);
-	        $this->theme[$key] = array($name,$tmp);
-	    }
+    public function addTheme($name, $module = null) {
+        $path = '';
+        if ($module) {
+            $path = str_replace('MODULE',$module,URL_MODULE_THEME);
+        } else {
+            $path = URL_THEME;
+        }
+
+        foreach ($this->themeList as $theme => $desc) {
+            $file = $path.'/'.$theme.'/'.$name;
+	        $key = md5($name.'|'.$file);
+	        if (!file_exists($file)) {
+                $file = $path.'/default/'.$name;
+	        }
+            $this->theme[$key] = array($theme,$file);
         }
     }
     public function addScriptTemplate($template) {
@@ -71,7 +82,7 @@ class Core {
         }
     }
     public function addInclude($include) {
-        require_once($include);
+        require_once(PATH_CORE.'/'.$include);
     }
     public function addExec($exec) {
         $this->exec[] = $exec;
@@ -81,17 +92,14 @@ class Core {
         $this->scriptInit .= '      '.$script;
     }
     public function load($config) {
-	if ($config) {
-	    $path = CORE_CONFIG.'/'.$config.'.php';
-	    include($path);
-	}
+        if ($config) {
+	        $path = PATH_ZONE.'/index/'.$config.'.php';
+	        include($path);
+	    }
     }
 
     public function loadModule($module) {
-        $path = 'module/'.$module.'/index.php';
-        if ($this->config) $path = CORE_PATH.'/'.$path;
-
-        include($path);
+        include(PATH_MODULE.'/'.$module.'/index.php');
     }
 
     public function setData($name,$value) {
@@ -102,22 +110,21 @@ class Core {
     public function generateIndex() {
         $this->data['__THEME__'] = '';
         foreach($this->theme as $theme) {
-	    $style = ($theme[0]==DEFAULT_THEME || $theme[0]==null)?'stylesheet':'alternate stylesheet';	
+	        $style = ($theme[0]==DEFAULT_THEME || $theme[0]==null)?'stylesheet':'alternate stylesheet';	
             $this->data['__THEME__']  .= Template::getInstance()->get('index_theme' ,
-		array(
-		    '__NAME__'  => $theme[0]?' title="'.$theme[0].'"':'',
-		    '__URL__'   => $theme[1],
-		    '__STYLE__' => $style
-		)
-	    ); 
+        		array(
+        		    '__NAME__'  => $theme[0]?' title="'.$theme[0].'"':'',
+        		    '__URL__'   => $theme[1],
+        		    '__STYLE__' => $style
+        		)
+    	    ); 
         }
         $this->data['__SCRIPT__'] = '';
         foreach($this->script as $script) {
             $this->data['__SCRIPT__'] .= Template::getInstance()->get('index_script',array('__URL__'=> $script)); 
         }
         $this->data['__SCRIPT_INIT__']  = $this->scriptInit; 
-
-        $this->data['__ONLOAD__']    = 'url.load();session.update();';
+        $this->data['__ONLOAD__']       = 'url.load();session.update();';
 
         return Template::getInstance()->get($this->template,$this->data);
     }
@@ -131,18 +138,18 @@ class Core {
         }
         $this->data['__THEME__'] = '';
         foreach($this->theme as $theme) {
-	    $style = ($theme[0] == DEFAULT_THEME)?0:1;	
+	        $style = ($theme[0] == DEFAULT_THEME)?0:1;	
             $this->data['__THEME__']  .= Template::getInstance()->get('ajax_theme' ,
-		array(
-		    '__NAME__'  => $theme[0],
-		    '__URL__'   => $theme[1],
-		    '__ALT__'   => $style
-		)
-	    ); 
+		        array(
+		            '__NAME__'  => $theme[0],
+		            '__URL__'   => $theme[1],
+		            '__ALT__'   => $style
+		        )
+	        ); 
         }
         $this->data['__SCRIPT__'] = '';
         foreach($this->script as $script) {
-            $this->data['__SCRIPT__'] .= Template::getInstance()->get('ajax_script',array('__URL__'=> $script)); 
+            $this->data['__SCRIPT__'] .= Template::getInstance()->get('ajax_script',array('__URL__'=> CORE_URL.'/'.$script)); 
         }
         $this->data['__TEMPLATE__'] = '';
         foreach($this->scriptTemplate as $name => $template) {

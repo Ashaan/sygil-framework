@@ -10,8 +10,8 @@ class db {
 
     static function getInstance() {
         if (is_null(db::$instance)) {
-            if ( file_exists('include/db/'.DATABASE_TYPE.'.php') ) {
-                require_once('include/db/'.DATABASE_TYPE.'.php');
+            if ( file_exists(PATH_CORE.'/include/db/'.DATABASE_TYPE.'.php') ) {
+                require_once(PATH_CORE.'/include/db/'.DATABASE_TYPE.'.php');
                 $class = 'db_'.DATABASE_TYPE;
                 db::$instance = new $class();
             }

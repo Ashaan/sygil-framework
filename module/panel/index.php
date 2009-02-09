@@ -3,7 +3,7 @@
 $core = Core::getInstance();
 
 // Donnée
-$core->addTheme('module/panel/theme/NAME/theme.css');
+$core->addTheme('theme.css','panel');
 
 $core->addInclude('module/panel/include/panel.php');
 $core->addInclude('module/panel/include/line.php');

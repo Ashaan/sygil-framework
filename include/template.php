@@ -13,15 +13,19 @@ class Template {
     } 
 
     function __construct() {
-	$lang = array();
-	include(CORE_PATH.'/langue/'.DEFAULT_LANGUE.'.php');
-	$this->lang = $lang;
+	    $lang = array();
+	    include(PATH_LANGUE.'/'.DEFAULT_LANGUE.'.php');
+	    $this->lang = $lang;
     }
     private function load($name, $module = null) {
         $key  = $module.'/'.$name;
         if (!isset($this->file[$key])) {
-            $module = ($module)?'/module/'.$module:'';
-            $path = CORE_PATH.$module.'/template/'.DEFAULT_TEMPLATE.'/'.$name.'.tpl';
+            $path = '';
+            if ($module) {
+                $path = str_replace('MODULE',$module,PATH_MODULE_TEMPLATE).'/'.DEFAULT_TEMPLATE.'/'.$name.'.tpl';
+            } else {
+                $path = PATH_TEMPLATE.'/'.DEFAULT_TEMPLATE.'/'.$name.'.tpl';
+            }
             $f    = fopen($path,'r');
             $this->file[$key] = fread($f,filesize($path));
             fclose($f);

@@ -3,8 +3,8 @@
 $core = Core::getInstance();
 
 // Donnée
-$core->addTheme('module/menu_box/theme/NAME/theme.css');
-$core->addScript('module/menu_box/script/script.js');
+$core->addTheme ('theme.css', 'menu_box');
+$core->addScript('script.js', 'menu_box');
 
 $data = '';
 if (isset($_GET['MenuBoxClose'])) {

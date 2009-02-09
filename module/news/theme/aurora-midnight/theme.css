@@ -1,0 +1,80 @@
+.news_day {
+   border        : 1px solid #8a8a8a;
+   margin-bottom : 5px;
+}
+.news_day_title {
+  background    : url(background_title.png);
+  height        : 22px;
+  border-bottom : 0px solid #b1a594;
+  text-align    : center;
+  font-size     : 14px;
+  font-weight   : bold;
+  line-height   : 22px;
+  color         : #e8e8e8;
+}
+.news_day_content {
+  padding        : 0px;
+  padding-bottom : 0px;
+}
+
+.news_day .alt0 {
+  background    : #ffee99;
+  color         : #111111;
+}
+.news_day .alt1 {
+  background    : #f2eea3;
+  color         : #111111;
+}
+.news {
+  border        : 0px solid #dee9ed;
+  padding       : 0px;
+  margin        : 0px;
+  margin-bottom : 0px;
+  background    : #474747;
+  color         : #e8e8e8;
+}
+
+.news .left {
+  padding-top   : 0px;
+  padding-left  : 3px;
+  padding-bottom: 2px;
+}
+.news .right {
+  width         : 150px;
+  float         : right; 
+}
+.news .title {
+  font-size     : 14px;
+  font-weight   : bold;
+}
+
+.news .author {
+  font-size     : 10px;
+}
+
+.news .action {
+  text-align    : right;
+  border        : 0px solid black;
+  height        : 20px;
+}
+
+.news .date {
+  padding       : 0px;
+  padding-bottom: 0px;
+  padding-right : 3px;
+  text-align    : right;
+  font-size     : 10px;
+}
+
+.news .content {
+  background    : #474747;
+  color         : #e8e8e8;
+  padding       : 0px;
+}
+
+.news .button {
+
+}
+
+
+

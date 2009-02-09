@@ -93,7 +93,11 @@ class Core {
     }
     public function load($config) {
         if ($config) {
-	        $path = PATH_ZONE.'/index/'.$config.'.php';
+            if (substr($config,0,4)=='ajax') {
+    	        $path = PATH_ZONE.'/'.$config.'.php';
+            } else {
+    	        $path = PATH_ZONE.'/index/'.$config.'.php';
+            }
 	        include($path);
 	    }
     }

@@ -37,6 +37,8 @@ class Template {
     public function get($name,$data, $module = '') {
        $tpl = $this->load($name,$module);
 
+         
+       $tpl = str_replace('__URL_ICON__',URL_ICON.'/default',$tpl);
        foreach($data as $key => $value) {
           $tpl = str_replace($key,$value,$tpl);
        }

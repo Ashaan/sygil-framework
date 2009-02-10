@@ -60,10 +60,10 @@ function Shortcut()
             if (this.key[i] == '') continue; 
             data += '<div class="element" onclick="shortcut.get(\'' + this.key[i] + '\')" style="z-index:' + (1000-(i*10)) + ';">';
             data +=     this.key[i] + ' ';
-            data +=     '<img class="del" src="icon/default/delete.png" onclick="shortcut.del(\'' + this.key[i] + '\');"/>';
+            data +=     '<img class="del" src="' + tpl_url_icon + '/delete.png" onclick="shortcut.del(\'' + this.key[i] + '\');"/>';
             data += '</div>' ;
         }
-        data = '<img class="add" src="icon/default/add.png" onclick="shortcut.add();"/>' + data;
+        data = '<img class="add" src="' + tpl_url_icon + '/add.png" onclick="shortcut.add();"/>' + data;
         document.getElementById('shortcut').innerHTML = data;
     }
 

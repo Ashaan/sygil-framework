@@ -16,6 +16,8 @@
     if (document.layers) {
       alert('##msg_ns6##');
     }
+
+    tpl_url_icon    = '__URL_ICON__';
     lang_disconnect = '##Disconnect##';
     lang_connect    = '##Connect##';
     lang_register   = '##Register##';
@@ -46,7 +48,7 @@ __SCRIPT_INIT__
 
   <div id="footer">Mathieu Chocat © Copyright 2006-2009 [Ashaan / Sygil.org]</div>
   <div id="shortcut" style="">
-    <img class="add" src="icon/default/add-28x28.png" onclick="shortcut.add();"/>
+    <img class="add" src="__URL_ICON__/add-28x28.png" onclick="shortcut.add();"/>
   </div>
 
   

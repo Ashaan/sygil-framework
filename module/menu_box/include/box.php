@@ -30,7 +30,11 @@ class MenuBoxBox {
   	global $tplData;
     $options = '';
     foreach ($this->option as $option) {
-      $options .= $option->generate();
+      if (is_object($option)) {  
+        $options .= $option->generate();
+      } else {
+        $options .= $option;
+      }
     }
 
     if (!$this->opened) {

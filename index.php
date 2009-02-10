@@ -1,4 +1,15 @@
 <?php
+/**
+ * Description:
+ *   Main script for generate an html page with Sygil Portal Framework
+ *
+ * Author:
+ *   Mathieu Chocat <mathieu@chocat.com> / Ashaan
+ * Contributor:
+ *   none
+ *
+ * Copyright(c) 2008-2009 Mathieu Chocat (or Sygil.org if applicable)
+ **/
 
 if (!defined('CONFIGURE')) require_once('config.php');
 require_once(PATH_CORE.'/include/core.php');

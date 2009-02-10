@@ -1,4 +1,17 @@
 <?php
+/**
+ * Description:
+ *   Sample Configuration File for use Sygil Portal Framework
+ *
+ * Author:
+ *   Mathieu Chocat <mathieu@chocat.com> / Ashaan
+ * Contributor:
+ *   Nicolas Briche <> / Maheulbeuk
+ *
+ * Copyright(c) 2008-2009 Mathieu Chocat (or Sygil.org if applicable)
+ **/
+
+
 foreach($_POST as $name => $value) {
     $_GET[$name] = $value;
 }

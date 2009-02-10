@@ -61,19 +61,23 @@ class Core {
     }
     public function addTheme($name, $module = null) {
         $path = '';
+        $url  = '';
         if ($module) {
-            $path = str_replace('MODULE',$module,URL_MODULE_THEME);
+            $path = str_replace('MODULE',$module,PATH_MODULE_THEME);
+            $url  = str_replace('MODULE',$module,URL_MODULE_THEME);
         } else {
-            $path = URL_THEME;
+            $path = PATH_THEME;
+            $url  = URL_THEME;
         }
 
         foreach ($this->themeList as $theme => $desc) {
-            $file = $path.'/'.$theme.'/'.$name;
-	        $key = md5($name.'|'.$file);
-	        if (!file_exists($file)) {
-                $file = $path.'/default/'.$name;
+            $furl  = $url.'/'.$theme.'/'.$name;
+            $fpath = $path.'/'.$theme.'/'.$name;
+	        $key = md5($name.'|'.$fpath);
+	        if (!file_exists($fpath)) {
+                $furl = $url.'/default/'.$name;
 	        }
-            $this->theme[$key] = array($theme,$file);
+            $this->theme[$key] = array($theme,$furl);
         }
     }
     public function addScriptTemplate($template) {

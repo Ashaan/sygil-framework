@@ -3,7 +3,7 @@
 $core = Core::getInstance();
 
 // Donnée
-$core->addTheme('module/window/theme/NAME/theme.css');
+$core->addTheme('theme.css','window');
 
 $core->addInclude('module/window/include/window.php');
 

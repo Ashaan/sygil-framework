@@ -1,4 +1,15 @@
 <?php
+//Syntax
+/**
+ *$block = new MenuBlockBlock('');
+ *$menu = new MenuBoxBox('');
+ *$menu->addOption(new MenuBoxOption(''          , 'frame.open(\'http:// \', this)'));
+ *$block->addElement($menu);
+ *$menu = new MenuBoxBox('');
+ *$menu->addOption(new MenuBoxOption(''            , null));
+ *$block->addElement($menu);
+ *$blocks->addBlock($block);
+ */
 
 $core = Core::getInstance();
 $core->loadModule('menu_block');
@@ -17,46 +28,31 @@ $menu->addOption(
 $block->addElement($menu);
 
 
-$menu = new MenuBoxBox('Jeux');
-$menu->addOption(new MenuBoxOption('World Of Warcraft'   , 'frame.open(\'http://wow.sygil.org/\', this)'));
-$menu->addOption(new MenuBoxOption('Ultima Online'       , null));
+$menu = new MenuBoxBox('Titre 1');
+$menu->addOption(new MenuBoxOption('exemple 1 google'   , 'frame.open(\'http://google.fr/\', this)'));
+$menu->addOption(new MenuBoxOption('exemple 2'          , null));
 $block->addElement($menu);
-$menu = new MenuBoxBox('VoIP');
-$menu->addOption(new MenuBoxOption('Mumble'              , 'frame.open(\'http://mumble.sygil.org/\', this)'));
-$menu->addOption(new MenuBoxOption('TeamSpeak'           , null));
-$menu->addOption(new MenuBoxOption('Asterisk'            , null));
+$menu = new MenuBoxBox('Titre 2');
+$menu->addOption(new MenuBoxOption('Exemple 1'            , 'frame.open(\'http://yousiteweb.com/\', this)'));
+$menu->addOption(new MenuBoxOption('Exemple 2'            , null));
+$menu->addOption(new MenuBoxOption('Exemple 3'            , null));
 $block->addElement($menu);
-$menu = new MenuBoxBox('Services');
-$menu->addOption(new MenuBoxOption('Webmail'             , 'frame.open(\'http://webmail.sygil.org/\', this)'));
-$menu->addOption(new MenuBoxOption('Layman Gentoo'       , 'frame.open(\'http://layman.sygil.org/\', this)'));
-$menu->addOption(new MenuBoxOption('Mirroir Gentoo'      , 'frame.open(\'http://gentoo.sygil.org/\', this)'));
-$menu->addOption(new MenuBoxOption('FTP'                 , 'frame.open(\'ftp://ftp.sygil.org/\', this)'));
-$menu->addOption(new MenuBoxOption('Jabber'              , null));
+$menu = new MenuBoxBox('Titre ..');
+$menu->addOption(new MenuBoxOption('exemple 5'            , 'frame.open(\'http://www.yousite.org/\', this)'));
 $block->addElement($menu);
 $blocks->addBlock($block);
 
-$block = new MenuBlockBlock('Projets');
-$menu = new MenuBoxBox('Actif');
-$menu->addOption(new MenuBoxOption('Portail Sygil'       , 'frame.open(\'http://projects.sygil.org/p/portal/\', this)'));
-$menu->addOption(new MenuBoxOption('Sygil Overlay'       , 'frame.open(\'http://projects.sygil.org/p/layman/\', this)'));
-$menu->addOption(new MenuBoxOption('Iptable Config'      , 'frame.open(\'http://projects.sygil.org/p/iptables/\', this)'));
+$block = new MenuBlockBlock('Block 2');
+$menu = new MenuBoxBox('Titre 1');
+$menu->addOption(new MenuBoxOption('exemple 1 modzilla'          , 'frame.open(\'http://www.mozilla-europe.org/fr/firefox/\', this)'));
 $block->addElement($menu);
-$menu = new MenuBoxBox('En Pause');
-$menu->addOption(new MenuBoxOption('phpCV'               , 'frame.open(\'http://projects.sygil.org/p/phpcv/\', this)'));
-$menu->addOption(new MenuBoxOption('Web Gallery'         , 'frame.open(\'http://projects.sygil.org/p/phpgallery/\', this)'));
+$menu = new MenuBoxBox('Titre 2');
+$menu->addOption(new MenuBoxOption('exemple 2 youtube'            , 'frame.open(\'http://www.youtube.com/?gl=FR&hl=fr\', this)'));
 $block->addElement($menu);
-$menu = new MenuBoxBox('A l\'Etude');
-$menu->addOption(new MenuBoxOption('Wanguard'            , null));
-$menu->addOption(new MenuBoxOption('Black Mail'          , null));
-$block->addElement($menu);
-$menu = new MenuBoxBox('Abandonné');
-$menu->addOption(new MenuBoxOption('co² Framework'       , null));
-$menu->addOption(new MenuBoxOption('Sowulo'              , null));
-$block->addElement($menu);  
 $blocks->addBlock($block);
 
 
-$block = new MenuBlockBlock('Intranet');
+$block = new MenuBlockBlock('Block 3');
 $menu = new MenuBoxBox('Général');
 $menu->addOption(new MenuBoxOption('Accueil'             , ''));
 $menu->addOption(new MenuBoxOption('Utilisateur'         , ''));
@@ -64,32 +60,7 @@ $block->addElement($menu);
 $blocks->addBlock($block);
 
 
-$block = new MenuBlockBlock('Famille Chocat');
-$menu = new MenuBoxBox('Général');
-$menu->addOption(new MenuBoxOption('Gestionnaire de Courriel', 'frame.open(\'http://webmail.chocat.com\', this)'));
-$block->addElement($menu);
-$menu = new MenuBoxBox('Mathieu');
-$menu->addOption(new MenuBoxOption('Curriculum Vitae'    , 'frame.open(\'http://mathieu.chocat.com\', this)'));
-$menu->addOption(new MenuBoxOption('Development Zome'    , 'frame.open(\'http://dev.chocat.com\', this)'));
-$block->addElement($menu);
-$blocks->addBlock($block);
-
-
-$block = new MenuBlockBlock('Racines Dubois');
-$menu = new MenuBoxBox('Général');
-$menu->addOption(new MenuBoxOption('Forum'               , 'frame.open(\'http://www.racinedubois.com/\', this)'));
-$menu->addOption(new MenuBoxOption('Galerie'             , 'frame.open(\'http://image.racinedubois.com/\', this)'));
-$block->addElement($menu);
-$menu = new MenuBoxBox('Noziéres');
-$menu->addOption(new MenuBoxOption('Félicien'            , 'frame.open(\'http://felicien.racinedubois.com/\', this)'));
-$menu->addOption(new MenuBoxOption('Cyprien'             , 'frame.open(\'http://cyprien.racinedubois.com/\', this)'));
-$block->addElement($menu);
-$menu = new MenuBoxBox('Expérimental');
-$menu->addOption(new MenuBoxOption('Chat Experimental'   , 'frame.open(\'http://dev.racinedubois.com/\', this)'));
-$menu->addOption(new MenuBoxOption('Galerie Experimental', 'frame.open(\'http://gdev.racinedubois.com/\', this)'));
-$block->addElement($menu);
-$blocks->addBlock($block);
-
+//Block need identification to appear
 $session = Session::getInstance();
 if ($session->isLogged()) {
     $cacti = 'http://cacti.sygil.local/graph_view.php';
@@ -104,12 +75,12 @@ if ($session->isLogged()) {
     $menu->addOption(new MenuBoxOption('Antonin [chocat]'    , null));
     $block->addElement($menu);
     $menu = new MenuBoxBox('Statistique Reseau');
-    $menu->addOption(new MenuBoxOption('nTop'                , 'frame.open(\'http://sygil.local:3000\', this)'));
-    $menu->addOption(new MenuBoxOption('Webalizer'           , 'frame.open(\'http://sygil.local/webalizer\', this)'));
+    $menu->addOption(new MenuBoxOption('nTop'                , 'frame.open(\'http://exemple.local:3000\', this)'));
+    $menu->addOption(new MenuBoxOption('Webalizer'           , 'frame.open(\'http://exemple.org/webalizer\', this)'));
     $block->addElement($menu);
     $menu = new MenuBoxBox('Administration');
-    $menu->addOption(new MenuBoxOption('phpMyAdmin'          , 'frame.open(\'http://phpmyadmin.sygil.local\', this)'));
-    $menu->addOption(new MenuBoxOption('WebMin'              , 'frame.open(\'https://sygil.local:10000/\', this)'));
+    $menu->addOption(new MenuBoxOption('phpMyAdmin'          , 'frame.open(\'http://sql.free.fr\', this)'));
+    $menu->addOption(new MenuBoxOption('Teamspeak'              , 'frame.open(\'https://exemple.org:14534/\', this)'));
     $block->addElement($menu);
     $blocks->addBlock($block);
 }

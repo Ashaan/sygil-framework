@@ -1,4 +1,17 @@
 <?php
+/**
+ * Description:
+ *   Core Class
+ *
+ * Author:
+ *   Mathieu Chocat <mathieu@chocat.com> / Ashaan
+ * Contributor:
+ *   none
+ *
+ * Revision: $REVISION$ 
+ *
+ * Copyright(c) 2008-2009 Mathieu Chocat (or Sygil.org if applicable)
+ **/
 
 class Core {
     static private $instance = null;

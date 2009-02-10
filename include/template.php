@@ -1,4 +1,18 @@
 <?php
+/**
+ * Description:
+ *   Template and Icon Manager 
+ *
+ * Author:
+ *   Mathieu Chocat <mathieu@chocat.com> / Ashaan
+ * Contributor:
+ *   none
+ *
+ * Revision: $REVISION$
+ *
+ * Copyright(c) 2008-2009 Mathieu Chocat (or Sygil.org if applicable)
+ **/
+
 
 class Template {
     static private $instance = null;

@@ -1,8 +1,16 @@
 <?php
 /**
- * @author    Mathieu Chocat
- * @version   $Id: db.php 54 2007-02-07 10:08:48Z mathieu $
- * @copyright (c) 2006 Sygil.eu
+ * Description:
+ *   Core Class
+ *
+ * Author:
+ *   Mathieu Chocat <mathieu@chocat.com> / Ashaan
+ * Contributor:
+ *   none
+ *
+ * Revision: $REVISION$
+ *
+ * Copyright(c) 2008-2009 Mathieu Chocat (or Sygil.org if applicable)
  **/
 
 class db {

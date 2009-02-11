@@ -6,7 +6,7 @@
           height="140"
           style="margin-top:7px;margin-bottom:5px;border:0px solid #FF0000;">
     <param name="movie" value="http://cdn.last.fm/widgets/radio/22.swf" /> 
-    <param name="flashvars" value="lfmMode=radio&amp;radioURL=user%2FAshaan%2Fpersonal&amp;title=Ashaan+biblioth%C3%A8que&amp;theme=blue&amp;lang=fr&amp;widget_id=Player" /> 
+    <param name="flashvars" value="lfmMode=radio&amp;radioURL=__RADIO__&amp;title=__TITLE__&amp;theme=__THEME__&amp;lang=__LANG__" /> 
     <param name="allowScriptAccess" value="always" /> 
     <param name="allowNetworking" value="all" /> 
     <param name="allowFullScreen" value="true" /> 

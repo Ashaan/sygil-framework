@@ -71,24 +71,26 @@ $menu->addOption(new MenuBoxOption('Development Zome'    , 'frame.open(\'http://
 $block->addElement($menu);
 $blocks->addBlock($block);
 
-
-$block = new MenuBlockBlock('Racines Dubois');
-$menu = new MenuBoxBox('Général');
-$menu->addOption(new MenuBoxOption('Forum'               , 'frame.open(\'http://www.racinedubois.com/\', this)'));
-$menu->addOption(new MenuBoxOption('Galerie'             , 'frame.open(\'http://image.racinedubois.com/\', this)'));
-$block->addElement($menu);
-$menu = new MenuBoxBox('Noziéres');
-$menu->addOption(new MenuBoxOption('Félicien'            , 'frame.open(\'http://felicien.racinedubois.com/\', this)'));
-$menu->addOption(new MenuBoxOption('Cyprien'             , 'frame.open(\'http://cyprien.racinedubois.com/\', this)'));
-$block->addElement($menu);
-$menu = new MenuBoxBox('Expérimental');
-$menu->addOption(new MenuBoxOption('Chat Experimental'   , 'frame.open(\'http://dev.racinedubois.com/\', this)'));
-$menu->addOption(new MenuBoxOption('Galerie Experimental', 'frame.open(\'http://gdev.racinedubois.com/\', this)'));
-$block->addElement($menu);
-$blocks->addBlock($block);
-
 $session = Session::getInstance();
-if ($session->isLogged()) {
+
+if ($session->inGroup('Dubois')) {
+    $block = new MenuBlockBlock('Racines Dubois');
+    $menu = new MenuBoxBox('Général');
+    $menu->addOption(new MenuBoxOption('Forum'               , 'frame.open(\'http://www.racinedubois.com/\', this)'));
+    $menu->addOption(new MenuBoxOption('Galerie'             , 'frame.open(\'http://image.racinedubois.com/\', this)'));
+    $block->addElement($menu);
+    $menu = new MenuBoxBox('Noziéres');
+    $menu->addOption(new MenuBoxOption('Félicien'            , 'frame.open(\'http://felicien.racinedubois.com/\', this)'));
+    $menu->addOption(new MenuBoxOption('Cyprien'             , 'frame.open(\'http://cyprien.racinedubois.com/\', this)'));
+    $block->addElement($menu);
+    $menu = new MenuBoxBox('Expérimental');
+    $menu->addOption(new MenuBoxOption('Chat Experimental'   , 'frame.open(\'http://dev.racinedubois.com/\', this)'));
+    $menu->addOption(new MenuBoxOption('Galerie Experimental', 'frame.open(\'http://gdev.racinedubois.com/\', this)'));
+    $block->addElement($menu);
+    $blocks->addBlock($block);
+}
+
+if ($session->inGroup('Sygil')) {
     $cacti = 'http://cacti.sygil.local/graph_view.php';
     $block = new MenuBlockBlock('Monitoring');
     $menu = new MenuBoxBox('Statistique System');

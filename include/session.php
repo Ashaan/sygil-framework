@@ -126,7 +126,6 @@ class Session {
             $logged = false;
             if ($result['password'] == 'pam') {
                 $err = error_reporting(0);
-
                 $mbox = imap_open("{localhost:143/notls}INBOX", $result['sys_user'],$_POST['password']);
                 if ($mbox) {
                     imap_close($mbox);
@@ -134,19 +133,12 @@ class Session {
                 } else {
                     $logged = false;
                 }
-
-                error_reporting($err);
-
-//                if (variable_get('pam_auth_enabled', 0) == 0) {
-//                    echo 'PAM desactiver';
-//                }
-//                if (!pam_auth($$result['user'],$_POST['password'], &$error)) {
-//                    var_dump($error);
-//                }
-            } else {
+               error_reporting($err);
+           } else {
                 $logged = ($result['password'] == md5($_POST['password']));
             }
             unset($result['password']);
+            unset($_POST['password']);
 
             if ($logged) {
                 session_destroy();
@@ -154,6 +146,21 @@ class Session {
                 $this->data = array();
                 $this->initialize();      
                 $this->user = $result;
+                $this->user['group'] = array();
+            
+                $query = '
+                    SELECT *
+                    FROM `{pre}group` G
+                      LEFT JOIN `{pre}group2user` G2U ON G2U.`group`=G.`id`
+                    WHERE G2U.`user`="'.$this->user['id'].'"
+                    ORDER BY G.id';
+                $result = $db->select($query);
+                if ($result) {
+                    foreach($result as $info) {
+                        $this->user['group'][$info['name']] = $info;
+                    } 
+                }
+
                 return true;
             }
         }
@@ -168,6 +175,26 @@ class Session {
             $this->user = null;
             $this->initialize();      
         }
+    }
+
+    function inGroup($group, $right = 1) {
+        if ($this->isLogged()) {
+            if (isset($this->user['group']) && isset($this->user['group'][$group])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function inModule($module, $right = 1) {
+          
+        $query = '
+            SELECT *
+            FROM `{pre}module` M
+              LEFT JOIN `{pre}group2module` G2M ON G2M.`module`=M.`id`
+            WHERE M.`id`="'.$module.'"
+              AND G2M IN ()';
+
     }
 }
 

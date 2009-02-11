@@ -7,7 +7,7 @@
   <meta name="author" content="Mathieu Chocat"/>
   <meta name="version" content="$Id: index.tpl 54 2007-02-07 10:08:48Z mathieu $"/>
   <meta name="copyright" content="(c) 2006-2009 Sygil.org"/>
-  <title>##site_short_name## - ##site_long_name##</title>
+  <title>##site_long_name##</title>
 
   <script type="text/javascript">
     if (document.all && document.body && document.body.style && !document.body.style.maxHeight) {
@@ -18,6 +18,7 @@
     }
 
     tpl_url_icon    = '__URL_ICON__';
+    tpl_welcom_msg  = '##Welcome_on## ##site_short_name##';
     lang_disconnect = '##Disconnect##';
     lang_connect    = '##Connect##';
     lang_register   = '##Register##';
@@ -46,7 +47,7 @@ __SCRIPT_INIT__
     <div id="right">  __RIGHT__  </div>
   </div>
 
-  <div id="footer">Mathieu Chocat © Copyright 2006-2009 [Ashaan / Sygil.org]</div>
+  <div id="footer">Copyright©2006-2009 Sygil.org</div>
   <div id="shortcut" style="">
     <img class="add" src="__URL_ICON__/add-28x28.png" onclick="shortcut.add();"/>
   </div>

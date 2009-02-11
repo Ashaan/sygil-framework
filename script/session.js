@@ -37,7 +37,7 @@ function Session() {
 	        menu.innerHTML += '<div class="option" onclick="">' + lang_register +'</div>';
 	        menu.innerHTML += '<div class="separator"></div>';
 	        menu.innerHTML += '<div class="option" onclick="ajax.load(\'connect\',null,\'replace\',[])">' + lang_connect + '</div>';
-   	        header.innerHTML  = 'Bienvenue sur Sygil.org !'; 
+   	        header.innerHTML  = tpl_welcom_msg; 
 	    }
 
         for (var i=0;i<this.updateScript.length;i++) {

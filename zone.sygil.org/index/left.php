@@ -73,7 +73,7 @@ $blocks->addBlock($block);
 
 $session = Session::getInstance();
 
-if ($session->inGroup('Dubois')) {
+if ( strpos($_SERVER['SERVER_NAME'],'racinedubois.com')!==FALSE || strpos($_SERVER['SERVER_NAME'],'familledubois.org')!==FALSE || $session->inGroup('Dubois')) {
     $block = new MenuBlockBlock('Racines Dubois');
     $menu = new MenuBoxBox('Général');
     $menu->addOption(new MenuBoxOption('Forum'               , 'frame.open(\'http://www.racinedubois.com/\', this)'));
@@ -90,7 +90,7 @@ if ($session->inGroup('Dubois')) {
     $blocks->addBlock($block);
 }
 
-if ($session->inGroup('Sygil')) {
+if ( strpos($_SERVER['SERVER_NAME'],'sygil.local')!==FALSE || $session->inGroup('Sygil')) {
     $cacti = 'http://cacti.sygil.local/graph_view.php';
     $block = new MenuBlockBlock('Monitoring');
     $menu = new MenuBoxBox('Statistique System');

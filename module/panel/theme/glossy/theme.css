@@ -8,7 +8,7 @@
 }
 
 .panel:hover {
-  background    : #f0edea;
+  background    : transparent;
 }
 
 .panel_line {

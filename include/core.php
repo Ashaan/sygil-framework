@@ -38,7 +38,8 @@ class Core {
 	        array(
 		        'glossy' 		    => 'Gnome Glossy Theme',
 		        'aurora-midnight'	=> 'Gnome Aurora Midnight Theme',
-		        'green-glossy'		=> 'Gnome Green Glossy Theme'
+		        'wood-brun'		=> 'Wood Beta',
+			'green-glossy'		=> 'Gnome Green Glossy Theme'
 	        )
 	    );
 	    $this->setLangList(

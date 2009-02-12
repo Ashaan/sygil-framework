@@ -10,7 +10,7 @@
  *
  * Revision: $REVISION$ 
  *
- * Copyright(c) 2008-2009 Mathieu Chocat (or Sygil.org if applicable)
+ * Copyright(c) 2008-2009 Sygil.org
  **/
 
 class Core {
@@ -112,9 +112,17 @@ class Core {
     public function load($config) {
         if ($config) {
             if (substr($config,0,4)=='ajax') {
-    	        $path = PATH_ZONE.'/'.$config.'.php';
+                if (file_exists(PATH_ZONE.'/'.$config.'.php')) {
+        	        $path = PATH_ZONE.'/'.$config.'.php';
+                } else {
+        	        $path = PATH_CORE.'/zone.default/'.$config.'.php';
+                }
             } else {
-    	        $path = PATH_ZONE.'/index/'.$config.'.php';
+                if (file_exists(PATH_ZONE.'/index/'.$config.'.php')) {
+        	        $path = PATH_ZONE.'/index/'.$config.'.php';
+                } else {
+        	        $path = PATH_CORE.'/zone.default/index/'.$config.'.php';
+                }
             }
 	        include($path);
 	    }

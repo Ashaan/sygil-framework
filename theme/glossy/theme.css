@@ -135,9 +135,8 @@ body {
 
 #right {
   position      : absolute;
-  display       : none;
   top           : 0px;
-  right         : 0px;
+  right         : 5px;
   bottom        : 0px;
   width         : 0px;
   border        : 0px solid #FF0000;
@@ -149,7 +148,7 @@ body {
   top           : 0px;
   bottom        : 0px;
   left          : 250px;
-  right         : 0px;
+  right         : 5px;
   border        : 0px solid #0000FF;
   background    : #f5f2ef;
   padding       : 0px;

@@ -1,0 +1,38 @@
+.slide_block_manager {
+  position      : absolute;
+  top           : 0px;
+  bottom        : 0px;
+  left          : 0px;
+  right         : 2px;
+  overflow      : hidden;
+  padding       : 0px;
+  margin        : 0px;
+}
+
+.slide_block_manager_close,
+.slide_block_manager_open {
+  position      : absolute;
+  top           : 0px;
+  bottom        : 0px;
+  right         : 0px;
+  margin-right  : 0px;
+  z-index       : 101;
+  width         : 8px;
+  background    : url(arrow_right2left.png) right center no-repeat;
+}
+
+.slide_block_manager_open:hover {
+  background    : url(arrow_right2left_hover.png) right center no-repeat;
+  cursor        : pointer;
+}
+
+.slide_block_manager_close {
+  background    : url(arrow_left2right.png) right center no-repeat #ebeced;
+}
+
+.slide_block_manager_close:hover {
+  background    : url(arrow_left2right_hover.png) right center no-repeat #ebeced;
+  cursor        : pointer;
+}
+
+

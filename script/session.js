@@ -34,7 +34,7 @@ function Session() {
 	         menu.innerHTML   += '<div class="option" onclick="session.disconnect()">' + lang_disconnect + '</div>';  
    	        header.innerHTML  = 'Bonjour, ' + this.lastname + ' ' + this.firstname; 
 	    } else {
-	        menu.innerHTML += '<div class="option" onclick="">' + lang_register +'</div>';
+	        menu.innerHTML += '<div class="option" onclick="ajax.load(\'register\',null,\'replace\',[[\'group\',\'sygil\']])">' + lang_register +'</div>';
 	        menu.innerHTML += '<div class="separator"></div>';
 	        menu.innerHTML += '<div class="option" onclick="ajax.load(\'connect\',null,\'replace\',[])">' + lang_connect + '</div>';
    	        header.innerHTML  = tpl_welcom_msg; 

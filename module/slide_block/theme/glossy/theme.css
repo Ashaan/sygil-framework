@@ -2,7 +2,7 @@
   position      : absolute;
   top           : 0px;
   bottom        : 0px;
-  left          : 1px;
+  left          : 0px;
   right         : 0px;
   overflow      : hidden;
   padding       : 0px;
@@ -20,6 +20,7 @@
   z-index       : 99;
   width         : 8px;
   background    : url(arrow_left2right_hover.png) right center no-repeat;
+  margin-left   : 1px;
 }
 
 .slide_block_open:hover {
@@ -28,6 +29,7 @@
 }
 
 .slide_block_close {
+  margin-left   : 0px;
   background    : url(arrow_right2left_hover.png) right center no-repeat;
 }
 

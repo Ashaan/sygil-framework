@@ -24,7 +24,7 @@ body {
   height        : 19px;
   font-weight   : bold;
   color         : #EEEEEE;
-  background    : url(header.png);
+  background    : url(bois.png);
   padding-top   : 2px;
   padding-left  : 3px;
   padding-right : 3px;
@@ -36,7 +36,7 @@ body {
   right         : 0px;
   bottom        : 0px;
   height        : 18px;
-  background    : url(header.png);
+  background    : url(bois.png);
 }
 
 #header .headhoption {
@@ -65,7 +65,7 @@ body {
 .menu_list {
   display       : none;
   color         : #000000;
-  background    : url(menu_background.png);
+  background    : url(list_background.png);
   border-bottom : 1px solid #BBBBBB;
   border-left   : 1px solid #BBBBBB;
   border-right  : 1px solid #BBBBBB;
@@ -82,7 +82,7 @@ body {
   padding       : 2px;
 }
 .menu_list .option:hover {
-  background    : url(menu_foreground.png);
+  background    : url(bois.png);
   color         : #FFFFFF;
   cursor        : pointer;
 }
@@ -104,7 +104,7 @@ body {
   right         : 0px;
   height        : 19px;
   border-top    : 0px solid #DDDDDD;
-  background    : url(footer.png);
+  background    : url(foot.png);
   color         : #DDDDDD;
   text-align    : center;
   font-weight   : bold;
@@ -126,7 +126,7 @@ body {
   left          : 0px;
   bottom        : 0px;
   width         : 250px;
-  background    : url(left_background.png) right repeat;
+  background    : url(background.png);
   border        : 0px solid #FF0000;
   text-align    : center;
   padding-top   : 0px;
@@ -141,7 +141,7 @@ body {
   bottom        : 0px;
   width         : 0px;
   border        : 0px solid #FF0000;
-  background    : black;
+  background    : url=(background.png);
 }
 
 #center {
@@ -151,7 +151,7 @@ body {
   left          : 250px;
   right         : 0px;
   border        : 0px solid #0000FF;
-  background    : #f5f2ef;
+  background    : url(background.png);
   padding       : 0px;
   margin        : 0px;
   overflow      : auto;
@@ -200,7 +200,7 @@ body {
 }
 
 #shortcut .add:hover {
-  background        : url(action_hover.png);
+  background        : url(.png);
   border            : 2px solid #6b8bab;
   cursor            : pointer;
 }

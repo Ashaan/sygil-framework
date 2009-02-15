@@ -60,6 +60,7 @@ __SCRIPT_INIT__
     <div class="option" onclick="switchStyle('glossy')">Glossy</div>
     <div class="option" onclick="switchStyle('aurora-midnight')">Aurora Midnight</div>
 	<div class="option" onclick="switchStyle('green-glossy')">Green Glossy</div>
+<div class="option" onclick="switchStyle('wood-brun')">wood</div>
   </div>
   <div id="lang_list" class="menu_list" onmouseover="setDisplay('lang_list','block')" onmouseout="setDisplay('lang_list','none')"
 		       style="position:absolute;top:19px;right:80px;width:150px;">

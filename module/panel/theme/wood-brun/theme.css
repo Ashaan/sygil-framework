@@ -4,17 +4,17 @@
   margin        : 5px;
   padding       : 0px;
   -moz-border-radius: 10px;
-  background    : url(background_title.png);
+  background    : transparent;
 }
 
 .panel:hover {
-  background    : url(background_title.png);
+  background    : #f0edea;
 }
 
 .panel_line {
   position      : relative;
   border        : 0px red solid;
-  background    : url(background_title.png);
+  background    : #00FF00;
   min-height    : 30px;
   margin-bottom : 5px;
   padding       : 0px;
@@ -24,6 +24,6 @@
 }
 
 .panel_line:hover {
-  background    : url(background_title.png);
+  background    : #e5e2df;
 }
 

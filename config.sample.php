@@ -83,17 +83,10 @@ $preload = array(
   'ajax.load(\'left/menu\',\'left\',\'replace\',[[\'close\','.(isset($_GET['MenuBlockClose'])?'1':'0').'],[\'default\','.(isset($_GET['MenuBlockId'])?$_GET['MenuBlockId']:'1').']])',
   'ajax.load(\'right/slide\',\'right\',\'replace\',[])',
 );
-
-// Page central par default
-if (!isset($_GET['Frame']) && !isset($_GET['Ajax'])) {
-   $preload[] = 'ajax.load(\'home\',\'center\',\'replace\',[])';
-} else
-if (isset($_GET['Frame'])) {
-   $preload[] = 'frame.load(\''.$_GET['Frame'].'\',\'Last\')';
-} else {
-   $preload[] = 'ajax.load(\''.$_GET['Ajax'].'\',\'center\',\'replace\',[])';
-}
-
+define('DEFAULT_CENTER','home');
+define('WELCOME_LOGOFF','##Welcome_on## ##site_short_name##');
+define('WELCOME_LOGON' ,'##Hi## ##user_firstname## ##user_lastname##');
+define('MAIN_MENU'     ,'##My_Account##');
 
 /**
  * SITE CONFIGURATION

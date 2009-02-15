@@ -35,15 +35,20 @@ $core->addScriptInit ('url.ajax     = \''.(isset($_GET['Ajax']) ?$_GET['Ajax'] :
 
 $session = Session::getInstance();
 
+// Page central par default
+if (!isset($_GET['Frame']) && !isset($_GET['Ajax'])) {
+   $preload[] = 'ajax.load(\''.DEFAULT_CENTER.'\',\'center\',\'replace\',[])';
+} else
+if (isset($_GET['Frame'])) {
+   $preload[] = 'frame.open(\''.$_GET['Frame'].'\',\'Last\')';
+} else {
+   $preload[] = 'ajax.load(\''.$_GET['Ajax'].'\',\'center\',\'replace\',[])';
+}
 foreach($preload as $script) {
     $core->addExec($script.';');
 }
 
-//$core->load(DEFAULT_LEFT);
-//$core->load(DEFAULT_CENTER);
-//$core->load(DEFAULT_RIGHT);
-
-$core->loadModule('window');
+//$core->loadModule('window');
 
 if ($session->isLogged()) {
     $core->addScriptInit ('session.isConnect = true;');

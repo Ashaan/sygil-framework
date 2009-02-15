@@ -111,19 +111,19 @@ class Core {
     }
     public function load($config) {
         if ($config) {
-            if (substr($config,0,4)=='ajax') {
+//            if (substr($config,0,4)=='ajax') {
+//                if (file_exists(PATH_ZONE.'/'.$config.'.php')) {
+//        	        $path = PATH_ZONE.'/'.$config.'.php';
+//                } else {
+//        	        $path = PATH_CORE.'/zone.default/'.$config.'.php';
+//                }
+//            } else {
                 if (file_exists(PATH_ZONE.'/'.$config.'.php')) {
         	        $path = PATH_ZONE.'/'.$config.'.php';
                 } else {
         	        $path = PATH_CORE.'/zone.default/'.$config.'.php';
                 }
-            } else {
-                if (file_exists(PATH_ZONE.'/index/'.$config.'.php')) {
-        	        $path = PATH_ZONE.'/index/'.$config.'.php';
-                } else {
-        	        $path = PATH_CORE.'/zone.default/index/'.$config.'.php';
-                }
-            }
+//            }
 	        include($path);
 	    }
     }
@@ -151,10 +151,20 @@ class Core {
         }
         $this->data['__SCRIPT__'] = '';
         foreach($this->script as $script) {
-            $this->data['__SCRIPT__'] .= Template::getInstance()->get('index_script',array('__URL__'=> $script)); 
+            $this->data['__SCRIPT__'] .= Template::getInstance()->get('index_script',
+                array(
+                    '__URL__' => $script
+                )
+            ); 
         }
+
+        $this->data['__EXEC__'] = '';
+        foreach($this->exec as $exec) {
+            $this->data['__EXEC__']  .= $exec; 
+        }
+
         $this->data['__SCRIPT_INIT__']  = $this->scriptInit; 
-        $this->data['__ONLOAD__']       = 'url.load();session.update();';
+        $this->data['__ONLOAD__']       = 'session.update();';
 
         return Template::getInstance()->get($this->template,$this->data);
     }
@@ -179,7 +189,11 @@ class Core {
         }
         $this->data['__SCRIPT__'] = '';
         foreach($this->script as $script) {
-            $this->data['__SCRIPT__'] .= Template::getInstance()->get('ajax_script',array('__URL__'=> CORE_URL.'/'.$script)); 
+            $this->data['__SCRIPT__'] .= Template::getInstance()->get('ajax_script',
+                array(
+                    '__URL__'=> $script
+                )
+            ); 
         }
         $this->data['__TEMPLATE__'] = '';
         foreach($this->scriptTemplate as $name => $template) {

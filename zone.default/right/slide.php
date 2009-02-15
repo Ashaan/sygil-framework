@@ -14,11 +14,14 @@ $panel->setRight (  '0px');
 $panel->setOverflow ('none');
 $row = $panel->addLine('panel_slide_row1');
 $row->setBackground('#6798ca');
+$row = $panel->addLine('panel_slide_row2');
+$row->setBackground('#6798ca');
 
 $slide->addBlock($panel);
 
-$core->addScriptInit ('ajax.load(\'lastfm_player\',\'panel_slide_row1\',\'replace\',[]);');
-$core->addScriptInit ('slide_block.width = \'210px\';');
+$core->setData('__CONTENT__', $slide->generate());
+$core->addExec('ajax.load(\'right/lastfm/player\',\'panel_slide_row1\',\'replace\',[]);');
+$core->addExec('ajax.load(\'right/lastfm/latest\',\'panel_slide_row2\',\'replace\',[]);');
 
-$core->setData('__RIGHT__', $slide->generate());
+
 ?>

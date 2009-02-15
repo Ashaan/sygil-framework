@@ -80,14 +80,14 @@ define('DEFAULT_ICON'	 , 'dropline-neu');
 // Contenu d'affichage par default
 define('DEFAULT_LEFT'    , 'left');
 define('DEFAULT_CENTER'  , null);
-define('DEFAULT_RIGHT'   , null);
+define('DEFAULT_RIGHT'   , 'right');
 
-
-/*SITE CONFIGURATION*/
- *SITE_SHORT_NAME => Name
- *SITE_LONG_NAME => short description of your site in english language
- *SITE_LONG_NAME_FR => short description of your site in french language
- *SITE_SEARCH_KEYWORDS => Meta keyword for referencement
+/**
+ * SITE CONFIGURATION
+ *  - SITE_SHORT_NAME => Name
+ *  - SITE_LONG_NAME => short description of your site in english language
+ *  - SITE_LONG_NAME_FR => short description of your site in french language
+ *  - SITE_SEARCH_KEYWORDS => Meta keyword for referencement
  */
 define('SITE_SHORT_NAME'  	, 'sygil.org');
 define('SITE_LONG_NAME'   	, 'Sygil Experimental Portal and CMS');

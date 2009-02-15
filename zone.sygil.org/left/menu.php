@@ -7,7 +7,7 @@ $blocks = new MenuBlockManager();
 
 $block = new MenuBlockBlock('Accueil');
 $menu = new MenuBoxBox('Accueil');
-$menu->addOption(new MenuBoxOption('Accueil', 'ajax.open(\'blog\')'));
+$menu->addOption(new MenuBoxOption('Accueil', 'ajax.open(\'home\')'));
 $block->addElement($menu);
 
 $menu = new MenuBoxBox('Services');
@@ -113,5 +113,10 @@ if ( strpos($_SERVER['SERVER_NAME'],'sygil.local')!==FALSE || $session->inGroup(
     $blocks->addBlock($block);
 }
 
-$core->setData('__LEFT__', $blocks->generate());
+
+
+$core->setData('__CONTENT__', $blocks->generate());
+$core->addExec ('menu_block.change('.$_GET['default'].');');
+if ($_GET['close']) $core->addExec('menu_block.close();');
+
 ?>

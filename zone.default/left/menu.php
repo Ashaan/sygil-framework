@@ -85,5 +85,8 @@ if ($session->isLogged()) {
     $blocks->addBlock($block);
 }
 
-$core->setData('__LEFT__', $blocks->generate());
+$core->setData('__CONTENT__', $blocks->generate());
+
+$core->addExec ('menu_block.change('.$_POST['default'].');');
+if ($_POST['close']) $core->addExec ('menu_block.close();');
 ?>

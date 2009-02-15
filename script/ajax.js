@@ -209,7 +209,7 @@ function Ajax() {
         }
 
         if (exec_data != '') {
-            eval(exec_data);
+            setTimeout(exec_data,500);
         }
 
         if (this != ajax) {
@@ -251,17 +251,20 @@ ajax = new Ajax();
 
 
 Url.prototype.ajax = null;
-Url.prototype.loadAjax = function() {
-    if (this.ajax) {
-        ajax.open(this.ajax);
-        this.frame = null;
-    }
-}
 Url.prototype.saveAjax = function() {
     if (this.ajax) {
         return '&Ajax='+this.ajax;
     }
     return '';
 }
-url.addLoadScript('this.loadAjax'); 
 url.addSaveScript('this.saveAjax');
+
+
+//Url.prototype.loadAjax = function() {
+//    if (this.ajax) {
+//        ajax.open(this.ajax);
+//        this.frame = null;
+//    }
+//}
+//url.addLoadScript('this.loadAjax'); 
+

@@ -1,17 +1,4 @@
 <?php
-/**
- * Description:
- *   Main script for generate an html page with Sygil Portal Framework
- *
- * Author:
- *   Mathieu Chocat <mathieu@chocat.com> / Ashaan
- * Contributor:
- *   none
- *
- * Revision: $REVISION$ 
- *
- * Copyright(c) 2008-2009 Mathieu Chocat (or Sygil.org if applicable)
- **/
 
 if (!defined('CONFIGURE')) require_once('config.php');
 require_once(PATH_CORE.'/include/core.php');
@@ -43,14 +30,18 @@ $core->addScript('shortcut.js');
 $core->addScript('session.js');
 $core->addScript('ckeditor/ckeditor.js');
 
-$core->addScriptInit ('url.frame = \''.(isset($_GET['Frame'])?$_GET['Frame']:'').'\';');
-$core->addScriptInit ('url.ajax  = \''.(isset($_GET['Ajax']) ?$_GET['Ajax'] :'').'\';');
+$core->addScriptInit ('url.frame    = \''.(isset($_GET['Frame'])?$_GET['Frame']:'').'\';');
+$core->addScriptInit ('url.ajax     = \''.(isset($_GET['Ajax']) ?$_GET['Ajax'] :'').'\';');
 
 $session = Session::getInstance();
 
-$core->load(DEFAULT_LEFT);
-$core->load(DEFAULT_CENTER);
-$core->load(DEFAULT_RIGHT);
+foreach($preload as $script) {
+    $core->addExec($script.';');
+}
+
+//$core->load(DEFAULT_LEFT);
+//$core->load(DEFAULT_CENTER);
+//$core->load(DEFAULT_RIGHT);
 
 $core->loadModule('window');
 

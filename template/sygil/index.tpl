@@ -27,9 +27,12 @@ __THEME__
 __SCRIPT__
   <script type="text/javascript">
 __SCRIPT_INIT__
+    function onLoad() {
+__EXEC__
+    }
   </script>
 </head>
-<body onload="__ONLOAD__">
+<body onload="url.load();onLoad();__ONLOAD__">
   <div id="header">
     <span></span>
     <div>
@@ -42,9 +45,9 @@ __SCRIPT_INIT__
   </div>
 
   <div id="body">
-    <div id="left">   __LEFT__   </div>
-    <div id="center"> __CENTER__ </div>
-    <div id="right">  __RIGHT__  </div>
+    <div id="left"></div>
+    <div id="center"></div>
+    <div id="right"></div>
   </div>
 
   <div id="footer">Copyright©2006-2009 Sygil.org</div>

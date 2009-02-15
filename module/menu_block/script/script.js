@@ -88,5 +88,5 @@ Url.prototype.saveMenuBlock = function() {
 
     return temp;
 }
-url.addLoadScript('this.loadMenuBlock'); 
+//url.addLoadScript('this.loadMenuBlock'); 
 url.addSaveScript('this.saveMenuBlock');

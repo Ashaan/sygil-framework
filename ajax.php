@@ -28,7 +28,7 @@ $core = Core::getInstance();
 
 $core->setTemplate('ajax');
 
-$core->load('ajax/'.$_GET['command']);
+$core->load($_GET['command']);
 
 $session = Session::getInstance();
 $session->save();

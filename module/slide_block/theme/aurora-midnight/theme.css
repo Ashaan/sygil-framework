@@ -1,66 +1,41 @@
-.menu_block_manager {
+.slide_block {
   position      : absolute;
   top           : 0px;
   bottom        : 0px;
   left          : 0px;
-  right         : 2px;
+  right         : 0px;
   overflow      : hidden;
   padding       : 0px;
   margin        : 0px;
+  border-left   : 0px solid #111111;
 }
 
-.menu_block_manager_close,
-.menu_block_manager_open {
+.slide_block_close,
+.slide_block_open {
   position      : absolute;
   top           : 0px;
   bottom        : 0px;
-  right         : 0px;
-  margin-right  : 0px;
-  z-index       : 101;
+  left          : 0px;
+  margin        : 0px;
+  z-index       : 99;
   width         : 8px;
-  background    : url(arrow_right2left.png) right center no-repeat;
+  background    : url(arrow_left2right_hover.png) right center no-repeat;
+  margin-left   : 1px;
 }
 
-.menu_block_manager_open:hover {
+.slide_block_open:hover {
+  background    : url(arrow_left2right.png) right center no-repeat;
+  cursor        : pointer;
+}
+
+.slide_block_close {
+  margin-left   : 0px;
   background    : url(arrow_right2left_hover.png) right center no-repeat;
+}
+
+.slide_block_close:hover {
+  background    : url(arrow_right2left.png) right center no-repeat;
   cursor        : pointer;
 }
 
-.menu_block_manager_close {
-  background    : url(arrow_left2right.png) right center no-repeat #111111;
-}
-
-.menu_block_manager_close:hover {
-  background    : url(arrow_left2right_hover.png) right center no-repeat #111111;
-  cursor        : pointer;
-}
-
-.menu_block_title {
-  position      : absolute;
-  left          : 0px;
-  right         : 1px;
-  background    : url(background_title.png) center;
-  font-size     : 14px;
-  font-weight   : bold;
-  border-bottom : 1px solid #000000;
-  height        : 20px;
-  line-height   : 22px;
-  color         : #D8D8D8;
-}
-
-.menu_block_title:hover {
-  background    : url(background_title_hover.png) center;
-  cursor        : pointer;
-}
-
-.menu_block_content {
-  position      : absolute;
-  left          : 0px;
-  right         : 1px;
-  bottom        : 0px;
-  overflow      : auto;
-  border-bottom : 1px solid #000000;
-  padding-bottom: 0px;
-  padding-top   : 5px;
-}
 

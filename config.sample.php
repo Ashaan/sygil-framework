@@ -77,10 +77,23 @@ define('DEFAULT_LANGUE'  , 'french');
 define('DEFAULT_THEME'   , 'glossy');
 define('DEFAULT_TEMPLATE', 'sygil');
 define('DEFAULT_ICON'	 , 'dropline-neu');
+
 // Contenu d'affichage par default
-define('DEFAULT_LEFT'    , 'left');
-define('DEFAULT_CENTER'  , null);
-define('DEFAULT_RIGHT'   , 'right');
+$preload = array(
+  'ajax.load(\'left/menu\',\'left\',\'replace\',[[\'close\','.(isset($_GET['MenuBlockClose'])?'1':'0').'],[\'default\','.(isset($_GET['MenuBlockId'])?$_GET['MenuBlockId']:'1').']])',
+  'ajax.load(\'right/slide\',\'right\',\'replace\',[])',
+);
+
+// Page central par default
+if (!isset($_GET['Frame']) && !isset($_GET['Ajax'])) {
+   $preload[] = 'ajax.load(\'home\',\'center\',\'replace\',[])';
+} else
+if (isset($_GET['Frame'])) {
+   $preload[] = 'frame.load(\''.$_GET['Frame'].'\',\'Last\')';
+} else {
+   $preload[] = 'ajax.load(\''.$_GET['Ajax'].'\',\'center\',\'replace\',[])';
+}
+
 
 /**
  * SITE CONFIGURATION

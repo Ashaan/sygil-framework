@@ -1,10 +1,4 @@
-          <div class="menu_box">
-            <div class="menu_box_title" onclick="__URL__">
-              <div id="menu_box_arrow___ID__" class="menu_box_open" onclick="menu_box.close('__ID__');"></div>  
-              __TITLE__
-            </div>
-            <div id="menu_box_data___ID__" class="menu_box_data">
+          <div id="menu_box___ID__" class="menu_vertical" style="__STYLE__">
 __OPTION__
-            </div>
           </div>
 

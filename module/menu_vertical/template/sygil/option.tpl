@@ -1,3 +1,3 @@
-              <div class="menu_box_option __COLOR__" onclick="__ACTION__">
+              <div class="menu_vertical_option" onclick="__ACTION__">
                  __TITLE__
               </div>

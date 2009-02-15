@@ -10,7 +10,7 @@
  *
  * Revision: $REVISION$ 
  *
- * Copyright(c) 2008-2009 Mathieu Chocat (or Sygil.org if applicable)
+ * Copyright (c) 2008-2009 Sygil.org
  **/
 
 
@@ -20,13 +20,11 @@ require_once(PATH_CORE.'/include/db.php');
 require_once(PATH_CORE.'/include/session.php');
 require_once(PATH_CORE.'/include/template.php');
 
-$core = Core::getInstance();
+$core    = Core::getInstance();
+$session = Session::getInstance();
 
 $core->setTemplate('ajax');
-
 $core->load(Session::DATA('command'));
-
-$session = Session::getInstance();
 $session->save();
 
 ob_start('ob_gzhandler');

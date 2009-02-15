@@ -9,18 +9,12 @@ require_once(PATH_CORE.'/include/template.php');
 $core    = Core::getInstance();
 $session = Session::getInstance();
 
+if (isset($configThemeList) $core->setThemeList($configThemeList);
+if (isset($configLangList)  $core->setLangList($configLangList);
+
+
 $core->setTemplate('index');
-
-if (isset($configThemeList)) {
-    $core->setThemeList($configThemeList);
-}
-
-if (isset($configLangList)) {
-    $core->setLangList($configLangList);
-}
-
 $core->addTheme('theme.css');
-
 $core->addScript('function.js');
 $core->addScript('url.js');
 $core->addScript('frame.js');
@@ -30,9 +24,9 @@ $core->addScript('shortcut.js');
 $core->addScript('session.js');
 $core->addScript('ckeditor/ckeditor.js');
 
-foreach($preload as $script) {
-    $core->addExec($script.';');
-}
+foreach($preload as $script) $core->addExec($script.';');
+
+
 // Page central par default
 if (!Session::DATA('Frame') && !Session::DATA('Ajax')) {
    $core->addExec('ajax.load(\''.DEFAULT_CENTER.'\',\'center\',\'replace\',[])');
@@ -43,6 +37,10 @@ if (Session::DATA('Frame')) {
    $core->addExec('ajax.load(\''.Session::DATA('Ajax').'\',\'center\',\'replace\',[])');
 }
 
+
+/**
+ * TODO a migrer en ajax
+ **/
 if ($session->isLogged()) {
     $core->addScriptInit ('session.isConnect = true;');
     $core->addScriptInit ('session.lastname = \''.$session->getUser('lastname').'\';');
@@ -54,6 +52,11 @@ if ($session->isLogged()) {
     $core->addScriptInit ('session.firstname = \'\';');
     $core->addScriptInit ('session.login = \'\';');
 }
+/**
+ * TODO a migrer en ajax
+ **/
+
+
 $session->save();
 
 ob_start('ob_gzhandler');

@@ -10,6 +10,7 @@ class CssPosition extends Css {
     private $right    = null;
     private $width    = null;
     private $height   = null;
+    private $Z        = null;
 
     public function setPosition($position) {
         $this->position = $position;
@@ -32,17 +33,23 @@ class CssPosition extends Css {
     public function setHeight($height) {
         $this->height = $height;
     }
-
+    public function setZ($Z) {
+        $this->Z = $Z;
+    }
 
     public function getCSS($genMode=0) {
-        $css .= getLine('position', $this->position   , $genMode);
-        $css .= getLine('top'     , $this->top   , $genMode);
-        $css .= getLine('left'    , $this->left  , $genMode);
-        $css .= getLine('bottom'  , $this->bottom, $genMode);
-        $css .= getLine('right'   , $this->right , $genMode);
-        $css .= getLine('width'   , $this->width , $genMode);
-        $css .= getLine('height'  , $this->height, $genMode);
+        $css  = '';
 
+        $css .= $this->getLine('position', $this->position, $genMode);
+        $css .= $this->getLine('z-index' , $this->Z       , $genMode);
+        $css .= $this->getLine('top'     , $this->top     , $genMode);
+        $css .= $this->getLine('left'    , $this->left    , $genMode);
+        $css .= $this->getLine('bottom'  , $this->bottom  , $genMode);
+        $css .= $this->getLine('right'   , $this->right   , $genMode);
+        $css .= $this->getLine('width'   , $this->width   , $genMode);
+        $css .= $this->getLine('height'  , $this->height  , $genMode);
+
+        return $css;
     }
 }
 

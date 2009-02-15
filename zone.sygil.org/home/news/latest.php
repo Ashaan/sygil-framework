@@ -4,7 +4,7 @@ $core = Core::getInstance();
 
 $core->loadModule('news');
 
-$event = new NewsEvents($_GET['module']);
+$event = new NewsEvents(Session::DATA('module'));
 $event->load();
 
 $day = new NewsDaily($event);

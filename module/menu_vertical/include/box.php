@@ -1,28 +1,26 @@
 <?php
 
-class MenuBoxBox {
+require_once(PATH_CORE.'/include/widget/css/position.php');
+
+class MenuVertical {
   private static $Count = 1;
   private $id;
   private $title;
-  private $url;
   private $option;
+  public  $position;
 
-  public function __construct($title='', $url=null) {
-    $this->title = $title;
-    $this->url   = $url;
-    $this->option= array();
-    $this->opened= 1;
-    $this->id    = MenuBoxBox::$Count++;
-    if (isset($_GET['m'.$this->id])) {
-      $this->opened = $_GET['m'.$this->id]; 	
-    }
+  public function __construct($title='') {
+    $this->title    = $title;
+    $this->option   = array();
+    $this->id       = MenuVertical::$Count++;
+    $this->position = new CssPosition();
   }
  
   public function getId() {
     return $this->id;
   }
 
-  public function addOption($option) {
+  public function addElement($option) {
     $this->option[] = $option;
   }
 
@@ -46,10 +44,11 @@ class MenuBoxBox {
       '__TITLE__' => $this->title,
       '__URL__'   => $this->url,
       '__OPTION__'=> $options,
-      '__OPENED__'=> $this->opened
+      '__OPENED__'=> $this->opened,
+      '__STYLE__' => $this->position->getCSS(0),
     );
 
-    return Template::getInstance()->get('box',$data,'menu_box');
+    return Template::getInstance()->get('box',$data,'menu_vertical');
   }
 }
 

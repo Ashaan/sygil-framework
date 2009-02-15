@@ -20,15 +20,11 @@ require_once(PATH_CORE.'/include/db.php');
 require_once(PATH_CORE.'/include/session.php');
 require_once(PATH_CORE.'/include/template.php');
 
-foreach($_POST as $name => $value) {
-    $_GET[$name] = $value;
-}
-
 $core = Core::getInstance();
 
 $core->setTemplate('ajax');
 
-$core->load($_GET['command']);
+$core->load(Session::DATA('command'));
 
 $session = Session::getInstance();
 $session->save();

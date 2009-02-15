@@ -5,14 +5,14 @@ $core->loadModule('menu_vertical');
 
 
 $menu = new MenuVertical();
-$menu->setTop('22px');
-$menu->setBottom(null);
-$menu->setLeft(null);
-$menu->setRight('0px');
-$menu->setWidth('150px');
+$menu->position->setTop('22px');
+$menu->position->setBottom(null);
+$menu->position->setLeft(null);
+$menu->position->setRight('0px');
+$menu->position->setWidth('150px');
 
 $session = Session::getInstance();
-if (!$session->isConnect()) {
+if (!$session->isLogged()) {
     $menu->addElement(new MenuVerticalOption('Connection','ajax.load(\'connect\',\'\',[])'));
     $menu->addElement(new MenuVerticalOption('Inscription','ajax.load(\'register\',\'\',[])'));
 } else {

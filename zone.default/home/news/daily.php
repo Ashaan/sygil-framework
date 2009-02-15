@@ -4,8 +4,8 @@ $core = Core::getInstance();
 
 $core->loadModule('news');
 
-$event = new NewsEvents($_GET['module']);
-$event->setDate($_GET['date']);
+$event = new NewsEvents(Session::DATA('module'));
+$event->setDate(Session::DATA('date'));
 $event->load();
 
 $day = new NewsDaily($event);

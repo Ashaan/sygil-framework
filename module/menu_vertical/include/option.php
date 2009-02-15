@@ -1,6 +1,6 @@
 <?php
 
-class MenuBoxOption {
+class MenuVerticalOption {
   private $title;
   private $url;
   private $color;

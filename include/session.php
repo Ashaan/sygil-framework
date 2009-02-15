@@ -2,6 +2,8 @@
 
 class Session {
     static $instance = null;
+    private $dontsave = array('Frame','Ajax');
+    private $dontload = array('password');
     private $data;
     private $user = null;
 
@@ -30,6 +32,11 @@ class Session {
             $this->user = $_SESSION['user'];
         }
 
+        foreach ($_GET as $name => $value) {
+            if ($name != 'password') {
+                $this->data[$name] = $value;
+            }
+        }
         foreach ($_POST as $name => $value) {
             if ($name != 'password') {
                 $this->data[$name] = $value;
@@ -37,7 +44,7 @@ class Session {
         }   
     }
 
-    function getData($name,$subname=null) {
+    public function getData($name,$subname=null) {
         if(isset($this->data[$name])) {
             if (!$subname) {
                 return $this->data[$name];
@@ -47,6 +54,10 @@ class Session {
             }
         }
         return false;
+    }
+    // Les getData du glandeur
+    public static function DATA($name,$subname=null) {
+        return Session::getInstance()->getData($name,$subname);
     }
 
     public function getUser($name) {
@@ -81,6 +92,11 @@ class Session {
     }
 
     function save() {
+        foreach($this->data as $key => $value) {
+            if (in_array($key, $this->dontsave)) {
+                $this->data[$key] = null;
+            }
+        }
         if (!session_is_registered('data')) {
             session_register('data');
         }
@@ -168,7 +184,7 @@ class Session {
     }
 
     private function logout() {
-        if ($_GET['disconnect']) {
+        if ($this->getData('disconnect')) {
             session_destroy();
             session_start();
             $this->data = array();

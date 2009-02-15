@@ -99,8 +99,15 @@ class Core {
             $this->scriptTemplate[] = $template;
         }
     }
-    public function addInclude($include) {
-        require_once(PATH_CORE.'/'.$include);
+    public function addInclude($include, $module = null) {
+        $path = '';
+        if ($module) {
+            $path = str_replace('MODULE',$module,PATH_MODULE_INCLUDE).'/'.$include;
+        } else {
+            $path = PATH_MODULE.'/'.$include;
+        }
+
+        require_once($path);
     }
     public function addExec($exec) {
         $this->exec[] = $exec;
@@ -111,19 +118,11 @@ class Core {
     }
     public function load($config) {
         if ($config) {
-//            if (substr($config,0,4)=='ajax') {
-//                if (file_exists(PATH_ZONE.'/'.$config.'.php')) {
-//        	        $path = PATH_ZONE.'/'.$config.'.php';
-//                } else {
-//        	        $path = PATH_CORE.'/zone.default/'.$config.'.php';
-//                }
-//            } else {
-                if (file_exists(PATH_ZONE.'/'.$config.'.php')) {
-        	        $path = PATH_ZONE.'/'.$config.'.php';
-                } else {
-        	        $path = PATH_CORE.'/zone.default/'.$config.'.php';
-                }
-//            }
+            if (file_exists(PATH_ZONE.'/'.$config.'.php')) {
+      	        $path = PATH_ZONE.'/'.$config.'.php';
+            } else {
+      	        $path = PATH_CORE.'/zone.default/'.$config.'.php';
+            }
 	        include($path);
 	    }
     }
@@ -169,9 +168,9 @@ class Core {
         return Template::getInstance()->get($this->template,$this->data);
     }
     public function generateAjax() {
-        $this->data['__COMMAND__'] = $_GET['command'];
-        $this->data['__TARGET__']  = $_GET['target'];
-        $this->data['__METHOD__']  = $_GET['method'];
+        $this->data['__COMMAND__'] = Session::DATA('command');
+        $this->data['__TARGET__']  = Session::DATA('target');
+        $this->data['__METHOD__']  = Session::DATA('method');
         $this->data['__EXEC__'] = '';
         foreach($this->exec as $exec) {
             $this->data['__EXEC__']  .= Template::getInstance()->get('ajax_exec' ,array('__EXEC__'=> $exec)); 

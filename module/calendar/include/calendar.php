@@ -4,18 +4,20 @@ class Calendar {
     private static $Count = 1;
     private $date   = 0;
     private $module = null;
-    private $panel = null;
-    private $event = array();
+    private $panel  = null;
+    private $type   = null;
+    private $key    = null;
+    private $event  = array();
     private $monthList = array(
-        01  => 'Janvier',
-        02  => 'Février',
-        03  => 'Mars',
-        04  => 'Avril',  
-        05  => 'Mai',
-        06  => 'Juin',
-        07  => 'Juillet',
-        08  => 'Aout',
-        09  => 'Septembre',
+         1  => 'Janvier',
+         2  => 'Février',
+         3  => 'Mars',
+         4  => 'Avril',  
+         5  => 'Mai',
+         6  => 'Juin',
+         7  => 'Juillet',
+         8  => 'Aout',
+         9  => 'Septembre',
         10  => 'Octobre',
         11  => 'Novembre',
         12  => 'Décembre',
@@ -29,6 +31,12 @@ class Calendar {
     }
     public function setModule($module) {
         $this->module = $module;
+    }
+    public function setKey($key) {
+        $this->key = $key;
+    }
+    public function setType($type) {
+        $this->type = $type;
     }
     public function setPanel($panel) {
         $this->panel = $panel;
@@ -58,7 +66,7 @@ class Calendar {
     private function addDayEvent($day, $event) {
         $data = array(
             '__DAY__'   =>  date('j',$day),
-            '__ACTION__'=>  'ajax.load(\'news\',\'panel_left\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.$event['date'].']]);',
+            '__ACTION__'=>  'ajax.load(\''.$this->type.'\',\''.$this->panel.'\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.$event['date'].']]);',
         );
 
         return Template::getInstance()->get('day_event',$data,'calendar');
@@ -66,7 +74,7 @@ class Calendar {
     private function addDayActive($day, $event) {
         $data = array(
             '__DAY__'   =>  date('j',$day),
-            '__ACTION__'=>  'ajax.load(\'news\',\'panel_left\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.$event['date'].']]);',
+            '__ACTION__'=>  'ajax.load(\''.$this->type.'\',\''.$this->panel.'\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.$event['date'].']]);',
         );
 
         return Template::getInstance()->get('day_active',$data,'calendar');
@@ -168,10 +176,10 @@ class Calendar {
             '__YEAR__'      => date('Y',$this->date),
             '__DAY__'       => $data, 
             '__ADDON__'     => '',
-            '__PREV_MONTH__'=> 'ajax.load(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date)-1,date('d',$this->date),date('Y',$this->date)).']]);',
-            '__NEXT_MONTH__'=> 'ajax.load(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date)+1,date('d',$this->date),date('Y',$this->date)).']]);',
-            '__PREV_YEAR__'=> 'ajax.load(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date),date('d',$this->date),date('Y',$this->date)-1).']]);',
-            '__NEXT_YEAR__'=> 'ajax.load(\'calendar\',\'panel_right_row1\',\'replace\',[[\'zone\',0],[\'date\','.mktime(12,0,0,date('n',$this->date),date('d',$this->date),date('Y',$this->date)+1).']]);',
+            '__PREV_MONTH__'=> 'ajax.load(\''.$this->key.'\',\'panel_right_row1\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.mktime(12,0,0,date('n',$this->date)-1,date('d',$this->date),date('Y',$this->date)  ).']]);',
+            '__NEXT_MONTH__'=> 'ajax.load(\''.$this->key.'\',\'panel_right_row1\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.mktime(12,0,0,date('n',$this->date)+1,date('d',$this->date),date('Y',$this->date)  ).']]);',
+            '__PREV_YEAR__' => 'ajax.load(\''.$this->key.'\',\'panel_right_row1\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.mktime(12,0,0,date('n',$this->date)  ,date('d',$this->date),date('Y',$this->date)-1).']]);',
+            '__NEXT_YEAR__' => 'ajax.load(\''.$this->key.'\',\'panel_right_row1\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.mktime(12,0,0,date('n',$this->date)  ,date('d',$this->date),date('Y',$this->date)+1).']]);',
         );
 
 //echo Template::getInstance()->get('calendar',$data,'calendar');

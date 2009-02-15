@@ -10,29 +10,15 @@
  *
  * Revision: $REVISION$ 
  *
- * Copyright(c) 2008-2009 Mathieu Chocat (or Sygil.org if applicable)
+ * Copyright(c)2008-2009 Sygil.org
  **/
 
 
-foreach($_POST as $name => $value) {
-    $_GET[$name] = $value;
-}
-
-// Page par default
-if (!isset($_GET['Frame']) && !isset($_GET['Ajax'])) {
-    $_GET['Ajax'] = 'blog';
-    //$_GET['frame'] = 'http://www.google.com/';
-}
-// Permet d'indiquer que le site est deja configurer
-define('CONFIGURE',true);
-// Permet d'indiquer que le site a deja subit le script d'installation (innexistant)
-define('INSTALL',true);
-
-
-/*PATH CONFIGURATION
- * Definit les repertoire d'installation du CORE
- * Define CORE directory for installation
- */
+/**
+ * CONFIGURATION PATH 
+ *  - Definit les repertoire d'installation du CORE
+ *  - Define CORE directory for installation
+ **/
 define('PATH_CORE'              , 'core');
 define('PATH_TEMPLATE'          , PATH_CORE.'/template'); 
 define('PATH_THEME'             , PATH_CORE.'/theme'); 
@@ -41,9 +27,7 @@ define('PATH_LANGUE'            , PATH_CORE.'/langue');
 define('PATH_SCRIPT'            , PATH_CORE.'/script'); 
 define('PATH_INCLUDE'           , PATH_CORE.'/include'); 
 define('PATH_MODULE'            , PATH_CORE.'/module'); 
-/************************ Ne pas Editer **********************/
-/**/  define('PATH_MODULE_'     , PATH_MODULE.'/MODULE');  /**/
-/************************ Not to modify **********************/
+define('PATH_MODULE_'           , PATH_MODULE.'/MODULE');
 define('PATH_MODULE_INCLUDE'    , PATH_MODULE_.'/include'); 
 define('PATH_MODULE_TEMPLATE'   , PATH_MODULE_.'/template'); 
 define('PATH_MODULE_THEME'      , PATH_MODULE_.'/theme'); 
@@ -52,16 +36,15 @@ define('PATH_MODULE_SCRIPT'     , PATH_MODULE_.'/script');
 define('PATH_ZONE'              , './zone'); 
 
 
-/*URL CONFIGURATION
- *URL a utiliser pour acceder au CORE (pour les script et les themes, peut etre un site distant)
- *URL to use to reach the CORE (for script, themes. can be a distant location)
- */
+/**
+ * URL CONFIGURATION
+ *  - URL a utiliser pour acceder au CORE (pour les script et les themes, peut etre un site distant)
+ *  - URL to use to reach the CORE (for script, themes. can be a distant location)
+ **/
 define('URL_CORE'               , 'core');
 define('URL_SCRIPT'             , URL_CORE.'/script');
 define('URL_THEME'              , URL_CORE.'/theme');
-/************************* Ne pas Editer ************************/
-/**/ define('URL_MODULE_'       , URL_CORE.'/module/MODULE'); /**/
-/************************* Not to modify ************************/
+define('URL_MODULE_'            , URL_CORE.'/module/MODULE');
 define('URL_MODULE_SCRIPT'      , URL_MODULE_.'/script');
 define('URL_MODULE_THEME'       , URL_MODULE_.'/theme');
 define('URL_ICON'               , URL_CORE.'/icon');
@@ -71,14 +54,18 @@ define('URL_CACHE'              , 'cache');
 define('URL_DATA'               , 'data');
 
 
-/*DEFAULT CONFIGURATION*/
-// Paramatre par defaut
+/**
+ * DEFAULT CONFIGURATION
+ *  - Paramatre par defaut
+ **/
 define('DEFAULT_LANGUE'  , 'french');
 define('DEFAULT_THEME'   , 'glossy');
 define('DEFAULT_TEMPLATE', 'sygil');
 define('DEFAULT_ICON'	 , 'dropline-neu');
 
-// Contenu d'affichage par default
+/**
+ * Main Page et first load param
+ **/
 $preload = array(
   'ajax.load(\'left/menu\',\'left\',\'replace\',[[\'close\','.(isset($_GET['MenuBlockClose'])?'1':'0').'],[\'default\','.(isset($_GET['MenuBlockId'])?$_GET['MenuBlockId']:'1').']])',
   'ajax.load(\'right/slide\',\'right\',\'replace\',[])',
@@ -102,13 +89,14 @@ define('SITE_DESCRIPTION'	, '');
 define('SITE_SEARCH_KEYWORDS' 	, '');
 
 
-/*MYSQL CONFIGURATION*/
- *DATABASE_HOST => localhost
- *DATABASE_NAME => NameDB
- *DATABASE_USER => Login
- *DATABASE_PASS => Password
- *DATABASE_PRE  => Prefixe
- */
+/**
+ * MYSQL CONFIGURATION
+ *  - DATABASE_HOST => localhost
+ *  - DATABASE_NAME => NameDB
+ *  - DATABASE_USER => Login
+ *  - DATABASE_PASS => Password
+ *  - DATABASE_PRE  => Prefixe
+ **/
 define('DATABASE_HOST','localhost');
 define('DATABASE_NAME','sygil_base');
 define('DATABASE_USER','sygil.org'); 
@@ -135,4 +123,8 @@ define('DATABASE_TYPE','mysqli');
  * );
  */
 
+/**
+ * ADDED AFTER THE FIRST INSTALL BY THE INSTALL SCRIPT
+ **/ 
+define('INSTALL',true);
 ?>

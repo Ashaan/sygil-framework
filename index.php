@@ -1,12 +1,13 @@
 <?php
 
-if (!defined('CONFIGURE')) require_once('config.php');
+require_once('config.php');
 require_once(PATH_CORE.'/include/core.php');
 require_once(PATH_CORE.'/include/db.php');
 require_once(PATH_CORE.'/include/session.php');
 require_once(PATH_CORE.'/include/template.php');
 
-$core = Core::getInstance();
+$core    = Core::getInstance();
+$session = Session::getInstance();
 
 $core->setTemplate('index');
 
@@ -17,7 +18,6 @@ if (isset($configThemeList)) {
 if (isset($configLangList)) {
     $core->setLangList($configLangList);
 }
-
 
 $core->addTheme('theme.css');
 
@@ -30,25 +30,18 @@ $core->addScript('shortcut.js');
 $core->addScript('session.js');
 $core->addScript('ckeditor/ckeditor.js');
 
-$core->addScriptInit ('url.frame    = \''.(isset($_GET['Frame'])?$_GET['Frame']:'').'\';');
-$core->addScriptInit ('url.ajax     = \''.(isset($_GET['Ajax']) ?$_GET['Ajax'] :'').'\';');
-
-$session = Session::getInstance();
-
-// Page central par default
-if (!isset($_GET['Frame']) && !isset($_GET['Ajax'])) {
-   $preload[] = 'ajax.load(\''.DEFAULT_CENTER.'\',\'center\',\'replace\',[])';
-} else
-if (isset($_GET['Frame'])) {
-   $preload[] = 'frame.open(\''.$_GET['Frame'].'\',\'Last\')';
-} else {
-   $preload[] = 'ajax.load(\''.$_GET['Ajax'].'\',\'center\',\'replace\',[])';
-}
 foreach($preload as $script) {
     $core->addExec($script.';');
 }
-
-//$core->loadModule('window');
+// Page central par default
+if (!Session::DATA('Frame') && !Session::DATA('Ajax')) {
+   $core->addExec('ajax.load(\''.DEFAULT_CENTER.'\',\'center\',\'replace\',[])');
+} else
+if (Session::DATA('Frame')) {
+   $core->addExec('frame.open(\''.Session::DATA('Frame').'\',\'Last\')');
+} else {
+   $core->addExec('ajax.load(\''.Session::DATA('Ajax').'\',\'center\',\'replace\',[])');
+}
 
 if ($session->isLogged()) {
     $core->addScriptInit ('session.isConnect = true;');

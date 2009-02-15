@@ -6,7 +6,7 @@ $core->loadModule('window');
 $window = new Window('connect_windows');
 $window->setTitle('Gestionnaire de Connection');
 
-if ($_GET['disconnect']) {
+if (Session::DATA('disconnect')) {
     $session = Session::getInstance();
 
     $core->loadModule('panel');
@@ -36,7 +36,7 @@ if ($_GET['disconnect']) {
     $window->setContent($panel->generate());
     $window->setCenter();
 } else
-if ($_GET['username']) {
+if (Session::DATA('username')) {
     $session = Session::getInstance();
 
     $core->loadModule('panel');

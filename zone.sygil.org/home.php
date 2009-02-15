@@ -11,7 +11,7 @@ $left->setBottom(  '0px');
 $left->setLeft  (  '0px');
 $left->setRight ('205px');
 $left->setOverflow ('auto');
-$left->setContent('Blablabla');
+$left->setContent('');
 
 // Panneau de gauche pour accueillir les widgets (calendar, slideshow)
 $right = new Panel('panel_right');

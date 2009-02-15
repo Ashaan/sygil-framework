@@ -13,8 +13,8 @@ class MenuBoxBox {
     $this->option= array();
     $this->opened= 1;
     $this->id    = MenuBoxBox::$Count++;
-    if (isset($_GET['m'.$this->id])) {
-      $this->opened = $_GET['m'.$this->id]; 	
+    if (Session::DATA('m'.$this->id)) {
+      $this->opened = Session::DATA('m'.$this->id); 	
     }
   }
  

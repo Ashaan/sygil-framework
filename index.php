@@ -9,8 +9,8 @@ require_once(PATH_CORE.'/include/template.php');
 $core    = Core::getInstance();
 $session = Session::getInstance();
 
-if (isset($configThemeList) $core->setThemeList($configThemeList);
-if (isset($configLangList)  $core->setLangList($configLangList);
+if (isset($configThemeList)) $core->setThemeList($configThemeList);
+if (isset($configLangList) ) $core->setLangList($configLangList);
 
 
 $core->setTemplate('index');

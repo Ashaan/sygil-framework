@@ -5,11 +5,10 @@ $core->loadModule('menu_vertical');
 
 
 $menu = new MenuVertical();
-$menu->position->setTop('22px');
-$menu->position->setBottom(null);
-$menu->position->setLeft(null);
+$menu->position->setTop  ('22px');
 $menu->position->setRight('0px');
 $menu->position->setWidth('150px');
+$menu->position->setZ    ('150');
 
 $session = Session::getInstance();
 if (!$session->isLogged()) {

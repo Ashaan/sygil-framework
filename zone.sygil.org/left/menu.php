@@ -118,5 +118,6 @@ if ( strpos($_SERVER['SERVER_NAME'],'sygil.local')!==FALSE || $session->inGroup(
 $core->setData('__CONTENT__', $blocks->generate());
 $core->addExec ('menu_block.change('.$_GET['default'].');');
 if ($_GET['close']) $core->addExec('menu_block.close();');
+if ($_GET['box']) $core->addExec('menu_box.closes(['.$_GET['box'].']);');
 
 ?>

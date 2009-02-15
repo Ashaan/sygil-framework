@@ -1,0 +1,100 @@
+.calendar {
+  width         : 100%;
+  border        : 1px solid #8a8a8a;
+  -moz-border-radius: 10px;
+}
+
+
+.calendar_link {
+  border            : 2px solid transparent;
+  padding-left      : 3px;
+  padding-right     : 3px;
+}
+.calendar_link:hover {
+  background        : url(../../../../theme/default/action_hover.png);
+  border            : 2px solid #8a8a8a;
+  cursor            : pointer;
+}
+
+.calendar_switch {
+  margin        : 1px;
+  border        : 1px solid #8a8a8a;
+  background    : #272727;
+  color: #aaaaaa;
+  -moz-border-radius-topleft : 8px;
+  -moz-border-radius-topright: 8px;
+}
+
+.calendar_month {
+  float         : left;
+  margin        : 3px;
+}
+
+.calendar_year {
+  text-align    : right;
+  margin        : 3px;
+}
+
+.calendar_list {
+  background    : #474747;
+  -moz-border-radius-bottomleft : 10px;
+  -moz-border-radius-bottomright: 10px;
+}
+
+table.calendar_label {
+  width         : 100%;
+  border-spacing: 0;
+  background    : #f2eea3;
+  color         : #474747;
+  text-align    : center;
+  border-bottom : 2px solid #f2eea3;
+}
+.calendar_label td {
+  width         : 30px;
+}
+
+table.calendar_day {
+  width         : 100%;
+  border-spacing: 0;
+  border        : 2px solid transparent;
+}
+.calendar_day td {
+  border        : 2px solid transparent;
+  width         : 30px;
+  height        : 20px;
+  -moz-border-radius: 8px;
+  text-align    : center;
+  vertical-align: middle;
+  margin        : 0px;
+  padding       : 0px;
+  color: #aaaaaa;
+}
+
+.calendar_day td:hover {
+  border        : 2px solid red;
+}
+
+.calendar_day .current {
+  border        : 2px solid #4489ca;
+  font-weight   : bold;
+}
+
+.calendar_day .event {
+  background    : #fdff79;
+  cursor        : pointer;
+  font-weight   : bold;
+}
+
+.calendar_day .active {
+  border        : 2px solid #4489ca;
+  background    : #fdff79;
+  cursor        : pointer;
+  font-weight   : bold;
+}
+
+.calendar_day .active:hover,
+.calendar_day .event:hover {
+  background    : #FF5555;
+  color         : #ffffff;
+}
+

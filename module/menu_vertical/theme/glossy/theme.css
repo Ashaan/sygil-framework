@@ -1,65 +1,36 @@
-.menu_box {
-  margin-left  : 10px;
-  margin-right : 10px;
-  margin-top   : 0px;
-  margin-bottom: 5px;
-  border-top   : 1px solid #979a9d;
-  border-left  : 1px solid #979a9d;
-  border-right : 1px solid #979a9d;
+.menu_vertical {
+  position      : absolute;
+  color         : #000000;
+  background    : url(background.png);
+  border-top    : 1px solid #BBBBBB;
+  border-bottom : 1px solid #BBBBBB;
+  border-left   : 1px solid #BBBBBB;
+  border-right  : 1px solid #BBBBBB;
+  padding       : 0px;
+  margin        : 0px;
+  z-index       : 100;
 }
 
-.menu_box_title {
-  border-bottom: 1px solid #979a9d;
-  background   : url(background_title.png) center;
-  padding      : 3px;
-  font-weight  : bold;
+.menu_vertical_option {
+  text-align    : center;
+  margin-bottom : 1px;
+  margin-left   : 0px;
+  margin-right  : 0px;
+  padding       : 2px;
 }
 
-.menu_box_open {
-  float         : right;
-  width         : 13px;
-  height        : 13px;
-  margin        : 0px;
-  margin-top    : 2px;
-  background    : url(arrow_top2bottom.png);
-}
-.menu_box_open:hover {
-  background    : url(arrow_top2bottom_hover.png);
-  cursor        : pointer;
-}
-.menu_box_close {
-  float         : right;
-  width         : 13px;
-  height        : 13px;
-  margin        : 0px;
-  margin-top    : 2px;
-  background    : url(arrow_right2left.png);
-}
-.menu_box_close:hover {
-  background    : url(arrow_right2left_hover.png);
-  cursor        : pointer;
-}
-.menu_box_data {
-  border-bottom: 1px solid #979a9d;
-  background   : white;
-}
-.menu_box_option {
-  padding      : 5px;
-}
-.menu_box_option:hover {
-  background    : url(option_hover.png);
+.menu_vertical_option:hover {
+  background    : url(foreground.png);
   color         : #FFFFFF;
   cursor        : pointer;
 }
-.green {
-  background    : #EEFFEE;
-}
-.yellow {
-  background    : #FFFFEE;
-}
-.red {
-  background    : #FFEEEE;
-}
-.orange {
-  background    : #FFF4EE;
+
+.menu_vertical_separator {
+  background    : #AAAAAA;
+  height        : 0px;
+  margin-top    : 2px;
+  margin-bottom : 2px;
+  border-top    : 1px solid #AAAAAA;
+  margin-left   : 8px;
+  margin-right  : 8px;
 }

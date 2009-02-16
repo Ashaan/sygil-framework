@@ -40,7 +40,7 @@ __EXEC__
       <div class="headhoption"> | </div>
       <div class="headhoption" onmouseover="setDisplay('theme_list','block')" onmouseout="setDisplay('theme_list','none')">Theme</div>
       <div class="headhoption"> | </div>
-      <div class="headhoption" onmouseover="ajax.load('top/account','','replace',[]);"  onmouseout="document.getElementById('tempdiv').innerHTML='';">##Option##</div>
+      <div class="headhoption" onmouseover="ajax.load('top/account','','replace',[]);"  onmouseout="">##Option##</div>
     </div>  
   </div>
 

@@ -24,12 +24,6 @@ function Ajax() {
         if (typeof XMLHttpRequest != "undefined") {
             engine = new XMLHttpRequest();
         }
-//        if (!IE) {
-//            engine.startTime = getSecTime();
-//        } else {
-//          this.startTime = getSecTime();
-//        }
-//        this.stat_count++;
 
         engine.ajaxref = this;
         return engine;
@@ -52,12 +46,6 @@ function Ajax() {
                     return false;
                 }
                 engine.ajaxref.receive(engine.responseXML,engine.responseText);
-//                if (!IE) {
-//                    ajax.stat_time += getSecTime() - engine.startTime;
-//                } else {
-//                    ajax.stat_time += getSecTime() - ajax.startTime;
-//                }
-//                ajax.updateStat();
                 delete engine;
             }
     
@@ -166,7 +154,11 @@ function Ajax() {
         for (var i=0;i<xmlDoc.childNodes.length;i++) {
             var child = xmlDoc.childNodes[i];
             if (child.tagName == 'target') {
-                target = child.firstChild.nodeValue;
+                if (child.firstChild) {
+                    target = child.firstChild.nodeValue;
+                } else {
+                    target = null;
+                }
             } else
             if (child.tagName == 'content') {
                 content += decode64(child.firstChild.nodeValue);
@@ -190,7 +182,11 @@ function Ajax() {
 
         if (content) {
             if(!document.getElementById(target)) {
-                document.getElementById('tempdiv').innerHTML = content;
+                if (method=='add') {
+                  document.getElementById('tempdiv').innerHTML += content;
+                } else {
+                  document.getElementById('tempdiv').innerHTML = content;
+                }
             } else {
                 if (target=='center') {
                     content = shortcut.reference(content);
@@ -258,13 +254,4 @@ Url.prototype.saveAjax = function() {
     return '';
 }
 url.addSaveScript('this.saveAjax');
-
-
-//Url.prototype.loadAjax = function() {
-//    if (this.ajax) {
-//        ajax.open(this.ajax);
-//        this.frame = null;
-//    }
-//}
-//url.addLoadScript('this.loadAjax'); 
 

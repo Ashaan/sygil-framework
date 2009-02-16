@@ -36,10 +36,10 @@ class Core {
     public function __construct() {
 	    $this->setThemeList(
 	        array(
-		        'glossy' 		    => 'Gnome Glossy Theme',
-		        'aurora-midnight'	=> 'Gnome Aurora Midnight Theme',
-		        'wood-brun'		=> 'Wood Beta',
-			'green-glossy'		=> 'Gnome Green Glossy Theme'
+		        'glossy' 		    => 'Glossy',
+		        'aurora-midnight'	=> 'Aurora Midnight',
+		        'wood-brun'		    => 'Wood Beta',
+			    'green-glossy'		=> 'Green Glossy'
 	        )
 	    );
 	    $this->setLangList(
@@ -56,6 +56,9 @@ class Core {
 
     public function setThemeList($list) {
         $this->themeList = $list;
+    }
+    public function getThemeList() {
+        return $this->themeList;
     }
     public function setLangList($list) {
         $this->langList = $list;

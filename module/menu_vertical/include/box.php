@@ -23,6 +23,12 @@ class MenuVertical {
   public function addElement($option) {
     $this->option[] = $option;
   }
+  public function addOption($name,$link) {
+    $this->option[] = new MenuVerticalOption($name,$link);
+  }
+  public function addSeparator() {
+    $this->option[] = Template::getInstance()->get('separator',array(),'menu_vertical');
+  }
 
   public function generate() {
   	global $tplData;

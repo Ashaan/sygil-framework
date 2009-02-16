@@ -29,7 +29,11 @@ foreach($preload as $script) $core->addExec($script.';');
 
 // Page central par default
 if (!Session::DATA('Frame') && !Session::DATA('Ajax')) {
-   $core->addExec('ajax.load(\''.DEFAULT_CENTER.'\',\'center\',\'replace\',[])');
+    if (strpos(' '.DEFAULT_CENTER,'http://')>0) {
+        $core->addExec('frame.open(\''.DEFAULT_CENTER.'\')');
+    } else {
+        $core->addExec('ajax.load(\''.DEFAULT_CENTER.'\',\'center\',\'replace\',[])');
+    }
 } else
 if (Session::DATA('Frame')) {
    $core->addExec('frame.open(\''.Session::DATA('Frame').'\',\'Last\')');

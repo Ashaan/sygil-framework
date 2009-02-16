@@ -19,7 +19,7 @@ if (!$session->isLogged()) {
 }
 //$menu->addSeparator();
 $menu->addElement(new MenuVerticalOption('A propos..','ajax.load(\'about\',\'\',[])'));
-echo $menu->generate();
+//echo $menu->generate();
 $core->setData('__CONTENT__',$menu->generate());
 
 ?>

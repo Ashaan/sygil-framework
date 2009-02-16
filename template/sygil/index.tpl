@@ -50,7 +50,7 @@ __EXEC__
     <div id="right"></div>
   </div>
 
-  <div id="footer">Copyright©2006-2009 Sygil.org</div>
+  <div id="footer">Powered by  <A HREF="http://www.sygil.org"><IMG SRC="http://www.sygil.org/data/logo.png" HEIGHT="19" STYLE="vertical-align:middle;border:0px;"/></A> PHP Framework</div>
   <div id="shortcut" style="">
     <img class="add" src="__URL_ICON__/add-28x28.png" onclick="shortcut.add();"/>
   </div>

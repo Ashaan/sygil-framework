@@ -36,11 +36,7 @@ __EXEC__
   <div id="header">
     <span></span>
     <div>
-      <div class="headhoption" onmouseover="setDisplay('lang_list','block')" onmouseout="setDisplay('lang_list','none')">Langue</div>
-      <div class="headhoption"> | </div>
-      <div class="headhoption" onmouseover="setDisplay('theme_list','block')" onmouseout="setDisplay('theme_list','none')">Theme</div>
-      <div class="headhoption"> | </div>
-      <div class="headhoption" onmouseover="ajax.load('top/account','','replace',[]);"  onmouseout="">##Option##</div>
+      <div class="headhoption" onmouseover="ajax.load('top/account','','replace',[]);"  onmouseout="">Mon Compte</div>
     </div>  
   </div>
 

@@ -33,7 +33,7 @@ body {
 #header div {
   position      : absolute;
   top           : 0px;
-  right         : 0px;
+  right         : 3px;
   bottom        : 0px;
   height        : 18px;
   background    : url(header.png);

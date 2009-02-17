@@ -28,12 +28,12 @@ Mathieu Chocat	   - For creating and maintaing the portal.
      /your/site/directory/portal-master/	
 
 5. Open config.php file and modify the file for your configuration
-     PATH CONFIGURATION
+     CONFIGURATION PATH
      URL CONFIGURATION
      SITE CONFIGURATION
      MYSQL CONFIGURATION
 
-6. Open zone/index/left.php file and configure your portal
+6. Open zone/index/menu.php file and configure your portal
 
 7. Enjoy
 

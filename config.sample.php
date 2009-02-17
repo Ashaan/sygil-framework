@@ -16,10 +16,10 @@
 
 /**
  * CONFIGURATION PATH 
- *  - Definit les repertoire d'installation du CORE
- *  - Define CORE directory for installation
+ *  - Definit les repertoire d'installation du CORE, '.' par defaut
+ *  - Define CORE directory for installation, '.' by default
  **/
-define('PATH_CORE'              , 'core');
+define('PATH_CORE'              , '.');
 define('PATH_TEMPLATE'          , PATH_CORE.'/template'); 
 define('PATH_THEME'             , PATH_CORE.'/theme'); 
 define('PATH_ICON'              , PATH_CORE.'/icon'); 
@@ -41,7 +41,7 @@ define('PATH_ZONE'              , './zone');
  *  - URL a utiliser pour acceder au CORE (pour les script et les themes, peut etre un site distant)
  *  - URL to use to reach the CORE (for script, themes. can be a distant location)
  **/
-define('URL_CORE'               , 'core');
+define('URL_CORE'               , 'http://yoursite.org');
 define('URL_SCRIPT'             , URL_CORE.'/script');
 define('URL_THEME'              , URL_CORE.'/theme');
 define('URL_MODULE_'            , URL_CORE.'/module/MODULE');

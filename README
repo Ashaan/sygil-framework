@@ -33,7 +33,7 @@ Mathieu Chocat	   - For creating and maintaing the portal.
      SITE CONFIGURATION
      MYSQL CONFIGURATION
 
-6. Open zone/index/menu.php file and configure your portal
+6. Open zone/left/menu.php file and configure your portal
 
 7. Enjoy
 

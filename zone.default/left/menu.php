@@ -86,7 +86,8 @@ if ($session->isLogged()) {
 }
 
 $core->setData('__CONTENT__', $blocks->generate());
+$core->addExec ('menu_block.change('.Session::DATA('default').');');
+if (Session::DATA('close')) $core->addExec('menu_block.close();');
+if (Session::DATA('box')  ) $core->addExec('menu_box.closes(['.Session::DATA('b$
 
-$core->addExec ('menu_block.change('.$_POST['default'].');');
-if ($_POST['close']) $core->addExec ('menu_block.close();');
 ?>

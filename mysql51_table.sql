@@ -88,7 +88,7 @@ CREATE VIEW `view_group2module` AS
     select `G`.`name` AS `group`,`M`.`name` AS `module`,`G2M`.`perm` AS `perm` 
     from `module` `M` 
         left join `group2module` `G2M` on `G2M`.`module` = `M`.`id`
-        left join `group` `G` on `G`.`id` = `G2M`.`group`
+        left join `group` `G` on `G`.`id` = `G2M`.`group`;
 
 
 DROP VIEW IF EXISTS `view_group2user`;
@@ -96,5 +96,5 @@ CREATE VIEW `view_group2user` AS
     select `G`.`name` AS `group`,`U`.`login` AS `username`,`U`.`email` AS `email`,`G2U`.`perm` AS `perm` 
     from `user` `U` 
         left join `group2user` `G2U` on `G2U`.`user` = `U`.`id`
-        left join `group` `G` on `G`.`id` = `G2U`.`group`
+        left join `group` `G` on `G`.`id` = `G2U`.`group`;
 

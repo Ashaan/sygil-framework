@@ -24,8 +24,26 @@ $core->addScript('ajax.js');
 $core->addScript('session.js');
 $core->addScript('ckeditor/ckeditor.js');
 
-foreach($preload as $script) $core->addExec($script.';');
+/**
+ * TODO a migrer en ajax
+ **/
+if ($session->isLogged()) {
+    $core->addExec ('session.isConnect = true;');
+    $core->addExec ('session.lastname = \''.$session->getUser('lastname').'\';');
+    $core->addExec ('session.firstname = \''.$session->getUser('firstname').'\';');
+    $core->addExec ('session.login = \''.$session->getUser('login').'\';');
+} else {
+    $core->addExec ('session.isConnect = false;');
+    $core->addExec ('session.lastname = \'\';');
+    $core->addExec ('session.firstname = \'\';');
+    $core->addExec ('session.login = \'\';');
+}
+/**
+ * TODO a migrer en ajax
+ **/
 
+
+foreach($preload as $script) $core->addExec($script.';');
 
 // Page central par default
 if (!Session::DATA('Frame') && !Session::DATA('Ajax')) {
@@ -40,26 +58,6 @@ if (Session::DATA('Frame')) {
 } else {
    $core->addExec('ajax.load(\''.Session::DATA('Ajax').'\',\'center\',\'replace\',[])');
 }
-
-
-/**
- * TODO a migrer en ajax
- **/
-if ($session->isLogged()) {
-    $core->addScriptInit ('session.isConnect = true;');
-    $core->addScriptInit ('session.lastname = \''.$session->getUser('lastname').'\';');
-    $core->addScriptInit ('session.firstname = \''.$session->getUser('firstname').'\';');
-    $core->addScriptInit ('session.login = \''.$session->getUser('login').'\';');
-} else {
-    $core->addScriptInit ('session.isConnect = false;');
-    $core->addScriptInit ('session.lastname = \'\';');
-    $core->addScriptInit ('session.firstname = \'\';');
-    $core->addScriptInit ('session.login = \'\';');
-}
-/**
- * TODO a migrer en ajax
- **/
-
 
 $session->save();
 

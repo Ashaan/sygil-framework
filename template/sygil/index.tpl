@@ -26,9 +26,8 @@
 __THEME__
 __SCRIPT__
   <script type="text/javascript">
-__SCRIPT_INIT__
     function onLoad() {
-__EXEC__
+      __EXEC__
     }
   </script>
 </head>

@@ -1,15 +1,13 @@
 <?php
 
 $core = Core::getInstance();
+$core->loadModule('lastfm');
 
-$content = Template::getInstance()->get('lastfm_latest',
-    array(
-        '__USER__'  => 'Ashaan',
-        '__THEME__' => 'blue', // grey, black,red / http://www.lastfm.fr/widgets
-        '__LANG__'  => 'fr'
-    )
-);
+$lastfm = new LastFM();
+$lastfm->setMode('latest');
+$lastfm->setUser('Ashaan');
+$lastfm->setTheme('blue');
 
-$core->setData('__CONTENT__',$content);
+$core->setContent($lastfm);
 
 ?>

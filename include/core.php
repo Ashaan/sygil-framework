@@ -21,9 +21,7 @@ class Core {
     private $theme    = array();
     private $data     = array();
     private $exec     = array();
-    private $scriptInit     = '';
-    private $scriptTemplate = array();
-    private $themeList = array();
+    private $themeList= array();
     private $langList = array();
 
     static public function getInstance() {
@@ -97,11 +95,6 @@ class Core {
             $this->theme[$key] = array($theme,$furl);
         }
     }
-    public function addScriptTemplate($template) {
-        if (!in_array($template, $this->scriptTemplate)) {
-            $this->scriptTemplate[] = $template;
-        }
-    }
     public function addInclude($include, $module = null) {
         $path = '';
         if ($module) {
@@ -115,10 +108,6 @@ class Core {
     public function addExec($exec) {
         $this->exec[] = $exec;
     }
-    public function addScriptInit($script) {
-        if ($this->scriptInit!='') $this->scriptInit .= "\n";
-        $this->scriptInit .= '      '.$script;
-    }
     public function load($config) {
         if ($config) {
             if (file_exists(PATH_ZONE.'/'.$config.'.php')) {
@@ -129,7 +118,6 @@ class Core {
 	        include($path);
 	    }
     }
-
     public function loadModule($module) {
         include(PATH_MODULE.'/'.$module.'/index.php');
     }
@@ -137,7 +125,13 @@ class Core {
     public function setData($name,$value) {
         $this->data[$name] = $value;
     }
-
+    public function setContent($value) {
+        if (is_object($value)) {
+            $this->data['__CONTENT__'] = $value->generate();
+        } else {
+            $this->data['__CONTENT__'] = $value;
+        }
+    }
     
     public function generateIndex() {
         $this->data['__THEME__'] = '';
@@ -151,6 +145,7 @@ class Core {
         		)
     	    ); 
         }
+
         $this->data['__SCRIPT__'] = '';
         foreach($this->script as $script) {
             $this->data['__SCRIPT__'] .= Template::getInstance()->get('index_script',
@@ -165,7 +160,7 @@ class Core {
             $this->data['__EXEC__']  .= $exec; 
         }
 
-        $this->data['__SCRIPT_INIT__']  = $this->scriptInit; 
+
         $this->data['__ONLOAD__']       = 'session.update();';
 
         return Template::getInstance()->get($this->template,$this->data);
@@ -178,6 +173,7 @@ class Core {
         foreach($this->exec as $exec) {
             $this->data['__EXEC__']  .= Template::getInstance()->get('ajax_exec' ,array('__EXEC__'=> $exec)); 
         }
+
         $this->data['__THEME__'] = '';
         foreach($this->theme as $theme) {
 	        $style = ($theme[0] == DEFAULT_THEME)?0:1;	
@@ -189,6 +185,7 @@ class Core {
 		        )
 	        ); 
         }
+
         $this->data['__SCRIPT__'] = '';
         foreach($this->script as $script) {
             $this->data['__SCRIPT__'] .= Template::getInstance()->get('ajax_script',
@@ -197,14 +194,16 @@ class Core {
                 )
             ); 
         }
+
         $this->data['__TEMPLATE__'] = '';
-        foreach($this->scriptTemplate as $name => $template) {
-            $data = array(
-                '__NAME'   => $name,
-                '__DATA__' => base64_encode($script) // a encoder base64, max 255 caractere
-            );
-            $this->data['__TEMPLATE__'] .= Template::getInstance()->get('ajax_template',$data); 
-        }
+//        foreach($this->scriptTemplate as $name => $template) {
+//            $data = array(
+//                '__NAME'   => $name,
+//                '__DATA__' => base64_encode($script) // a encoder base64, max 255 caractere
+//            );
+//            $this->data['__TEMPLATE__'] .= Template::getInstance()->get('ajax_template',$data); 
+//        }
+
         if (isset($this->data['__CONTENT__'])) {
             $content = $this->data['__CONTENT__'];
             $this->data['__CONTENT__'] = '';

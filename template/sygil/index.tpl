@@ -47,25 +47,4 @@ __EXEC__
   </div>
 
   <div id="footer">Powered by  <A HREF="http://www.sygil.org"><IMG SRC="http://www.sygil.org/data/logo.png" HEIGHT="19" STYLE="vertical-align:middle;border:0px;"/></A> PHP Framework</div>
-  <div id="shortcut" style="">
-    <img class="add" src="__URL_ICON__/add-28x28.png" onclick="shortcut.add();"/>
-  </div>
-
-  
-  <div id="site_list"  class="menu_list" onmouseover="setDisplay('site_list','block')" onmouseout="setDisplay('site_list','none')"
-		       style="position:absolute;top:19px;right:0px;width:150px;"></div>
-  <div id="theme_list" class="menu_list" onmouseover="setDisplay('theme_list','block')" onmouseout="setDisplay('theme_list','none')"
-		       style="position:absolute;top:19px;right:15px;width:150px;">
-    <div class="option" onclick="switchStyle('glossy')">Glossy</div>
-    <div class="option" onclick="switchStyle('aurora-midnight')">Aurora Midnight</div>
-	<div class="option" onclick="switchStyle('green-glossy')">Green Glossy</div>
-<div class="option" onclick="switchStyle('wood-brun')">wood</div>
-  </div>
-  <div id="lang_list" class="menu_list" onmouseover="setDisplay('lang_list','block')" onmouseout="setDisplay('lang_list','none')"
-		       style="position:absolute;top:19px;right:80px;width:150px;">
-    <div class="option" onclick="switchLang('french')">Francais</div>
-    <div class="option" onclick="switchLang('english')">Anglais</div>
-  </div>
-
-  <div id="tempdiv"></div>
 </body>

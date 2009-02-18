@@ -19,8 +19,8 @@ $core->addScript('function.js');
 $core->addScript('url.js');
 $core->addScript('frame.js');
 $core->addScript('base64.js');
+$core->addScript('div_manager.js');
 $core->addScript('ajax.js');
-$core->addScript('shortcut.js');
 $core->addScript('session.js');
 $core->addScript('ckeditor/ckeditor.js');
 

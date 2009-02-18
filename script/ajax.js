@@ -113,7 +113,7 @@ function Ajax() {
         var find = false;
         for (var i=0;i<document.getElementsByTagName("link").length;i++) { 
             if (document.getElementsByTagName("link")[i].getAttribute('href') == filename &&
-		document.getElementsByTagName("link")[i].getAttribute('title') == name) {
+		        document.getElementsByTagName("link")[i].getAttribute('title') == name) {
                 find = true;
             }
         }
@@ -181,25 +181,7 @@ function Ajax() {
         }
 
         if (content) {
-            if(!document.getElementById(target)) {
-                if (method=='add') {
-                  document.getElementById('tempdiv').innerHTML += content;
-                } else {
-                  document.getElementById('tempdiv').innerHTML = content;
-                }
-            } else {
-                if (target=='center') {
-                    content = shortcut.reference(content);
-                    if (key) {
-                        document.getElementById(target).key = key;
-                    }
-                }
-                if (method=='add') {
-                    document.getElementById(target).innerHTML += content;
-                } else {
-                    document.getElementById(target).innerHTML  = content;
-                }
-            }
+            divManager.add(target,method,content,key);
         } else {
             alert('ya du boulot !');
         }

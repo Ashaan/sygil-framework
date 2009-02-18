@@ -69,8 +69,9 @@ define('DEFAULT_ICON'	 , 'dropline-neu');
 $preload = array(
   'ajax.load(\'left/menu\',\'left\',\'replace\',[[\'close\','.(isset($_GET['MenuBlockClose'])?'1':'0').'],[\'default\','.(isset($_GET['MenuBlockId'])?$_GET['MenuBlockId']:'1').']])',
   'ajax.load(\'right/slide\',\'right\',\'replace\',[])',
+  'ajax.load(\'bottom/shortcut\',\'shortcut\',\'replace\',[])',
 );
-define('DEFAULT_CENTER','home');
+define('DEFAULT_CENTER','http://www.google.com');
 define('WELCOME_LOGOFF','##Welcome_on## ##site_short_name##');
 define('WELCOME_LOGON' ,'##Hi## ##user_firstname## ##user_lastname##');
 define('MAIN_MENU'     ,'##My_Account##');

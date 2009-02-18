@@ -61,6 +61,9 @@ class Core {
     public function setLangList($list) {
         $this->langList = $list;
     }
+    public function getLangList() {
+        return $this->langList;
+    }
     
     public function addScript($name, $module = null) {
         $path = '';

@@ -10,19 +10,19 @@ $menu->position->setRight('0px');
 $menu->position->setWidth('150px');
 $menu->position->setZ    ('150');
 
-$menu->addOption('Langue','ajax.load(\'top/langue\',\'vmenu_langue\',\'replace\',[[\'parent\',\''.Session::DATA('target').'\']])');
-$menu->addSubMenu('Theme','vmenu_theme','ajax.load(\'top/theme\',\'vmenu_theme\',\'replace\',[[\'parent\',\''.Session::DATA('target').'\']])');
+$menu->addSubMenu('Langue','vmenu_langue','ajax.load(\'top/langue\',\'vmenu_langue\',\'replace\',[[\'parent\',\''.Session::DATA('target').'\']])');
+$menu->addSubMenu('Theme' ,'vmenu_theme' ,'ajax.load(\'top/theme\',\'vmenu_theme\',\'replace\',[[\'parent\',\''.Session::DATA('target').'\']])');
 $menu->addSeparator();
 
 $session = Session::getInstance();
 if (!$session->isLogged()) {
-    $menu->addOption('Connection','ajax.load(\'connect\',\'\',\'replace\',[])');
+    $menu->addOption('Connection' ,'ajax.load(\'connect\',\'window_connect\',\'replace\',[])');
     $menu->addOption('Inscription','ajax.load(\'register\',\'\',\'replace\',[])');
 } else {
     $menu->addOption('Déconnection','ajax.load(\'disconnect\',\'\',\'\',[])');
 }
 $menu->addSeparator();
-$menu->addOption('A propos..','ajax.load(\'about\',\'\',[])');
+$menu->addOption('A propos..','ajax.load(\'top/about\',\'window_about\',\'replace\',[])');
 
 //echo $menu->generate();
 $core->setContent($menu);

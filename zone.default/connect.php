@@ -3,7 +3,7 @@
 $core = Core::getInstance();
 
 $core->loadModule('window');
-$window = new Window('connect_windows');
+$window = new Window('window_connect');
 $window->setTitle('Gestionnaire de Connection');
 
 if (Session::DATA('disconnect')) {

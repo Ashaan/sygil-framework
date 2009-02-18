@@ -8,6 +8,7 @@ $lastfm->setMode('latest');
 $lastfm->setUser('Ashaan');
 $lastfm->setTheme('blue');
 
+
 $core->setContent($lastfm);
 
 ?>

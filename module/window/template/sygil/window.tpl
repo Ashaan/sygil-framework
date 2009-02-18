@@ -1,4 +1,4 @@
-<div id="window___ID__" class="window" style="__STYLE__">
+<div id="__ID__" class="window" style="__STYLE__">
   <div class="title">
     <div class="left"></div>
     <div class="center">__TITLE__</div>

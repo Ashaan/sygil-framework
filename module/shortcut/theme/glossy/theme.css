@@ -1,0 +1,78 @@
+#shortcut {
+  position      : absolute;
+  display       : inline;
+  bottom        : 0px;
+  right         : 0px;
+  height        : 33px;
+  border-top    : 2px solid #cac1b3;
+  border-left   : 2px solid #cac1b3;
+  color         : #DDDDDD;
+  text-align    : center;
+  font-weight   : bold;
+  padding       : 0px;
+  text-align    : right;
+  background    : url(action_background.png) center center repeat-x;
+  min-width     : 10px;
+  -moz-border-radius-topleft: 5px;
+  vertical-align: middle;
+  padding-right : 5px;
+  z-index       : 200;
+}
+
+#shortcut .add {
+  border            : 2px solid transparent;
+  height            : 28px;
+  width             : 28px;
+  margin-bottom     : 0px;
+  margin-top        : 1px;
+  margin-left       : 1px;
+  margin-right      : 5px;
+  padding           : 0px;
+  -moz-border-radius: 5px;
+  float:left;
+}
+
+#shortcut .add:hover {
+  background        : url(action_hover.png);
+  border            : 2px solid #6b8bab;
+  cursor            : pointer;
+}
+
+#shortcut .del {
+  border            : 2px solid transparent;
+  padding           : 2px;
+  -moz-border-radius: 5px;
+  vertical-align    : middle;
+  
+}
+
+#shortcut .del:hover {
+  background        : url(action_hover.png);
+  border            : 2px solid #6b8bab;
+  cursor            : pointer;
+}
+
+#shortcut .element {
+  padding       : 5px;
+  margin        : 0px;
+  margin-top    : 6px;
+  margin-left   : -1px;
+  padding-right : 5px;
+  padding-left  : 5px;
+  padding-top   : 3px;
+  bottom        : 0px;
+  color         : #000000;
+  font-weight   : normal;
+  -moz-border-radius: 5px;
+  border-top    : 1px solid #cac1b3;
+  border-left   : 2px solid #cac1b3;
+  border-right  : 1px solid #cac1b3;
+  height        : 27px;
+  background    : url(onglet_background.png) top center repeat-x;
+  float         :left;
+}
+
+#shortcut .element:hover {
+  background    : url(onglet_background_hover.png) top center repeat-x;
+  cursor        : pointer;
+}

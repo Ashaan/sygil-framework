@@ -1,10 +1,11 @@
 function DivManager() {
     this.vid     = 0;
-    this.virtual = [];
+    this.virtualName   = [];
+    this.virtualObject = [];
     this.real    = [];
 
     this.add = function(target,method,content,key) {
-        if(!document.getElementById(target)) {
+        if(!document.getElementById(target) || this.isVirtual(target)) {
             if (method=='add') {
                 this._VirtAdd(target,content);
             } else {
@@ -19,25 +20,41 @@ function DivManager() {
             }
         }
     }
+
+    this.isVirtual = function (target) {
+        for (var i=0;i<this.virtualName.length;i++) { 
+            if (this.virtualName[i]==target) {
+                return true;
+            }   
+        }
+        return false
+    }
+
     this._VirtTarget = function (target) {
         if (!target || target=='') {
             target = this.vid++;
         }
 
-        var find = null;
-        for (var i=0;i<document.getElementsByTagName("sygil").length;i++) { 
-            if (document.getElementsByTagName("sygil")[i].getAttribute('name') == target) {
-                find = document.getElementsByTagName("sygil")[i];
+        var object = null;
+        if (this.isVirtual(target)) {
+            for (var i=0;i<this.virtualObject.length;i++) { 
+                if (this.virtualName[i]==target) {
+                    object = this.virtualObject[i];
+                }   
             }
         }
 
-        if (!find) {
-            var find=document.createElement("sygil");
-            find.setAttribute("name", target);
-            document.getElementsByTagName("body")[0].appendChild(find);
+        if (!object) {
+            object=document.createElement("div");
+            object.setAttribute("name", target);
+            document.getElementById("virtual").appendChild(object);
+            this.virtualName[this.virtualName.length] = target;
+            this.virtualObject[this.virtualObject.length] = object;
+        } else {
+            object.display = 'block';
         }
 
-        return find;
+        return object;
     }
 
     this._VirtAdd = function (target,content) {

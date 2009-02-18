@@ -1,6 +1,24 @@
 function setDisplay(id,value){
   document.getElementById(id).style.display = value;
 }
+function isDisplay(id){
+    if (document.getElementById(id)) { 
+        if (document.getElementById(id).style.display != 'none') {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+function isExist(id){
+    if (document.getElementById(id)) { 
+        return true;
+    } else {
+        return false;
+    }
+}
 
 function getElement(id) {
   if (document.getElementById) {

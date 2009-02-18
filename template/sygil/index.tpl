@@ -35,7 +35,7 @@ __SCRIPT__
   <div id="header">
     <span></span>
     <div>
-      <div class="headhoption" onmouseover="ajax.load('top/account','','replace',[]);"  onmouseout="">Mon Compte</div>
+      <div class="headhoption" onmouseout="setDisplay('vmenu_account','none')" onmouseover="if(!isExist('vmenu_account')){ajax.load('top/account','vmenu_account','replace',[]);}else{setDisplay('vmenu_account','block');}" onmouseout="">Mon Compte</div>
     </div>  
   </div>
 
@@ -46,4 +46,5 @@ __SCRIPT__
   </div>
 
   <div id="footer">Powered by  <A HREF="http://www.sygil.org"><IMG SRC="http://www.sygil.org/data/logo.png" HEIGHT="19" STYLE="vertical-align:middle;border:0px;"/></A> PHP Framework</div>
+  <div id="virtual"></div>
 </body>

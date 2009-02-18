@@ -4,14 +4,14 @@ $core = Core::getInstance();
 $core->loadModule('menu_vertical');
 
 
-$menu = new MenuVertical();
-$menu->position->setTop  ('20px');
+$menu = new MenuVertical(Session::DATA('target'));
+$menu->position->setTop  ('19px');
 $menu->position->setRight('0px');
 $menu->position->setWidth('150px');
 $menu->position->setZ    ('150');
 
-$menu->addOption('Langue','ajax.load(\'top/langue\',\'\',\'add\',[])');
-$menu->addOption('Theme' ,'ajax.load(\'top/theme\',\'\',\'add\',[])');
+$menu->addOption('Langue','ajax.load(\'top/langue\',\'vmenu_langue\',\'replace\',[[\'parent\',\''.Session::DATA('target').'\']])');
+$menu->addSubMenu('Theme','vmenu_theme','ajax.load(\'top/theme\',\'vmenu_theme\',\'replace\',[[\'parent\',\''.Session::DATA('target').'\']])');
 $menu->addSeparator();
 
 $session = Session::getInstance();
@@ -23,7 +23,8 @@ if (!$session->isLogged()) {
 }
 $menu->addSeparator();
 $menu->addOption('A propos..','ajax.load(\'about\',\'\',[])');
+
 //echo $menu->generate();
-$core->setData('__CONTENT__',$menu->generate());
+$core->setContent($menu);
 
 ?>

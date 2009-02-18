@@ -63,43 +63,6 @@ body {
   margin-right  : 0px;
 }
 
-
-.menu_list {
-  display       : none;
-  color         : #000000;
-  background    : url(menu_background.png);
-  border-bottom : 2px solid #8a8a8a;
-  border-left   : 2px solid #8a8a8a;
-  border-right  : 2px solid #8a8a8a;
-  padding       : 0px;
-  padding-top   : 0px; 
-  margin        : 0px;
-  z-index:100;
-}
-.menu_list .option {
-  text-align    : center;
-  margin-bottom : 1px;
-  margin-left   : 0px;
-  margin-right  : 0px;
-  padding       : 2px;
-  color         : #cfcfcf;
-}
-.menu_list .option:hover {
-  background    : url(menu_foreground.png);
-  color         : #FFFFFF;
-  cursor        : pointer;
-}
-.menu_list .separator {
-  background    : #cfcfcf;
-  height        : 0px;
-  margin-top    : 2px;
-  margin-bottom : 2px;
-  border-top    : 1px solid #cfcfcf;
-  margin-left   : 8px;
-  margin-right  : 8px;
-}
-
-
 #footer {
   position      : absolute;
   bottom        : 0px;
@@ -170,84 +133,6 @@ body {
   margin-bottom : -3px;
 }
 
-#shortcut {
-  position      : absolute;
-  display       : inline;
-  bottom        : 0px;
-  right         : 0px;
-  height        : 33px;
-  border-top    : 2px solid #8a8a8a;
-  border-left   : 2px solid #8a8a8a;
-  color         : #DDDDDD;
-  text-align    : center;
-  font-weight   : bold;
-  padding       : 0px;
-  text-align    : right;
-  background    : url(action_background.png) center center repeat-x;
-  min-width     : 10px;
-  -moz-border-radius-topleft: 5px;
-  vertical-align: middle;
-  padding-right : 5px;
-}
-
-#shortcut .add {
-  border            : 2px solid transparent;
-  height            : 28px;
-  width             : 28px;
-  margin-bottom     : 0px;
-  margin-top        : 1px;
-  margin-left       : 1px;
-  margin-right      : 5px;
-  padding           : 0px;
-  -moz-border-radius: 5px;
-  float:left;
-}
-
-#shortcut .add:hover {
-  background        : url(action_hover.png);
-  border            : 2px solid #6b8bab;
-  cursor            : pointer;
-}
-
-#shortcut .del {
-  border            : 2px solid transparent;
-  padding           : 2px;
-  -moz-border-radius: 5px;
-  vertical-align    : middle;
-  
-}
-
-#shortcut .del:hover {
-  background        : url(action_hover.png);
-  border            : 2px solid #6b8bab;
-  cursor            : pointer;
-}
-
-#shortcut .element {
-  padding       : 5px;
-  margin        : 0px;
-  margin-top    : 6px;
-  margin-left   : -1px;
-  padding-right : 5px;
-  padding-left  : 5px;
-  padding-top   : 3px;
-  bottom        : 0px;
-  color         : #cccccc;
-  font-weight   : normal;
-  -moz-border-radius: 5px;
-  border-top    : 1px solid #111111;
-  border-left   : 2px solid #111111;
-  border-right  : 1px solid #111111;
-  height        : 27px;
-  background    : url(onglet_background.png) top center repeat-x;
-  float         :left;
-}
-
-#shortcut .element:hover {
-  color         : #ffffff;
-  background    : url(onglet_background_hover.png) top center repeat-x;
-  cursor        : pointer;
-}
 
 form {
   padding: 0px;

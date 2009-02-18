@@ -32,11 +32,13 @@ if ($session->isLogged()) {
     $core->addExec ('session.lastname = \''.$session->getUser('lastname').'\';');
     $core->addExec ('session.firstname = \''.$session->getUser('firstname').'\';');
     $core->addExec ('session.login = \''.$session->getUser('login').'\';');
+    $core->addExec ('session.update();');
 } else {
     $core->addExec ('session.isConnect = false;');
     $core->addExec ('session.lastname = \'\';');
     $core->addExec ('session.firstname = \'\';');
     $core->addExec ('session.login = \'\';');
+    $core->addExec ('session.update();');
 }
 /**
  * TODO a migrer en ajax

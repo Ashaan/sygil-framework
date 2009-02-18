@@ -9,6 +9,7 @@
   padding       : 0px;
   margin        : 0px;
   z-index       : 100;
+  text-align    : center;
 }
 
 .menu_vertical_option {
@@ -16,7 +17,7 @@
   margin-bottom : 1px;
   margin-left   : 0px;
   margin-right  : 0px;
-  padding       : 2px;
+  padding       : 5px;
 }
 
 .menu_vertical_option:hover {

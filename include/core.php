@@ -161,7 +161,7 @@ class Core {
         }
 
 
-        $this->data['__ONLOAD__']       = 'session.update();';
+        $this->data['__ONLOAD__']       = '';
 
         return Template::getInstance()->get($this->template,$this->data);
     }

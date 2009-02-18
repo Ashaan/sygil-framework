@@ -5,12 +5,14 @@ require_once(PATH_CORE.'/include/widget/css/position.php');
 class MenuVertical {
   private static $Count = 1;
   private $id;
-  private $title;
+  private $parent;
+  private $name;
   private $option;
   public  $position;
 
-  public function __construct($title='') {
-    $this->title    = $title;
+  public function __construct($name='',$parent=null) {
+    $this->name     = $name;
+    $this->parent   = $parent;
     $this->option   = array();
     $this->id       = MenuVertical::$Count++;
     $this->position = new CssPosition();
@@ -25,6 +27,9 @@ class MenuVertical {
   }
   public function addOption($name,$link) {
     $this->option[] = new MenuVerticalOption($name,$link);
+  }
+  public function addSubMenu($name,$id,$link) {
+    $this->option[] = new MenuVerticalSub($name,$id,$link);
   }
   public function addSeparator() {
     $this->option[] = Template::getInstance()->get('separator',array(),'menu_vertical');
@@ -46,12 +51,11 @@ class MenuVertical {
     }
     
     $data = array(
-      '__ID__'    => $this->id,
-      '__TITLE__' => $this->title,
-      '__URL__'   => $this->url,
-      '__OPTION__'=> $options,
-      '__OPENED__'=> $this->opened,
-      '__STYLE__' => $this->position->getCSS(0),
+      '__ID__'     => $this->name,
+      '__OPTION__' => $options,
+      '__ISSUB__'  => ($this->parent?'true':'false'),
+      '__PARENT__' => ($this->parent?$this->parent:'null'),
+      '__STYLE__'  => $this->position->getCSS(0),
     );
 
     return Template::getInstance()->get('box',$data,'menu_vertical');

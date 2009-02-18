@@ -4,7 +4,7 @@ $core = Core::getInstance();
 $core->loadModule('menu_vertical');
 
 
-$menu = new MenuVertical();
+$menu = new MenuVertical(Session::DATA('target'),Session::DATA('parent'));
 $menu->position->setTop  ('45px');
 $menu->position->setRight('150px');
 $menu->position->setWidth('150px');

@@ -27,13 +27,13 @@ function Session() {
     }
 
     this.update = function() {
-        header = document.getElementById('header').getElementsByTagName('span')[0];
+        headers = document.getElementById('header');
+	span   = headers.getElementsByTagName('span')[0];
 	    if (session.isConnect) {
-   	        header.innerHTML  = 'Bonjour, ' + this.lastname + ' ' + this.firstname; 
+   	        span.innerHTML  = 'Bonjour, ' + this.lastname + ' ' + this.firstname; 
 	    } else {
-   	        header.innerHTML  = tpl_welcom_msg; 
+   	        span.innerHTML  = tpl_welcom_msg; 
 	    }
-
         for (var i=0;i<this.updateScript.length;i++) {
             var func = this.updateScript[i] + '();';
             eval(func);

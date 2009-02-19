@@ -50,15 +50,15 @@ foreach($preload as $script) $core->addExec($script.';');
 // Page central par default
 if (!Session::DATA('Frame') && !Session::DATA('Ajax')) {
     if (strpos(' '.DEFAULT_CENTER,'http://')>0) {
-        $core->addExec('frame.open(\''.DEFAULT_CENTER.'\')');
+        $core->addExec('frame.open(\''.DEFAULT_CENTER.'\');');
     } else {
-        $core->addExec('ajax.load(\''.DEFAULT_CENTER.'\',\'center\',\'replace\',[])');
+        $core->addExec('ajax.load(\''.DEFAULT_CENTER.'\',\'center\',\'replace\',[]);');
     }
 } else
 if (Session::DATA('Frame')) {
-   $core->addExec('frame.open(\''.Session::DATA('Frame').'\',\'Last\')');
+   $core->addExec('frame.open(\''.Session::DATA('Frame').'\',\'Last\');');
 } else {
-   $core->addExec('ajax.load(\''.Session::DATA('Ajax').'\',\'center\',\'replace\',[])');
+   $core->addExec('ajax.load(\''.Session::DATA('Ajax').'\',\'center\',\'replace\',[]);');
 }
 
 $session->save();

@@ -22,8 +22,7 @@ function Frame() {
             }
         }
 
-        document.getElementById('center').innerHTML = shortcut.reference(this.tpl.replace('__ID__',id).replace('__URL__',key));
-
+        document.getElementById('center').innerHTML = this.tpl.replace('__ID__',id).replace('__URL__',key);
         var myf = document.getElementById(id);
         myf = myf.contentWindow || myf;
         myf.location = key;

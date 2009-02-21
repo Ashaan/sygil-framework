@@ -6,8 +6,7 @@
   background    : url(background_title.png);
   height        : 22px;
   border-bottom : 1px solid #b1a594;
-
-  text-align:center;
+  text-align    : center;
   font-size     : 14px;
   font-weight   : bold;
   line-height   : 22px;

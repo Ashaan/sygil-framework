@@ -14,31 +14,34 @@ if (isset($configLangList) ) $core->setLangList($configLangList);
 
 
 $core->setTemplate('index');
+
 $core->addTheme('theme.css');
-$core->addScript('function.js');
+
+$core->addScript('org.sygil.function.js');
+$core->addScript('org.sygil.mouse.js');
 $core->addScript('url.js');
-$core->addScript('frame.js');
-$core->addScript('base64.js');
-$core->addScript('div_manager.js');
-$core->addScript('ajax.js');
-$core->addScript('session.js');
+$core->addScript('org.sygil.frame.js');
+$core->addScript('org.sygil.base64.js');
+$core->addScript('org.sygil.ajax.js');
+$core->addScript('org.sygil.div.js');
+$core->addScript('org.sygil.session.js');
 $core->addScript('ckeditor/ckeditor.js');
 
 /**
  * TODO a migrer en ajax
  **/
 if ($session->isLogged()) {
-    $core->addExec ('session.isConnect = true;');
-    $core->addExec ('session.lastname = \''.$session->getUser('lastname').'\';');
-    $core->addExec ('session.firstname = \''.$session->getUser('firstname').'\';');
-    $core->addExec ('session.login = \''.$session->getUser('login').'\';');
-    $core->addExec ('session.update();');
+    $core->addExec ('org.sygil.session.isConnect = true;');
+    $core->addExec ('org.sygil.session.lastname = \''.$session->getUser('lastname').'\';');
+    $core->addExec ('org.sygil.session.firstname = \''.$session->getUser('firstname').'\';');
+    $core->addExec ('org.sygil.session.login = \''.$session->getUser('login').'\';');
+    $core->addExec ('org.sygil.session.update();');
 } else {
-    $core->addExec ('session.isConnect = false;');
-    $core->addExec ('session.lastname = \'\';');
-    $core->addExec ('session.firstname = \'\';');
-    $core->addExec ('session.login = \'\';');
-    $core->addExec ('session.update();');
+    $core->addExec ('org.sygil.session.isConnect = false;');
+    $core->addExec ('org.sygil.session.lastname = \'\';');
+    $core->addExec ('org.sygil.session.firstname = \'\';');
+    $core->addExec ('org.sygil.session.login = \'\';');
+    $core->addExec ('org.sygil.session.update();');
 }
 /**
  * TODO a migrer en ajax
@@ -50,15 +53,15 @@ foreach($preload as $script) $core->addExec($script.';');
 // Page central par default
 if (!Session::DATA('Frame') && !Session::DATA('Ajax')) {
     if (strpos(' '.DEFAULT_CENTER,'http://')>0) {
-        $core->addExec('frame.open(\''.DEFAULT_CENTER.'\');');
+        $core->addExec('org.sygil.frame.open(\''.DEFAULT_CENTER.'\');');
     } else {
-        $core->addExec('ajax.load(\''.DEFAULT_CENTER.'\',\'center\',\'replace\',[]);');
+        $core->addExec('org.sygil.ajax.load(\''.DEFAULT_CENTER.'\',\'center\',\'replace\',[]);');
     }
 } else
 if (Session::DATA('Frame')) {
-   $core->addExec('frame.open(\''.Session::DATA('Frame').'\',\'Last\');');
+   $core->addExec('org.sygil.frame.open(\''.Session::DATA('Frame').'\',\'Last\');');
 } else {
-   $core->addExec('ajax.load(\''.Session::DATA('Ajax').'\',\'center\',\'replace\',[]);');
+   $core->addExec('org.sygil.ajax.load(\''.Session::DATA('Ajax').'\',\'center\',\'replace\',[]);');
 }
 
 $session->save();

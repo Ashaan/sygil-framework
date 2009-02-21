@@ -22,4 +22,5 @@ function SlideBlock() {
     }
 
 }
+
 slide_block = new SlideBlock();

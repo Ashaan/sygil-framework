@@ -12,7 +12,7 @@ $menu->position->setZ    ('151');
 
 $themes = $core->getThemeList();
 foreach($themes as $theme => $desc) {
-    $menu->addOption($desc,'switchStyle(\''.$theme.'\');');
+    $menu->addOption($desc,'org.sygil.utilities.switchStyle(\''.$theme.'\');');
 }
 
 $core->setData('__CONTENT__',$menu->generate());

@@ -19,9 +19,9 @@ $row->setBackground('#6798ca');
 
 $slide->addBlock($panel);
 
-$core->setData('__CONTENT__', $slide->generate());
-$core->addExec('ajax.load(\'right/lastfm/player\',\'panel_slide_row1\',\'replace\',[]);');
-$core->addExec('ajax.load(\'right/lastfm/latest\',\'panel_slide_row2\',\'replace\',[]);');
+$core->setContent($slide);
+$core->addExec('org.sygil.ajax.load(\'right/lastfm/player\',\'panel_slide_row1\',\'replace\',[]);');
+$core->addExec('org.sygil.ajax.load(\'right/lastfm/latest\',\'panel_slide_row2\',\'replace\',[]);');
 
 
 ?>

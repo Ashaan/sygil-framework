@@ -1,5 +1,4 @@
-function Shortcut()
-{
+function Shortcut() {
     this.count   = 0;
     this.page    = 0;
     this.data    = [];

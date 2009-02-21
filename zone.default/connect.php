@@ -31,7 +31,7 @@ if (Session::DATA('disconnect')) {
     $panel->setTop('22px');
     $panel->setLeft('0px');
     $panel->setRight('0px');
-    $panel->setHeight('90px');
+    $panel->setHeight('190px');
 
     $window->setContent($panel->generate());
     $window->setCenter();

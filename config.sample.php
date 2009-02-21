@@ -67,9 +67,9 @@ define('DEFAULT_ICON'	 , 'dropline-neu');
  * Main Page et first load param
  **/
 $preload = array(
-  'ajax.load(\'left/menu\',\'left\',\'replace\',[[\'close\','.(isset($_GET['MenuBlockClose'])?'1':'0').'],[\'default\','.(isset($_GET['MenuBlockId'])?$_GET['MenuBlockId']:'1').']])',
-  'ajax.load(\'right/slide\',\'right\',\'replace\',[])',
-  'ajax.load(\'bottom/shortcut\',\'shortcut\',\'replace\',[])',
+  'org.sygil.ajax.load(\'left/menu\',\'left\',\'replace\',[[\'close\','.(isset($_GET['MenuBlockClose'])?'1':'0').'],[\'default\','.(isset($_GET['MenuBlockId'])?$_GET['MenuBlockId']:'1').']])',
+  'org.sygil.ajax.load(\'right/slide\',\'right\',\'replace\',[])',
+  'org.sygil.ajax.load(\'bottom/shortcut\',\'shortcut\',\'replace\',[])',
 );
 define('DEFAULT_CENTER','http://www.google.com');
 define('WELCOME_LOGOFF','##Welcome_on## ##site_short_name##');

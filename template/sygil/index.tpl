@@ -35,7 +35,7 @@ __SCRIPT__
   <div id="header">
     <span></span>
     <div>
-      <div class="headhoption" onmouseout="setDisplay('vmenu_account','none')" onmouseover="if(!isExist('vmenu_account')){ajax.load('top/account','vmenu_account','replace',[]);}else{setDisplay('vmenu_account','block');}" onmouseout="">Mon Compte</div>
+      <div class="headhoption" onmouseout="org.sygil.utilities.setDisplay('vmenu_account','none')" onmouseover="if(!org.sygil.utilities.isExist('vmenu_account')){org.sygil.ajax.load('top/account','vmenu_account','replace',[]);}else{org.sygil.utilities.setDisplay('vmenu_account','block');}">Mon Compte</div>
     </div>  
   </div>
 

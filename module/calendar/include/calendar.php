@@ -66,7 +66,7 @@ class Calendar {
     private function addDayEvent($day, $event) {
         $data = array(
             '__DAY__'   =>  date('j',$day),
-            '__ACTION__'=>  'ajax.load(\''.$this->type.'\',\''.$this->panel.'\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.$event['date'].']]);',
+            '__ACTION__'=>  'org.sygil.ajax.load(\''.$this->type.'\',\''.$this->panel.'\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.$event['date'].']]);',
         );
 
         return Template::getInstance()->get('day_event',$data,'calendar');
@@ -74,7 +74,7 @@ class Calendar {
     private function addDayActive($day, $event) {
         $data = array(
             '__DAY__'   =>  date('j',$day),
-            '__ACTION__'=>  'ajax.load(\''.$this->type.'\',\''.$this->panel.'\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.$event['date'].']]);',
+            '__ACTION__'=>  'org.sygil.ajax.load(\''.$this->type.'\',\''.$this->panel.'\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.$event['date'].']]);',
         );
 
         return Template::getInstance()->get('day_active',$data,'calendar');
@@ -176,10 +176,10 @@ class Calendar {
             '__YEAR__'      => date('Y',$this->date),
             '__DAY__'       => $data, 
             '__ADDON__'     => '',
-            '__PREV_MONTH__'=> 'ajax.load(\''.$this->key.'\',\'panel_right_row1\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.mktime(12,0,0,date('n',$this->date)-1,date('d',$this->date),date('Y',$this->date)  ).']]);',
-            '__NEXT_MONTH__'=> 'ajax.load(\''.$this->key.'\',\'panel_right_row1\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.mktime(12,0,0,date('n',$this->date)+1,date('d',$this->date),date('Y',$this->date)  ).']]);',
-            '__PREV_YEAR__' => 'ajax.load(\''.$this->key.'\',\'panel_right_row1\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.mktime(12,0,0,date('n',$this->date)  ,date('d',$this->date),date('Y',$this->date)-1).']]);',
-            '__NEXT_YEAR__' => 'ajax.load(\''.$this->key.'\',\'panel_right_row1\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.mktime(12,0,0,date('n',$this->date)  ,date('d',$this->date),date('Y',$this->date)+1).']]);',
+            '__PREV_MONTH__'=> 'org.sygil.ajax.load(\''.$this->key.'\',\'panel_right_row1\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.mktime(12,0,0,date('n',$this->date)-1,date('d',$this->date),date('Y',$this->date)  ).']]);',
+            '__NEXT_MONTH__'=> 'org.sygil.ajax.load(\''.$this->key.'\',\'panel_right_row1\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.mktime(12,0,0,date('n',$this->date)+1,date('d',$this->date),date('Y',$this->date)  ).']]);',
+            '__PREV_YEAR__' => 'org.sygil.ajax.load(\''.$this->key.'\',\'panel_right_row1\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.mktime(12,0,0,date('n',$this->date)  ,date('d',$this->date),date('Y',$this->date)-1).']]);',
+            '__NEXT_YEAR__' => 'org.sygil.ajax.load(\''.$this->key.'\',\'panel_right_row1\',\'replace\',[[\'module\',\''.$this->module.'\'],[\'date\','.mktime(12,0,0,date('n',$this->date)  ,date('d',$this->date),date('Y',$this->date)+1).']]);',
         );
 
 //echo Template::getInstance()->get('calendar',$data,'calendar');

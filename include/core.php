@@ -120,7 +120,7 @@ class Core {
             if (file_exists(PATH_ZONE.'/'.$config.'.php')) {
       	        $path = PATH_ZONE.'/'.$config.'.php';
             } else {
-      	        $path = PATH_CORE.'/zone.default/'.$config.'.php';
+      	        $path = PATH_CORE.'/zone/default/'.$config.'.php';
             }
 	        include($path);
 	    }

@@ -10,8 +10,8 @@
   </tr>
   </table>
   <div class="button">
-    <input type="button" onclick="session.connect();" value="Valider"/>
-    <input type="button" onclick="setDisplay('window_connect','none');" value="Fermer"/>
+    <input type="button" onclick="org.sygil.session.connect();" value="Valider"/>
+    <input type="button" onclick="org.sygil.utilities.setDisplay('window_connect','none');" value="Fermer"/>
   </div>
 </form>
 

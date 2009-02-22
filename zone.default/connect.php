@@ -20,12 +20,13 @@ if (Session::DATA('disconnect')) {
         $panel->setContent('<center>Vous étes toujours connecté<br/><input class="button" class="button" value="Ok" onclick="session.wclose();"/></center>');
     } else {
         $panel->setContent('<center>Vous avez été deconnecté<br/><input class="button" class="button" value="Ok" onclick="session.wclose();"/></center>');
-        $core->addExec ('url.reload();');
-//        $core->addExec ('session.isConnect = false;');
-//        $core->addExec ('session.lastname = \'\';');  
-//        $core->addExec ('session.firstname = \'\';');
-//        $core->addExec ('session.login = \'\';');
-//        $core->addExec ('session.update();');
+//        $core->addExec ('url.reload();');
+        $core->addExec ('org.sygil.session.isConnect = false;');
+        $core->addExec ('org.sygil.session.lastname = \'\';');  
+        $core->addExec ('org.sygil.session.firstname = \'\';');
+        $core->addExec ('org.sygil.session.login = \'\';');
+        $core->addExec ('org.sygil.session.update();');
+//        $core->addExec ('org.sygil.session.update();');
     }
  
     $panel->setTop('22px');

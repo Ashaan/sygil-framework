@@ -66,6 +66,10 @@ class Core {
     }
     
     public function addScript($name, $module = null) {
+        if (strpos($name,'.js')<1) {
+            $name = str_replace('.','/',$name).'.js';
+        }
+
         $path = '';
         if ($module) {
             $path = str_replace('MODULE',$module,URL_MODULE_SCRIPT).'/'.$name;

@@ -17,15 +17,16 @@ $core->setTemplate('index');
 
 $core->addTheme('theme.css');
 
-$core->addScript('org.sygil.function.js');
-$core->addScript('org.sygil.mouse.js');
-$core->addScript('url.js');
-$core->addScript('org.sygil.frame.js');
-$core->addScript('org.sygil.base64.js');
-$core->addScript('org.sygil.ajax.js');
-$core->addScript('org.sygil.div.js');
-$core->addScript('org.sygil.session.js');
-$core->addScript('ckeditor/ckeditor.js');
+$core->addScript('namespace');
+$core->addScript('org.sygil.function');
+$core->addScript('org.sygil.mouse');
+$core->addScript('url');
+$core->addScript('org.sygil.frame');
+$core->addScript('org.sygil.base64');
+$core->addScript('org.sygil.ajax');
+$core->addScript('org.sygil.div');
+$core->addScript('org.sygil.session');
+$core->addScript('ckeditor.ckeditor');
 
 /**
  * TODO a migrer en ajax

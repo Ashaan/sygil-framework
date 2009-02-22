@@ -5,7 +5,7 @@
     <br/>
     Copyright (c) 2004-2009 Mathieu Chocat<br/>
     <br/>
-    <a href="http://www.sygil.org/">Site web</a><br/>
+    <a href="http://www.sygil.org/" target="_blank">Site web</a><br/>
     <br/>
     <div style="float:left;margin-left:5px;">
         <input type="button" class="button" onclick="" value="Crédits"/>

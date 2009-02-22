@@ -4,26 +4,16 @@
   margin        : 5px;
   padding       : 0px;
   -moz-border-radius: 10px;
-  background    : transparent;
-}
-
-.panel:hover {
-  background    : #f0edea;
 }
 
 .panel_line {
   position      : relative;
   border        : 0px red solid;
-  background    : #00FF00;
   min-height    : 30px;
   margin-bottom : 5px;
   padding       : 0px;
   -moz-border-radius: 10px;
-  background    : #f0edea;
   text-align    : center;
 }
 
-.panel_line:hover {
-  background    : #e5e2df;
-}
 

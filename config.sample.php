@@ -32,8 +32,9 @@ define('PATH_MODULE_INCLUDE'    , PATH_MODULE_.'/include');
 define('PATH_MODULE_TEMPLATE'   , PATH_MODULE_.'/template'); 
 define('PATH_MODULE_THEME'      , PATH_MODULE_.'/theme'); 
 define('PATH_MODULE_SCRIPT'     , PATH_MODULE_.'/script'); 
+
 // Definit les repertoire d'installation des infos de votre site
-define('PATH_ZONE'              , './zone'); 
+define('PATH_ZONE'              , './zone/sample'); 
 
 
 /**
@@ -42,14 +43,17 @@ define('PATH_ZONE'              , './zone');
  *  - URL to use to reach the CORE (for script, themes. can be a distant location)
  **/
 define('URL_CORE'               , 'http://yoursite.org');
+
 define('URL_SCRIPT'             , URL_CORE.'/script');
 define('URL_THEME'              , URL_CORE.'/theme');
 define('URL_MODULE_'            , URL_CORE.'/module/MODULE');
 define('URL_MODULE_SCRIPT'      , URL_MODULE_.'/script');
 define('URL_MODULE_THEME'       , URL_MODULE_.'/theme');
 define('URL_ICON'               , URL_CORE.'/icon');
+
 // URL de votre site ; your site URL
 define('URL_ZONE'               , 'http://www.yoursite.org');
+
 define('URL_CACHE'              , 'cache');
 define('URL_DATA'               , 'data');
 

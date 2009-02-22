@@ -1,6 +1,5 @@
 *~
 config.php
-backup
-backup/*
 cache/*
 data/*
+zone/gageiatx

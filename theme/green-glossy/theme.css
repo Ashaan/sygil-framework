@@ -134,13 +134,13 @@ body {
 
 #right {
   position      : absolute;
-  display       : none;
   top           : 0px;
   right         : 0px;
   bottom        : 0px;
-  width         : 0px;
+  width         : 10px;
   border        : 0px solid #FF0000;
-  background    : black;
+  background    : ;
+  overflow      : hidden;
 }
 
 #center {
@@ -148,7 +148,7 @@ body {
   top           : 0px;
   bottom        : 0px;
   left          : 250px;
-  right         : 0px;
+  right         : 8px;
   border        : 0px solid #0000FF;
   background    : #f5f2ef;
   padding       : 0px;

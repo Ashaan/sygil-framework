@@ -16,7 +16,9 @@
   border            : 0px;
   height            : 21px;
 }
-
+.window .title:hover {
+  cursor            : move;
+}
 .window .title .center {
   position          : absolute;
   right             : 6px;
@@ -58,6 +60,7 @@
   background:url(window_close.png);
 }
 .window_close:hover {
+  cursor:pointer;
   background:url(window_close_hover.png);
 }
 .window .content {

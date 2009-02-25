@@ -38,7 +38,7 @@
   width             : 60px;
   background        : url(title_right.png) top right no-repeat;
   text-align	    : right;
-  padding-top       : 4px;
+  padding-top       : 3px;
   padding-right     : 4px;
 }
 .window .title .left {
@@ -50,6 +50,16 @@
   background        : url(title_left.png);
 }
 
+.window_close {
+  position:absolute;
+  right:3px;
+  width:16px;
+  height:16px;
+  background:url(window_close.png);
+}
+.window_close:hover {
+  background:url(window_close_hover.png);
+}
 .window .content {
   margin            : 0px;
   padding           : 0px;
@@ -61,3 +71,5 @@
   height            : 100%;
   overflow          : auto;
 }
+
+

@@ -25,7 +25,7 @@ org.sygil.mouse = function() {
         if (currentX<0) currentX = 0;
         if (currentY<0) currentY = 0;
             
-        update();
+        //update();
         if (selectObject && selectObject.style) {
             selectObject.style.top  = (currentY - selectY) + 'px';
             selectObject.style.left = (currentX - selectX) + 'px';

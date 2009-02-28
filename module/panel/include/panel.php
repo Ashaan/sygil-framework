@@ -1,43 +1,16 @@
 <?php
 
-class Panel {
+require_once(PATH_CORE.'/include/widget/css/panel.php');
+
+class Panel extends CssPanel {
     private static $Count = 1;
     private $id;
-    private $left     = null;
-    private $right    = null;
-    private $bottom   = null;
-    private $top      = null;
-    private $width    = null;
-    private $height   = null;
-    private $overflow = null;
     private $content  = array();
 
     public function __construct($id='') {
+        CssPanel::__construct();
         $this->id    = $id;
     }
- 
-    public function setLeft($left) {
-        $this->left = $left;
-    }
-    public function setRight($right) {
-        $this->right = $right;
-    }
-    public function setBottom($bottom) {
-        $this->bottom = $bottom;
-    }
-    public function setTop($top) {
-        $this->top = $top;
-    }
-    public function setWidth($width) {
-        $this->width = $width;
-    }
-    public function setHeight($height) {
-        $this->height = $height;
-    }
-    public function setOverflow($overflow) {
-        $this->overflow = $overflow;
-    }
-
     public function addLine($id) {  
         if (is_array($this->content)) {
             return $this->content[] = new PanelLine($id);
@@ -58,20 +31,10 @@ class Panel {
             $content = $this->content;
         }
 
-        $style = '';
-        if ($this->left  )   $style .= 'left:'.$this->left.';';
-        if ($this->right)    $style .= 'right:'.$this->right.';';
-        if ($this->bottom)   $style .= 'bottom:'.$this->bottom.';';
-        if ($this->top)      $style .= 'top:'.$this->top.';';
-        if ($this->width)    $style .= 'width:'.$this->width.';';
-        if ($this->height)   $style .= 'height:'.$this->height.';';
-        if ($this->overflow) $style .= 'overflow:'.$this->overflow.';';
-                
-
         $data = array(
             '__ID__'      => $this->id,
             '__CONTENT__' => $content,
-            '__STYLE__'   => $style,
+            '__STYLE__'   => $this->getCss(),
         );
         return Template::getInstance()->get('panel',$data,'panel');
     }

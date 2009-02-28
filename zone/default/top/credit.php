@@ -4,12 +4,12 @@ $core = Core::getInstance();
 
 $core->loadModule('window');
 
-$content = Template::getInstance()->get('about',array());
+//$content = Template::getInstance()->get('licence',array());
 
-$window = new Window('window_about');
-$window->setTitle('A Propos de...');
+$window = new Window('window_credit');
+$window->setTitle('Crédits');
 $window->position->setWidth('300px');
-$window->position->setHeight('200px');
+$window->position->setHeight('180px');
 $window->position->setCentered();
 $window->setContent($content);
 

@@ -8,6 +8,7 @@ org.sygil.mouse = function() {
     var selectY         = 0;
     var selectObject    = null;
     var selectId        = 0;
+    var zindex          = 1000;
     
     function init() {
         if (!document.all) document.captureEvents(Event.MOUSEMOVE);
@@ -60,6 +61,7 @@ org.sygil.mouse = function() {
 //alert(temp.style.height);
     	    left += temp.offsetLeft + temp.style.width.replace(/px/g,'')/2; 
     	    top  += temp.offsetTop  + temp.style.height.replace(/px/g,'')*1; 
+            element.style.zIndex = zindex++;
 
             selectX      = currentX - left;
             selectY      = currentY - top;

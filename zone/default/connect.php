@@ -11,15 +11,14 @@ if (Session::DATA('disconnect')) {
 
     $core->loadModule('panel');
 
-    $window->setWidth(260);
-    $window->setHeight(100);
-
-    $panel = new panel('connect_panel');
+    $window->position->setWidth(260);
+    $window->position->setHeight(100);
+    $window->position->setCentered();
 
     if ($session->isLogged()) {
-        $panel->setContent('<center>Vous étes toujours connecté<br/><input class="button" class="button" value="Ok" onclick="session.wclose();"/></center>');
+        $window->setContent('<center>Vous étes toujours connecté<br/><input class="button" class="button" value="Ok" onclick="session.wclose();"/></center>');
     } else {
-        $panel->setContent('<center>Vous avez été deconnecté<br/><input class="button" class="button" value="Ok" onclick="session.wclose();"/></center>');
+        $window->setContent('<center>Vous avez été deconnecté<br/><input class="button" class="button" value="Ok" onclick="session.wclose();"/></center>');
 //        $core->addExec ('url.reload();');
         $core->addExec ('org.sygil.session.isConnect = false;');
         $core->addExec ('org.sygil.session.lastname = \'\';');  
@@ -28,27 +27,18 @@ if (Session::DATA('disconnect')) {
         $core->addExec ('org.sygil.session.update();');
 //        $core->addExec ('org.sygil.session.update();');
     }
- 
-    $panel->setTop('22px');
-    $panel->setLeft('0px');
-    $panel->setRight('0px');
-    $panel->setHeight('190px');
-
-    $window->setContent($panel->generate());
-    $window->setCenter();
 } else
 if (Session::DATA('username')) {
     $session = Session::getInstance();
 
     $core->loadModule('panel');
 
-    $window->setWidth(260);
-    $window->setHeight(100);
-
-    $panel = new panel('connect_panel');
+    $window->position->setWidth(260);
+    $window->position->setHeight(100);
+    $window->position->setCentered();
 
     if ($session->isLogged()) {
-        $panel->setContent('<center>Vous étes maintenant connecté<br/><input class="button" class="button" value="Ok" onclick="session.wclose();"/></center>');
+        $window->setContent('<center>Vous étes maintenant connecté<br/><input class="button" class="button" value="Ok" onclick="session.wclose();"/></center>');
         $core->addExec ('url.reload();');
 //        $core->addExec ('session.isConnect = true;');
 //        $core->addExec ('session.lastname = \''.$session->getUser('lastname').'\';');
@@ -56,31 +46,15 @@ if (Session::DATA('username')) {
 //        $core->addExec ('session.login = \''.$session->getUser('login').'\';');
 //        $core->addExec ('session.update();');
     } else {
-        $panel->setContent('<center>La connection a echoué<br/><input class="button" class="button" value="Ok" onclick="session.wclose();"/></center>');
+        $window->setContent('<center>La connection a echoué<br/><input class="button" class="button" value="Ok" onclick="session.wclose();"/></center>');
     }
-
-    $panel->setTop('22px');
-    $panel->setLeft('0px');
-    $panel->setRight('0px');
-    $panel->setHeight('90px');
-
-    $window->setContent($panel->generate());
-    $window->setCenter();
 } else {
     $core->loadModule('panel');
 
-    $window->setWidth(260);
-    $window->setHeight(100);
-
-    $panel = new panel('connect_panel');
-    $panel->setContent(Template::getInstance()->get('index_connect',array()));
-    $panel->setTop('22px');
-    $panel->setLeft('0px');
-    $panel->setRight('0px');
-    $panel->setHeight('90px');
-
-    $window->setContent($panel->generate());
-    $window->setCenter();
+    $window->position->setWidth('260px');
+    $window->position->setHeight('100px');
+    $window->position->setCentered();
+    $window->setContent(Template::getInstance()->get('index_connect',array()));
 }
 
 $core->setData('__CONTENT__',$window->generate());

@@ -6,19 +6,19 @@ $core->loadModule('panel');
 
 // Panneau de droite pour accueillir les dernieres nouvelles
 $left = new Panel('panel_left');
-$left->setTop   (  '0px');
-$left->setBottom(  '0px');
-$left->setLeft  (  '0px');
-$left->setRight ('205px');
-$left->setOverflow ('auto');
+$left->position->setTop   (  '0px');
+$left->position->setBottom(  '0px');
+$left->position->setLeft  (  '0px');
+$left->position->setRight ('205px');
+$left->display->setOverflow ('auto');
 $left->setContent('');
 
 // Panneau de gauche pour accueillir les widgets (calendar, slideshow)
 $right = new Panel('panel_right');
-$right->setTop   (  '0px');
-$right->setBottom(  '0px');
-$right->setRight (  '0px');
-$right->setWidth  ('200px');
+$right->position->setTop   (  '0px');
+$right->position->setBottom(  '0px');
+$right->position->setRight (  '0px');
+$right->position->setWidth  ('200px');
 $right->addLine('panel_right_row1');
 
 $core->setData('__NAME__'   ,'Accueil');

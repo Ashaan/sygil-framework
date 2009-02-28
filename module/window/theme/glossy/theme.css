@@ -7,6 +7,7 @@
   background        : transparent;
   -moz-border-radius: 3px;
   margin-bottom     : 10px;
+  z-index           : 1000;
 }
 
 .window .title {
@@ -64,14 +65,18 @@
   background:url(window_close_hover.png);
 }
 .window .content {
+  position          : absolute;
   margin            : 0px;
   padding           : 0px;
-  min-height        : 10px;
   color		        : #000000;
   background        : #ede9e3;
   border            : 1px solid #000000;
   border-top        : 0px;
-  height            : 100%;
+  top               : 21px;
+  bottom            : 0px;
+  right             : 0px;
+  left              : 0px;
+  min-height        : 100px;
   overflow          : auto;
 }
 

@@ -4,13 +4,13 @@ $core = Core::getInstance();
 
 $core->loadModule('window');
 
-$content = Template::getInstance()->get('licence',array());
+$content = str_replace("\n",'<br/>',Template::getInstance()->get('licence',array()));
 
 $window = new Window('window_licence');
 $window->setTitle('Licence');
-$window->setWidth(300);
-$window->setHeight(180);
-$window->setCenter();
+$window->position->setWidth('500px');
+$window->position->setHeight('300px');
+$window->position->setCentered();
 $window->setContent($content);
 
 $core->setContent($window);

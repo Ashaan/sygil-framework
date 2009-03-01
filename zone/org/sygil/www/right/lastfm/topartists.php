@@ -1,7 +1,7 @@
 <?php
 
 $core = Core::getInstance();
-$core->loadModule('lastfm');
+$core->loadModule('org.sygil.lastfm');
 
 $lastfm = new LastFM();
 $lastfm->setMode('topartists');

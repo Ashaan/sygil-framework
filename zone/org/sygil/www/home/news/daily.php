@@ -2,7 +2,7 @@
 
 $core = Core::getInstance();
 
-$core->loadModule('news');
+$core->loadModule('org.sygil.news');
 
 $event = new NewsEvents(Session::DATA('module'));
 $event->setDate(Session::DATA('date'));
@@ -10,7 +10,7 @@ $event->load();
 
 $day = new NewsDaily($event);
 
-$core->setData('__CONTENT__',$day->generate());
+$core->setContent($day->generate());
 
 
 ?>

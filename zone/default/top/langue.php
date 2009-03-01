@@ -1,7 +1,7 @@
 <?php
 
 $core = Core::getInstance();
-$core->loadModule('menu_vertical');
+$core->loadModule('org.sygil.menu.vertical');
 
 
 $menu = new MenuVertical(Session::DATA('target'),Session::DATA('parent'));

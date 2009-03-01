@@ -72,7 +72,8 @@ class Core {
 
         $path = '';
         if ($module) {
-            $path = str_replace('MODULE',$module,URL_MODULE_SCRIPT).'/'.$name;
+            $module = str_replace('.','/',$module);
+            $path   = str_replace('MODULE',$module,URL_MODULE_SCRIPT).'/'.$name;
         } else {
             $path = URL_SCRIPT.'/'.$name;
         }
@@ -85,8 +86,9 @@ class Core {
         $path = '';
         $url  = '';
         if ($module) {
-            $path = str_replace('MODULE',$module,PATH_MODULE_THEME);
-            $url  = str_replace('MODULE',$module,URL_MODULE_THEME);
+            $module = str_replace('.','/',$module);
+            $path   = str_replace('MODULE',$module,PATH_MODULE_THEME);
+            $url    = str_replace('MODULE',$module,URL_MODULE_THEME);
         } else {
             $path = PATH_THEME;
             $url  = URL_THEME;
@@ -105,7 +107,8 @@ class Core {
     public function addInclude($include, $module = null) {
         $path = '';
         if ($module) {
-            $path = str_replace('MODULE',$module,PATH_MODULE_INCLUDE).'/'.$include;
+            $module = str_replace('.','/',$module);
+            $path   = str_replace('MODULE',$module,PATH_MODULE_INCLUDE).'/'.$include;
         } else {
             $path = PATH_MODULE.'/'.$include;
         }
@@ -126,7 +129,7 @@ class Core {
 	    }
     }
     public function loadModule($module) {
-        include(PATH_MODULE.'/'.$module.'/index.php');
+        include(PATH_MODULE.'/'.str_replace('.','/',$module).'/index.php');
     }
 
     public function setData($name,$value) {

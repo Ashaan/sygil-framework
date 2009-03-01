@@ -2,7 +2,7 @@
 
 $core = Core::getInstance();
 
-$core->loadModule('window');
+$core->loadModule('org.sygil.base.window');
 
 //$content = Template::getInstance()->get('licence',array());
 

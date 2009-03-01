@@ -2,7 +2,7 @@
 
 $core = Core::getInstance();
 
-$core->loadModule('window');
+$core->loadModule('org.sygil.base.window');
 
 $content = str_replace("\n",'<br/>',Template::getInstance()->get('licence',array()));
 

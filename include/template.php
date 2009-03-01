@@ -36,7 +36,8 @@ class Template {
         if (!isset($this->file[$key])) {
             $path = '';
             if ($module) {
-                $path = str_replace('MODULE',$module,PATH_MODULE_TEMPLATE).'/'.DEFAULT_TEMPLATE.'/'.$name.'.tpl';
+                $module = str_replace('.','/',$module);
+                $path   = str_replace('MODULE',$module,PATH_MODULE_TEMPLATE).'/'.DEFAULT_TEMPLATE.'/'.$name.'.tpl';
             } else {
                 $path = PATH_TEMPLATE.'/'.DEFAULT_TEMPLATE.'/'.$name.'.tpl';
             }

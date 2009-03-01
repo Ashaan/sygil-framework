@@ -1,8 +1,8 @@
 <?php
 
 $core = Core::getInstance();
-$core->loadModule('slide_block');
-$core->loadModule('panel');
+$core->loadModule('org.sygil.slide.block');
+$core->loadModule('org.sygil.base.panel');
 
 $slide = new SlideBlock();
 

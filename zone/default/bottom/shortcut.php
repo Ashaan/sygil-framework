@@ -1,9 +1,9 @@
 <?php
 
 $core = Core::getInstance();
-$core->loadModule('shortcut');
+$core->loadModule('org.sygil.shortcut');
 $shortcut = new ShortCut();
 
-$core->setData('__CONTENT__', $shortcut->generate());
+$core->setContent($shortcut);
 
 ?>

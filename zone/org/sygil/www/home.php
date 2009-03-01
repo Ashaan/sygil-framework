@@ -2,7 +2,7 @@
 
 $core = Core::getInstance();
 
-$core->loadModule('panel');
+$core->loadModule('org.sygil.base.panel');
 
 // Panneau de droite pour accueillir les dernieres nouvelles
 $left = new Panel('panel_left');

@@ -1,17 +1,17 @@
 <?php
 
 $core = Core::getInstance();
-$core->loadModule('slide_block');
-$core->loadModule('panel');
+$core->loadModule('org.sygil.slide.block');
+$core->loadModule('org.sygil.base.panel');
 
 $slide = new SlideBlock();
 
 $panel = new Panel('panel_slide');
-$panel->setTop   (  '0px');
-$panel->setBottom(  '0px');
-$panel->setLeft  (  '5px');
-$panel->setRight (  '0px');
-$panel->setOverflow ('none');
+$panel->position->setTop   (  '0px');
+$panel->position->setBottom(  '0px');
+$panel->position->setLeft  (  '5px');
+$panel->position->setRight (  '0px');
+$panel->display->setOverflow ('none');
 $row = $panel->addLine('panel_slide_row1');
 $row->setBackground('#6798ca');
 $row = $panel->addLine('panel_slide_row2');

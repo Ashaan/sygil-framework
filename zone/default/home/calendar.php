@@ -2,7 +2,7 @@
 
 $core = Core::getInstance();
 
-$core->loadModule('calendar');
+$core->loadModule('org.sygil.calendar');
 
 $calendar = new Calendar('panel_right_row1');
 if (Session::DATA('date')) {
@@ -16,6 +16,6 @@ $calendar->setModule(Session::DATA('module'));
 $calendar->setType('home/news/daily');
 $calendar->setPanel('panel_left');
 
-$core->setData('__CONTENT__',$calendar->generate());
+$core->setContent($calendar);
 
 ?>

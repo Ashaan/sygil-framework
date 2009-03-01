@@ -53,10 +53,18 @@ define('URL_ICON'               , URL_CORE.'/icon');
 
 // URL de votre site ; your site URL
 define('URL_ZONE'               , 'http://www.yoursite.org');
-
 define('URL_CACHE'              , 'cache');
 define('URL_DATA'               , 'data');
 
+/**
+ * Domain faire reference au gestionnaire d'utilisateur
+ * Pour que le portail communiquer avec d'autre portail
+ * et pour permettre l'authentification d'utilisateur distant
+ * et le partage des base de groupe et utilisateur entre portail
+ **/
+define('DOMAIN_NAME'               , null);   // si votre site est accessible via http://toto.com c'est toto.com, null desactive la communication inter partail
+define('DOMAIN_TLS'                , false);  // si vous communiquer par https
+define('DOMAIN_ID'                 , null);   // http://www.sygil.org/tools/uid.php for generate an Id
 
 /**
  * DEFAULT CONFIGURATION
@@ -127,6 +135,9 @@ define('DATABASE_TYPE','mysqli');
  *   )
  * );
  */
+
+// Caractere de retour a la ligne
+define('CRLF',"/r/n");
 
 /**
  * ADDED AFTER THE FIRST INSTALL BY THE INSTALL SCRIPT

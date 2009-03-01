@@ -2,21 +2,20 @@
 
 $core = Core::getInstance();
 
-$core->loadModule('panel');
+$core->loadModule('org.sygil.base.panel');
 
 $left = new Panel('panel_left');
-$left->setTop   (  '0px');
-$left->setBottom(  '0px');
-$left->setLeft  (  '0px');
-$left->setRight ('205px');
-$left->setOverflow ('auto');
-$left->setContent('');
+$left->position->setTop   (  '0px');
+$left->position->setBottom(  '0px');
+$left->position->setLeft  (  '0px');
+$left->position->setRight ('205px');
+$left->display->setOverflow ('auto');
 
 $right = new Panel('panel_right');
-$right->setTop   (  '0px');
-$right->setBottom(  '0px');
-$right->setRight (  '0px');
-$right->setWidth  ('200px');
+$right->position->setTop   (  '0px');
+$right->position->setBottom(  '0px');
+$right->position->setRight (  '0px');
+$right->position->setWidth  ('200px');
 $right->addLine('panel_right_row1');
 
 $core->addExec('org.sygil.ajax.load(\'home/news/latest\',\'panel_left\',\'replace\',[[\'module\',\'14a6a157d8e861359729faeb72f5ca17\']]);');

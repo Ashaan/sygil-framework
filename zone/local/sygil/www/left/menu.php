@@ -1,7 +1,7 @@
 <?php
 
 $core = Core::getInstance();
-$core->loadModule('menu_block');
+$core->loadModule('org.sygil.menu.block');
 
 $blocks = new MenuBlockManager();
 

@@ -2,7 +2,11 @@
   <table>
   <tr>
     <td class="param"> Pseudo :                     </td>
-    <td class="input"> <input type="text" name="username"/>    </td>
+    <td class="input"><input type="text" name="username"/> </td>
+  </tr>
+  <tr>
+    <td class="param"> Domain :                </td>
+    <td class="input"> <input type="text" name="userdomain" value="sygil.org"/> </td>
   </tr>
   <tr>
     <td class="param"> Mot de Passe :                         </td>

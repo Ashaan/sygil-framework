@@ -45,8 +45,8 @@ if (Session::DATA('username')) {
         $window->setContent('<center>La connection a echoué<br/><input class="button" class="button" value="Ok" onclick="session.wclose();"/></center>');
     }
 } else {
-    $window->position->setWidth('260px');
-    $window->position->setHeight('100px');
+    $window->position->setWidth('248px');
+    $window->position->setHeight('144px');
     $window->position->setCentered();
     $window->setContent(Template::getInstance()->get('index_connect',array()));
 }

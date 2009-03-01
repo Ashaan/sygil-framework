@@ -13,21 +13,22 @@ org.sygil.session = function() {
             var form  = document.getElementById('connect');
 
             param[param.length] = ['username',form.username.value];
+            param[param.length] = ['userdomain',form.usedomaine.value];
             param[param.length] = ['password',form.password.value];
 
-            org.sygil.ajax.load('connect',null,'replace',param);
+            org.sygil.ajax.load('top/connecting',null,'replace',param);
         },
         disconnect : function() {
-            org.sygil.ajax.load('connect',null,'replace',[['disconnect','1']]);
+            org.sygil.ajax.load('connect',null,'replace',[['top/disconnect','1']]);
         },   
         update : function() {
             headers = document.getElementById('header');
-        	span    = headers.getElementsByTagName('span')[0];
-	        if (isConnect) {
+            span    = headers.getElementsByTagName('span')[0];
+            if (isConnect) {
        	        span.innerHTML  = 'Bonjour, ' + lastname + ' ' + firstname; 
-	        } else {
+            } else {
        	        span.innerHTML  = tpl_welcom_msg; 
-	        }
+            }
             for (var i=0;i<updateScript.length;i++) {
                 var func = updateScript[i] + '();';
                 eval(func);

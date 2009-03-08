@@ -60,7 +60,7 @@ org.sygil.mouse = function() {
 //	        } 
 //alert(temp.style.height);
     	    left += temp.offsetLeft + temp.style.width.replace(/px/g,'')/2; 
-    	    top  += temp.offsetTop  + temp.style.height.replace(/px/g,'')*1; 
+    	    top  += temp.offsetTop  + temp.style.height.replace(/px/g,'')/2; 
             element.style.zIndex = zindex++;
 
             selectX      = currentX - left;

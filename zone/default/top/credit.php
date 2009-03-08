@@ -1,12 +1,11 @@
 <?php
+require_once(PATH_CORE.'/include/widget/form/window.php');
 
 $core = Core::getInstance();
 
-$core->loadModule('org.sygil.base.window');
+$content = Template::getInstance()->get('content_credit',array());
 
-//$content = Template::getInstance()->get('licence',array());
-
-$window = new Window('window_credit');
+$window = new FormWindow('window_credit');
 $window->setTitle('Crédits');
 $window->position->setWidth('300px');
 $window->position->setHeight('180px');

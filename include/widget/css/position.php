@@ -45,7 +45,7 @@ class CssPosition extends Css {
         $this->setLeft('50%');
         $this->setTop('50%');
         if ($this->width)  $this->marginLeft = '-'.($this->width/2) .'px'; 
-        if ($this->height) $this->marginTop  = '-'.($this->height/1).'px';
+        if ($this->height) $this->marginTop  = '-'.($this->height/2).'px';
     }
 
     public function getCSS($genMode=0) {

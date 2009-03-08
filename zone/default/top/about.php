@@ -1,12 +1,11 @@
 <?php
+require_once(PATH_CORE.'/include/widget/form/window.php');
 
 $core = Core::getInstance();
 
-$core->loadModule('org.sygil.base.window');
+$content = Template::getInstance()->get('content_about',array());
 
-$content = Template::getInstance()->get('about',array());
-
-$window = new Window('window_about');
+$window = new FormWindow('window_about');
 $window->setTitle('A Propos de...');
 $window->position->setWidth('300px');
 $window->position->setHeight('200px');

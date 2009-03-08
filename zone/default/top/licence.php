@@ -1,12 +1,11 @@
 <?php
+require_once(PATH_CORE.'/include/widget/form/window.php');
 
 $core = Core::getInstance();
 
-$core->loadModule('org.sygil.base.window');
+$content = str_replace("\n",'<br/>',Template::getInstance()->get('content_licence',array()));
 
-$content = str_replace("\n",'<br/>',Template::getInstance()->get('licence',array()));
-
-$window = new Window('window_licence');
+$window = new FormWindow('window_licence');
 $window->setTitle('Licence');
 $window->position->setWidth('500px');
 $window->position->setHeight('300px');

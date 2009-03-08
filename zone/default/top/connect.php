@@ -1,9 +1,9 @@
 <?php
+require_once(PATH_CORE.'/include/widget/form/window.php');
 
 $core = Core::getInstance();
 
-$core->loadModule('org.sygil.base.window');
-$window = new Window('window_connect');
+$window = new FormWindow('window_connect');
 $window->setTitle('Gestionnaire de Connection');
 
 if (Session::DATA('disconnect')) {

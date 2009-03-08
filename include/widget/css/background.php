@@ -2,7 +2,7 @@
 
 require_once(PATH_CORE.'/include/widget/css.php');
 
-class CssFont extends Css {
+class CssBackground extends Css {
     static public $STYLE_NORMAL   = 'normal';
     static public $STYLE_ITALIC   = 'italic';
     static public $STYLE_OBLIQUE  = 'oblique';

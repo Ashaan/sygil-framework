@@ -58,6 +58,7 @@ class MenuVertical {
       '__STYLE__'  => $this->position->getCSS(0),
     );
 
+    $core = Core::getInstance();
     return Template::getInstance()->get('box',$data,'org.sygil.menu.vertical');
   }
 }

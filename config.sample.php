@@ -33,8 +33,10 @@ define('PATH_MODULE_TEMPLATE'   , PATH_MODULE_.'/template');
 define('PATH_MODULE_THEME'      , PATH_MODULE_.'/theme'); 
 define('PATH_MODULE_SCRIPT'     , PATH_MODULE_.'/script'); 
 
-// Definit les repertoire d'installation des infos de votre site
-define('PATH_ZONE'              , './zone/sample'); 
+/** Definit les repertoire d'installation des infos de votre site
+ *  si  votre site est en .com mettre ./zone/com/votresite/
+ **/
+define('PATH_ZONE'              , './zone/org/sample'); 
 
 
 /**
@@ -42,7 +44,7 @@ define('PATH_ZONE'              , './zone/sample');
  *  - URL a utiliser pour acceder au CORE (pour les script et les themes, peut etre un site distant)
  *  - URL to use to reach the CORE (for script, themes. can be a distant location)
  **/
-define('URL_CORE'               , 'http://yoursite.org');
+define('URL_CORE'               , 'http://yoursite.org'); // or http://www.yoursite.org
 
 define('URL_SCRIPT'             , URL_CORE.'/script');
 define('URL_THEME'              , URL_CORE.'/theme');
@@ -123,6 +125,7 @@ define('DATABASE_TYPE','mysqli');
  *	'glossy' 		=> 'Gnome Glossy Theme',
  *	'aurora-midnight'	=> 'Gnome Aurora Midnight Theme',
  * 	'green-glossy'		=> 'Gnome Green Glossy Theme'
+ *	'wood-brun'		=> 'Wood Brun Theme'
  *   )
  * );
  */

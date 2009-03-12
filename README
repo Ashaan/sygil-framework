@@ -23,17 +23,23 @@ Mathieu Chocat	   - For creating and maintaing the portal.
 	
 3. Copy the config.sample.php file to config.php, found in:
      /your/site/directory/portal-master/
-
-4. Copy the zone.sample/ directory to zone/ , found in:
-     /your/site/directory/portal-master/	
+     
+4. In zone directory create or select a good extention 
+	(If your domain is .net create net directory)
+	Copy default directory to your directory with the good name
+	(If your domaine is dupond.net create directory net and copy default to dupond in net)
+   Now you have /your/site/sirectory/portal-master/zone/net/dupond/
 
 5. Open config.php file and modify the file for your configuration
      CONFIGURATION PATH
      URL CONFIGURATION
+     DOMAIN CONFIGURATION
+     DEFAULT CONFIGURATION (if you want a default language or theme for all user)
      SITE CONFIGURATION
      MYSQL CONFIGURATION
 
-6. Open zone/left/menu.php file and configure your portal
+6. Open /zone/net/dupond directory if you want to configure your portal
+	- Configure menu.php in left directory (use syntax for help) 
 
 7. Enjoy
 
@@ -56,6 +62,7 @@ download the new portal-master.zip on http://sygil.org
 ----------IMPORTANT NOTE-----------
 -----------------------------------
 
-A venir
+If you delete /zone/default/ all site break
+coming soon
 
 

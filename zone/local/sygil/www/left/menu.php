@@ -20,6 +20,7 @@ $block->addElement($menu);
 $menu = new MenuBoxBox('Statistique Reseau');
 $menu->addOption(new MenuBoxOption('nTop'                , 'org.sygil.frame.open(\'http://sygil.local:3000\', this)'));
 $menu->addOption(new MenuBoxOption('Webalizer'           , 'org.sygil.frame.open(\'http://sygil.local/webalizer\', this)'));
+$menu->addOption(new MenuBoxOption('MailGraph'           , 'org.sygil.frame.open(\'http://sygil.local/mailgraph/mailgraph.cgi\', this)'));
 $block->addElement($menu);
 $menu = new MenuBoxBox('Administration');
 $menu->addOption(new MenuBoxOption('phpMyAdmin'          , 'org.sygil.frame.open(\'http://phpmyadmin.sygil.local\', this)'));

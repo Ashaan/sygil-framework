@@ -1,5 +1,13 @@
+# Various Editor
 *~
+
+# Light Install
 config.php
 cache/*
 data/*
 zone/gageiatx
+
+# Eclipse
+.buildpath
+.project
+.settings

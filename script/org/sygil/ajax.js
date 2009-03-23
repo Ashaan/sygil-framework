@@ -183,7 +183,7 @@ org.sygil.ajax = function/*org.sygil.ajax*/() {
                 if (content) {
                     org.sygil.div.add(target,method,content,key);
                 } else {
-                    alert('ya du boulot !');
+                    //alert('ya du boulot !');
                 }
 
                 if (exec_data != '') {

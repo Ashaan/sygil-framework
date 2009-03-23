@@ -59,6 +59,7 @@ class NewsEvents {
         '.$addsql;
 
         $result = $db->select($query);
+        if ($result)
         foreach($result as $obj){
             $obj['edit'] = false;
 

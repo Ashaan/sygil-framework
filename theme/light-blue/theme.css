@@ -1,0 +1,277 @@
+body {
+  margin        : 0px;
+  height        : 100%;
+  padding       : 0px;
+  background    : url(index_background.gif) center center repeat;
+  font-size     : 11px;
+  color         : #000000;
+  font-family   : Verdana,Arial,Helvetica, sans-serif;
+  font-variant  : normal;
+  width         : 940px;
+  padding-left  : 50%; 
+}
+
+.hidden {
+  display       : none;
+}
+
+
+
+#header {
+  font-family   : Sans Bold;
+  font-size     : 12px; 
+  position      : relative;
+  width         : 100%;
+  left          : -470px;
+  height        : 100px;
+  font-weight   : bold;
+  background    : url(index_header_background.png) center center no-repeat;
+  padding-top   : 4px;
+  padding-left  : 3px;
+  padding-right : 3px;
+}
+
+#header div {
+  position      : absolute;
+  right         : 0px;
+  height        : 18px;
+}
+#header span {
+  position      : absolute;
+  left          : 0px;
+  height        : 18px;	
+}
+#header .headhoption {
+  position      : relative;
+  float         : left;
+  padding-top   : 4px;
+  padding-left  : 3px;
+  padding-right : 3px;
+}
+#header .headhoption:hover {
+  color         : #FFFFFF;
+  cursor        : pointer;
+}
+#header .headhseparator {
+  position      : relative;
+  float         : left;
+  height        : 14px;
+  margin-top    : 2px;
+  border-left   : 1px solid #CCCCCC;
+  margin-left   : 1px;
+  margin-right  : 0px;
+}
+
+#footer {
+  position      : absolute;
+  bottom        : 0px;
+  left          : 0px;
+  right         : 0px;
+  height        : 19px;
+  border-top    : 0px solid #DDDDDD;
+  background    : url(index_footer_background.png);
+  color         : #DDDDDD;
+  text-align    : center;
+  font-weight   : bold;
+  padding-bottom: 0px;
+  padding-top   : 2px;
+}
+
+#body {
+  position      : relative;
+  width         : 100%;
+  left          : -470px;
+  height        : 100%;
+  border: 1px solid red;
+}
+
+#left {
+  position      : relative;
+  width         : 250px;
+  height        : 100%;
+  background    : url(index_left_background.png) right repeat-y;
+  border        : 0px solid #FF0000;
+  text-align    : center;
+  padding-top   : 0px;
+  overflow      : auto;
+}
+
+#right {
+  position      : absolute;
+  top           : 0px;
+  right         : 0px;
+  bottom        : 0px;
+  width         : 10px;
+  border        : 0px solid #FF0000;
+  background    : url(index_right_background.png) left repeat-y;
+  overflow      : hidden;
+}
+
+#center {
+  position      : absolute;
+  top           : 0px;
+  bottom        : 0px;
+  left          : 250px;
+  right         : 8px;
+  border        : 0px solid #0000FF;
+  background    : #474747;
+  padding       : 0px;
+  margin        : 0px;
+  overflow      : auto;
+}
+
+.frame {
+  height        : 100%;
+  width         : 100%;
+  border        : 0px;
+  padding       : 0px;
+  margin        : 0px;
+  margin-bottom : -3px;
+}
+
+
+form {
+  padding: 0px;
+  margin : 0px;
+}
+form .param {
+  text-align        : right;
+  padding-right     : 3px;
+  font-size         : 12px;
+  font-weight       : bold;
+}
+form .input input {
+  background        : white;
+  border            : 1px solid #9e9281;
+  width             : 125px;
+  -moz-border-radius: 4px;
+  padding           : 3px;
+  font-size         : 12px;
+}
+form .input input:focus {
+  border            : 1px solid #5598d7;
+}
+form .button {
+  text-align        : right;
+  margin-top        : 7px;
+  padding-right     : 3px;
+}
+input.button,
+form .button input {
+  -moz-border-radius: 4px;
+  padding           : 3px;
+  padding-left      : 5px;
+  padding-right     : 5px;
+  font-size         : 12px;
+}
+
+.form_panel{
+  position      : absolute;
+  border        : 0px;
+  margin        : 5px;
+  padding       : 0px;
+  -moz-border-radius: 10px;
+  background    : transparent;
+}
+
+.form_panel:hover {
+  background    : transparent;
+}
+
+.form_panel_line {
+  position      : relative;
+  border        : 0px red solid;
+  background    : #00FF00;
+  min-height    : 30px;
+  margin-bottom : 5px;
+  padding       : 0px;
+  -moz-border-radius: 10px;
+  background    : transparent;
+  text-align    : center;
+}
+
+.form_panel_line:hover {
+  background    : transparent;
+}
+
+.form_window {
+  display           : block;
+  width             : 275px;
+  border            : 0px solid #3A4371;
+  text-align        : center;
+  color	            : #293260;
+  background        : transparent;
+  -moz-border-radius: 3px;
+  margin-bottom     : 10px;
+  z-index           : 1000;
+}
+
+.form_window_title {
+  position          : relative;
+  display           : block;
+  margin            : 0px;
+  border            : 0px;
+  height            : 21px;
+}
+.form_window_title:hover {
+  cursor            : move;
+}
+.form_window_title_center {
+  position          : absolute;
+  right             : 6px;
+  left              : 6px;
+  top               : 0px;
+  height            : 21px;
+  padding           : 3px;
+  text-align        : center;
+  font-weight       : bold;
+  font-size         : 12px;
+  color	            : #FFFFFF;
+  background        : url(form_window_title_background.png) repeat-x;
+}
+.form_window_title_right {
+  position          : absolute;
+  right             : 0px;
+  top               : 0px;
+  height            : 21px;
+  width             : 60px;
+  background        : url(form_window_title_right.png) top right no-repeat;
+  text-align	    : right;
+  padding-top       : 3px;
+  padding-right     : 4px;
+}
+.form_window_title_left {
+  position          : absolute;
+  left              : 0px;
+  top               : 0px;
+  height            : 21px;
+  width             : 6px;
+  background        : url(form_window_title_left.png);
+}
+
+.form_window_close {
+  position:absolute;
+  right:3px;
+  width:16px;
+  height:16px;
+  background:url(form_window_close.png);
+}
+.form_window_close:hover {
+  cursor:pointer;
+  background:url(form_window_close_hover.png);
+}
+.form_window_content {
+  position          : absolute;
+  margin            : 0px;
+  padding           : 0px;
+  color		        : #FFFFFF;
+  background        : #333333;
+  border            : 1px solid #95b0c4;
+  border-top        : 0px;
+  top               : 21px;
+  bottom            : 0px;
+  right             : 0px;
+  left              : 0px;
+  min-height        : 100px;
+  overflow          : auto;
+}

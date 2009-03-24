@@ -11,46 +11,63 @@
  * Revision: $REVISION$ 
  *
  * Copyright(c) 2008-2009 Sygil.org
- **/
-
+ */
 class Core {
-    static private $instance = null;
-    public  $config   = null;
-    private $template = null;
-    private $script   = array();
-    private $theme    = array();
-    private $data     = array();
-    private $exec     = array();
-    private $themeList= array();
-    private $langList = array();
+    /**
+     * Current Instance of Core
+     * @var Core
+     */
+    static protected $instance = null;
+    /**
+     * List of Javascript filepath to add in the page
+     * @var array of String
+     */
+    protected $script   = array();
+    /**
+     * List of CSS Theme filepath to add in the page
+     * @var array of String
+     */
+    protected $theme    = array();
+    /**
+     * Liste de script a executer a l'execution (Javascript)
+     * @var array of String
+     */
+    protected $exec     = array();
+    /**
+     * Template Variable Liste
+     * @var unknown_type
+     */
+    protected $data     = array();
+    /**
+     * Liste des Themes disponible
+     * @var array of array
+     */
+    protected $themeList= array(
+        'glossy'          => 'Glossy',
+        'aurora-midnight' => 'Aurora Midnight',
+        'wood-brun'       => 'Wood Beta',
+        'green-glossy'    => 'Green Glossy',
+        'light-blue'      => 'DEV'
+    );
+    /**
+     * Liste des Langues disponible
+     * @var array of array
+     */
+    private $langList = array(
+        'french'          => '##french##',
+        'english'         => '##english##'
+    );
 
+    /**
+     * Current Instance of Core
+     * @return Core
+     */
     static public function getInstance() {
         if (Core::$instance == null) {
-            Core::$instance = new Core();
+            Core::$instance = new self();
         }
         return Core::$instance;
     } 
-
-    public function __construct() {
-	    $this->setThemeList(
-	        array(
-		        'glossy' 		    => 'Glossy',
-		        'aurora-midnight'	=> 'Aurora Midnight',
-		        'wood-brun'		    => 'Wood Beta',
-			    'green-glossy'		=> 'Green Glossy'
-	        )
-	    );
-	    $this->setLangList(
-	        array(
-		        'french' 		=> '##french##',
-		        'english'		=> '##english##'
-	        )
-	    );
-    }
-
-    public function setTemplate($template) {
-        $this->template = $template;
-    }
 
     public function setThemeList($list) {
         $this->themeList = $list;
@@ -64,7 +81,21 @@ class Core {
     public function getLangList() {
         return $this->langList;
     }
-    
+    public function setData($name,$value) {
+        $name = '__'.str_replace('__','',strtoupper($name)).'__';
+        $this->data[$name] = $value;
+    }
+    public function getData($name) {
+        $name = '__'.str_replace('__','',strtoupper($name)).'__';
+        return $this->data[$name];
+    }
+        
+    /**
+     * Add JavaScript File
+     * 
+     * @param $name script name
+     * @param $module module
+     */
     public function addScript($name, $module = null) {
         if (strpos($name,'.js')<1) {
             $name = str_replace('.','/',$name).'.js';
@@ -82,6 +113,13 @@ class Core {
             $this->script[] = $path;
         }
     }
+    
+    /**
+     * Add CSS Theme File
+     * 
+     * @param $name theme name
+     * @param $module module
+     */
     public function addTheme($name, $module = null) {
         $path = '';
         $url  = '';
@@ -104,6 +142,12 @@ class Core {
             $this->theme[$key] = array($theme,$furl);
         }
     }
+    
+    /**
+     * Add PHP Include
+     * @param $include include name
+     * @param $module module
+     */
     public function addInclude($include, $module = null) {
         $path = '';
         if ($module) {
@@ -115,133 +159,69 @@ class Core {
 
         require_once($path);
     }
+
+    /**
+     * Add Script to execute in client
+     * @param $exec script to execute in client
+     */
     public function addExec($exec) {
         $this->exec[] = $exec;
     }
-    public function load($config) {
-        if ($config) {
-            if (file_exists(PATH_ZONE.'/'.$config.'.php')) {
-      	        $path = PATH_ZONE.'/'.$config.'.php';
-            } else {
-      	        $path = PATH_CORE.'/zone/default/'.$config.'.php';
-            }
-	        include($path);
-	    }
-    }
+    
+    /**
+     * Load a Module
+     * @param $module module
+     */
     public function loadModule($module) {
         include(PATH_MODULE.'/'.str_replace('.','/',$module).'/index.php');
     }
 
-    public function setData($name,$value) {
-        $this->data[$name] = $value;
-    }
+    /**
+     * Set a data content
+     * @param $value content text or content object 
+     */
     public function setContent($value) {
         if (is_object($value)) {
-            $this->data['__CONTENT__'] = $value->generate();
+            $this->setData('content', $value->generate());
         } else {
-            $this->data['__CONTENT__'] = $value;
+            $this->setData('content', $value);
         }
+    }
+
+    /**
+     * Generate the javascript file list with associate template
+     * @param $template tTemplate to use
+     */
+    protected function genScriptList($template) {
+        $scriptList = '';
+        foreach($this->script as $script) {
+            $data = array(
+                'url' => $script
+            );
+            $scriptList .= Template::getInstance()->get($template, $data); 
+        } 
+        return $scriptList;       
     }
     
-    public function generateIndex() {
-        $this->data['__THEME__'] = '';
-        foreach($this->theme as $theme) {
-	        $style = ($theme[0]==DEFAULT_THEME || $theme[0]==null)?'stylesheet':'alternate stylesheet';	
-            $this->data['__THEME__']  .= Template::getInstance()->get('index_theme' ,
-        		array(
-        		    '__NAME__'  => $theme[0]?' title="'.$theme[0].'"':'',
-        		    '__URL__'   => $theme[1],
-        		    '__STYLE__' => $style
-        		)
-    	    ); 
-        }
-
-        $this->data['__SCRIPT__'] = '';
-        foreach($this->script as $script) {
-            $this->data['__SCRIPT__'] .= Template::getInstance()->get('index_script',
-                array(
-                    '__URL__' => $script
-                )
-            ); 
-        }
-
-        $this->data['__EXEC__'] = '';
+    /**
+     * Generate the javascript file list with associate template
+     * @param $template tTemplate to use
+     */
+    protected function genExecList($template = NULL) {
+        $execList = '';
         foreach($this->exec as $exec) {
-            $this->data['__EXEC__']  .= $exec; 
-        }
-
-
-        $this->data['__ONLOAD__']       = '';
-
-        return Template::getInstance()->get($this->template,$this->data);
-    }
-    public function generateAjax() {
-        $this->data['__COMMAND__'] = Session::DATA('command');
-        $this->data['__TARGET__']  = Session::DATA('target');
-        $this->data['__METHOD__']  = Session::DATA('method');
-        $this->data['__EXEC__'] = '';
-        foreach($this->exec as $exec) {
-            $this->data['__EXEC__']  .= Template::getInstance()->get('ajax_exec' ,array('__EXEC__'=> $exec)); 
-        }
-
-        $this->data['__THEME__'] = '';
-        foreach($this->theme as $theme) {
-	        $style = ($theme[0] == DEFAULT_THEME)?0:1;	
-            $this->data['__THEME__']  .= Template::getInstance()->get('ajax_theme' ,
-		        array(
-		            '__NAME__'  => $theme[0],
-		            '__URL__'   => $theme[1],
-		            '__ALT__'   => $style
-		        )
-	        ); 
-        }
-
-        $this->data['__SCRIPT__'] = '';
-        foreach($this->script as $script) {
-            $this->data['__SCRIPT__'] .= Template::getInstance()->get('ajax_script',
-                array(
-                    '__URL__'=> $script
-                )
-            ); 
-        }
-
-        $this->data['__TEMPLATE__'] = '';
-//        foreach($this->scriptTemplate as $name => $template) {
-//            $data = array(
-//                '__NAME'   => $name,
-//                '__DATA__' => base64_encode($script) // a encoder base64, max 255 caractere
-//            );
-//            $this->data['__TEMPLATE__'] .= Template::getInstance()->get('ajax_template',$data); 
-//        }
-
-        if (isset($this->data['__CONTENT__'])) {
-            $content = $this->data['__CONTENT__'];
-            $this->data['__CONTENT__'] = '';
-            $len     = strlen($content);
-            for ($i=0;$i<$len/512;$i++) {
-                $send    = substr($content,0,512);
-                $content = substr($content,512);
-                $this->data['__CONTENT__'] .= 
-                    '<content part="'.$i.'">'.
-                        base64_encode(utf8_decode($send)).
-                    '</content>';
+            if ($template) {
+                $data = array(
+                    'exec'=> $exec
+                );
+                $execList .= Template::getInstance()->get($template, $data); 
+            } else {
+                $execList  .= $exec; 
             }
-        } else {
-            $this->data['__CONTENT__'] = '<content/>';
         }
-        return Template::getInstance()->get($this->template,$this->data);
+        return $execList;
     }
-
-    public function generate() {
-        if (strpos('  '.$this->template,'index')>0) {
-            return $this->generateIndex();
-        } else
-        if (strpos('  '.$this->template,'ajax')>0) {
-            return $this->generateAjax();
-        } else {
-            return 'missing template ('.$this->template.')';
-        }
-    }
+    
 }
 
 ?>

@@ -31,7 +31,7 @@ __SCRIPT__
     }
   </script>
 </head>
-<body onload="url.load();onLoad();__ONLOAD__">
+<body onload="url.load();onLoad();">
   <div id="header">
     <span></span>
     <div>

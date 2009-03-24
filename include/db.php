@@ -13,14 +13,14 @@
  * Copyright(c) 2008-2009 Mathieu Chocat (or Sygil.org if applicable)
  **/
 
-class db {
+class DB {
     static $instance = null;
 
     static function getInstance() {
         if (is_null(db::$instance)) {
             if ( file_exists(PATH_CORE.'/include/db/'.DATABASE_TYPE.'.php') ) {
                 require_once(PATH_CORE.'/include/db/'.DATABASE_TYPE.'.php');
-                $class = 'db_'.DATABASE_TYPE;
+                $class = 'DB'.DATABASE_TYPE;
                 db::$instance = new $class();
             }
         }

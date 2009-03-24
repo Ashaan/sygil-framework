@@ -5,7 +5,7 @@
  * @copyright (c) 2006 Sygil.eu
  **/
 
-class db_mysqli extends db 
+class DBmysqli extends DB 
 {
   private $mysqli;
   public  $error = null;

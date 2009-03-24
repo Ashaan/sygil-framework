@@ -55,7 +55,8 @@ class Template {
          
        $tpl = str_replace('__URL_ICON__',URL_ICON.'/'.DEFAULT_ICON,$tpl);
        foreach($data as $key => $value) {
-          $tpl = str_replace($key,$value,$tpl);
+           $key = '__'.str_replace('__','',strtoupper($key)).'__';
+           $tpl = str_replace($key,$value,$tpl);
        }
        foreach($this->lang as $key => $value) {
           $tpl = str_replace('##'.$key.'##',$value,$tpl);

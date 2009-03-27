@@ -16,10 +16,10 @@ $menu->addSeparator();
 
 $session = Session::getInstance();
 if (!$session->isLogged()) {
-    $menu->addOption('Connection' ,'org.sygil.ajax.load(\'top/connect\',\'window_connect\',\'replace\',[])');
+    $menu->addOption('Connection' ,'org.sygil.ajax.load(\'top/log\',\'window_connect\',\'replace\',[])');
     $menu->addOption('Inscription','org.sygil.ajax.load(\'top/register\',\'window_register\',\'replace\',[])');
 } else {
-    $menu->addOption('Déconnection','org.sygil.ajax.load(\'top/disconnect\',\'window_disconnect\',\'replace\',[])');
+    $menu->addOption('Déconnection','org.sygil.ajax.load(\'top/logout\',\'window_disconnect\',\'replace\',[[\'disconnect\',1]])');
 }
 $menu->addSeparator();
 $menu->addOption('A propos..','org.sygil.ajax.load(\'top/about\',\'window_about\',\'replace\',[])');

@@ -1,8 +1,8 @@
 <?php
 
-$lang['site_short_name']	= defined(SITE_SHORT_NAME_FR)  ? SITE_SHORT_NAME_FR  : SITE_SHORT_NAME;
-$lang['site_long_name']		= defined(SITE_LONG_NAME_FR)   ? SITE_LONG_NAME_FR   : SITE_LONG_NAME;
-$lang['site_description']	= defined(SITE_DESCRIPTION_FR) ? SITE_DESCRIPTION_FR : SITE_DESCRIPTION;
+$lang['site_short_name']	= defined('SITE_SHORT_NAME_FR')  ? SITE_SHORT_NAME_FR  : SITE_SHORT_NAME;
+$lang['site_long_name']		= defined('SITE_LONG_NAME_FR')   ? SITE_LONG_NAME_FR   : SITE_LONG_NAME;
+$lang['site_description']	= defined('SITE_DESCRIPTION_FR') ? SITE_DESCRIPTION_FR : SITE_DESCRIPTION;
 $lang['site_keywords']		= SITE_SEARCH_KEYWORDS.' french france francais';
 
 $lang['msg_ie6'] = 'Ce site ne fonctionne pas avec Internet Explorer 6-\n'.

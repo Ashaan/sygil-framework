@@ -12,14 +12,14 @@ org.sygil.session = function() {
             var param = [];
             var form  = document.getElementById('connect');
 
-            param[param.length] = ['username',form.username.value];
-            param[param.length] = ['userdomain',form.usedomaine.value];
-            param[param.length] = ['password',form.password.value];
+            param[param.length] = ['username'  , form.username.value];
+            param[param.length] = ['domain'    , form.domain.value];
+            param[param.length] = ['password'  , form.password.value];
 
-            org.sygil.ajax.load('top/connecting',null,'replace',param);
+            org.sygil.ajax.load('top/login',null,'replace',param);
         },
         disconnect : function() {
-            org.sygil.ajax.load('connect',null,'replace',[['top/disconnect','1']]);
+            org.sygil.ajax.load('connect',null,'replace',[['top/logout','1']]);
         },   
         update : function() {
             headers = document.getElementById('header');

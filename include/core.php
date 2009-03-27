@@ -63,10 +63,14 @@ class Core {
      * @return Core
      */
     static public function getInstance() {
-        if (Core::$instance == null) {
-            Core::$instance = new self();
+        try {
+            if (Core::$instance == null) {
+                Core::$instance = new self();
+            }
+            return Core::$instance;
+        } catch(CoreException $exception) {
+            throw new CoreException('Fatal Error: Cannot Instantiate Core'); 
         }
-        return Core::$instance;
     } 
 
     public function setThemeList($list) {
@@ -181,10 +185,14 @@ class Core {
      * @param $value content text or content object 
      */
     public function setContent($value) {
-        if (is_object($value)) {
-            $this->setData('content', $value->generate());
-        } else {
-            $this->setData('content', $value);
+        try {
+            if (is_object($value)) {
+                $this->setData('content', $value->generate());
+            } else {
+                $this->setData('content', $value);
+            }
+        } catch (CoreException $exception) {
+            throw new CoreException('Error: Cannot set the Core Content'); 
         }
     }
 
@@ -193,14 +201,18 @@ class Core {
      * @param $template tTemplate to use
      */
     protected function genScriptList($template) {
-        $scriptList = '';
-        foreach($this->script as $script) {
-            $data = array(
-                'url' => $script
-            );
-            $scriptList .= Template::getInstance()->get($template, $data); 
-        } 
-        return $scriptList;       
+        try {
+            $scriptList = '';
+            foreach($this->script as $script) {
+                $data = array(
+                    'url' => $script
+                );
+                $scriptList .= Template::getInstance()->get($template, $data); 
+            } 
+            return $scriptList;       
+        } catch (CoreException $exception) {
+            throw new CoreException('Error: Cannot generate ScriptFile List'); 
+        }
     }
     
     /**
@@ -208,18 +220,22 @@ class Core {
      * @param $template tTemplate to use
      */
     protected function genExecList($template = NULL) {
-        $execList = '';
-        foreach($this->exec as $exec) {
-            if ($template) {
-                $data = array(
-                    'exec'=> $exec
-                );
-                $execList .= Template::getInstance()->get($template, $data); 
-            } else {
-                $execList  .= $exec; 
+        try {
+            $execList = '';
+            foreach($this->exec as $exec) {
+                if ($template) {
+                    $data = array(
+                        'exec'=> $exec
+                    );
+                    $execList .= Template::getInstance()->get($template, $data); 
+                } else {
+                    $execList  .= $exec; 
+                }
             }
+            return $execList;
+        } catch (CoreException $exception) {
+            throw new CoreException('Error: Cannot generate ScriptCommand List'); 
         }
-        return $execList;
     }
     
 }

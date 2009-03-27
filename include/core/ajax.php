@@ -90,8 +90,8 @@ class CoreAjax extends Core {
             $this->setData('method' , Session::DATA('method'));
             
             return Template::getInstance()->get('ajax',$this->data);
-        } catch (Exception $exception) {
-            throw new Exception("Cannot Generate Ajax Xml", $exception);
+        } catch (CoreException $exception) {
+            throw new CoreException("Cannot Generate Ajax Xml");
         }
     }
 }

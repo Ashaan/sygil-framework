@@ -26,29 +26,37 @@ class CoreIndex extends Core {
     
     
     private function genThemeList() {
-        $themeList = '';
-        foreach($this->theme as $theme) {
-            $style = null;
-            if ($theme[0]==DEFAULT_THEME || $theme[0]==null) {
-                $style = 'stylesheet';
-            }  else {
-                $style = 'alternate stylesheet';
+        try {
+            $themeList = '';
+            foreach($this->theme as $theme) {
+                $style = null;
+                if ($theme[0]==DEFAULT_THEME || $theme[0]==null) {
+                    $style = 'stylesheet';
+                }  else {
+                    $style = 'alternate stylesheet';
+                }
+    
+                $data = array (
+                    'name'  => $theme[0]?' title="'.$theme[0].'"':'',
+                    'url'   => $theme[1],
+                    'style' => $style
+                );
+                
+                $themeList  .= Template::getInstance()->get('index_theme', $data); 
             }
-
-            $data = array (
-                'name'  => $theme[0]?' title="'.$theme[0].'"':'',
-                'url'   => $theme[1],
-                'style' => $style
-            );
             
-            $themeList  .= Template::getInstance()->get('index_theme', $data); 
+            return $themeList;
+        } catch (CoreException $exception) {
+            throw new CoreException('Error: Cannot generate Theme List'); 
         }
-        
-        return $themeList;
     }
     
     protected function genScriptList() {
-        return Core::genScriptList('index_script');    
+        try {
+            return Core::genScriptList('index_script');    
+        } catch (CoreException $exception) {
+            throw new CoreException('Error: Cannot generate Theme List'); 
+        }
     }
         
     public function generate() {
@@ -58,8 +66,8 @@ class CoreIndex extends Core {
             $this->setData('exec'  , $this->genExecList());
             
             return Template::getInstance()->get('index',$this->data);
-        } catch (Exception $exception) {
-            throw new Exception("Cannot Generate Index Html", $exception);
+        } catch (CoreException $exception) {
+            throw new CoreException('Error: Cannot generate Index Page'); 
         }
     }
 }
